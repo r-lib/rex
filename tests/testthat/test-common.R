@@ -175,3 +175,93 @@ test_that("creates a negative character class", {
   expect_true(grepl(re, "xxzabc", perl=TRUE))
   expect_false(grepl(re, "xyzabc", perl=TRUE))
 })
+
+context('or')
+test_that('%or% creates an alternation', {
+  re = rex('w', 'x' %or% 'y', 'z')
+  expect_equal(re, regex('w(?:x|y)z'))
+  expect_true(grepl(re, 'wxz'))
+  expect_true(grepl(re, 'wyz'))
+  expect_false(grepl(re, 'waz'))
+})
+
+context('between')
+test_that('creates a bounded repetition', {
+  expect_equal(rex('x' %>% between(2, 4)),
+    regex('(?:x){2,4}'))
+})
+
+context('at_least')
+test_that('creates a bounded repetition', {
+  expect_equal(rex('x' %>% at_least(3)),
+    regex('(?:x){3,}'))
+})
+
+context('at_most')
+test_that('creates a repetition of n times at most', {
+  expect_equal(rex('x' %>% at_most(3)),
+    regex('(?:x){,3}'))
+})
+
+context('zero_or_more')
+test_that('recognizes basic characters', {
+  expect_equal(rex(zero_or_more('a'), 'b'),
+    regex('(?:a)*b'))
+})
+
+test_that('recognizes special identifiers', {
+  expect_equal(rex(zero_or_more(digit), 'b'),
+    regex('(?:\\d)*b'))
+})
+
+context('one_or_more')
+test_that('recognizes basic characters', {
+  expect_equal(rex(one_or_more('a'), 'b'),
+    regex('(?:a)+b'))
+})
+
+test_that('recognizes special identifiers', {
+  expect_equal(rex(one_or_more(letter), 'b'),
+    regex('(?:[a-zA-Z])+b'))
+})
+
+context('end_with')
+test_that('matches basic characters', {
+  expect_equal(rex('x', ends_with('y')),
+    regex('xy$'))
+})
+
+
+test_that('escapes special characters', {
+  expect_equal(rex('x', ends_with('$')),
+    regex('x\\$$'))
+})
+
+# TODO: error if multiple ends
+#test_that('raises an error when called twice', {
+  #expect_error(re %>% end_with('x') %>% end_with('x'))
+#})
+
+
+context('general regex')
+test_that('returns a well-formed regex', {
+  expect_equal(rex(starts_with('w'), 'x' %or% 'y', ends_with('z')),
+    regex('^w(?:x|y)z$'))
+})
+
+context('examples')
+re =
+  rex(start,
+    digit %>% n_times(3),
+    '-',
+    letter %>% n_times(2),
+    maybe('#'),
+    'a' %or% 'b',
+    'c' %>% between(2, 4),
+    ends_with('$')
+    )
+
+expect_true(grepl(re, "123-xy#accc$", perl=TRUE))
+expect_true(grepl(re, "999-dfbcc$"))
+expect_false(grepl(re, "000-df#baccccccccc$"))
+expect_false(grepl(re, "444-dd3ac$"))

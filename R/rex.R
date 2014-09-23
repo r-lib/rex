@@ -57,7 +57,9 @@ rex <- function(...) {
   
   dot <- "\\."
   any <- any_char <- regex(".")
-  
+  any_chars <- regex(".+")
+  anything <- regex(".*")
+
   output <- eval(substitute(p(escape(list(...)))), enclos = parent.frame())
   n <- nchar(output)
   return(output)

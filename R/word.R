@@ -10,7 +10,7 @@ between <- function(x, low, high) {
 
 ##' @export
 at_least <- function(x, n) {
-  bewtween(x, n, '')
+  between(x, n, '')
 }
 
 ##' @export

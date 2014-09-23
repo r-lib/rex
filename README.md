@@ -38,24 +38,26 @@ r <- rex(
 
 ## Methods
 ### General
-capture()`
-`named_capture()`
-`%or%`
+- `capture()`
+- `named_capture()`
+- `%or%`
+
 ### Modifiers
-`zero_or_more()`
-`one_or_more()`
-`maybe()`
-`possessive()`
-`lazy()`
-`not()`
-`n_times()`
+- `zero_or_more()`
+- `one_or_more()`
+- `maybe()`
+- `possessive()`
+- `lazy()`
+- `not()`
+- `n_times()`
+
 ### Lookaround
-`if_next_is()`
-`if_next_isnt()`
-`if_prev_is()`
-`if_prev_isnt()`
-`begin()`
-`end()`
+- `if_next_is()`
+- `if_next_isnt()`
+- `if_prev_is()`
+- `if_prev_isnt()`
+- `begin()`
+- `end()`
 
 ## Inspirations
 - [Regularity](https://github.com/andrewberls/regularity)

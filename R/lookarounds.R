@@ -10,42 +10,42 @@
 #' @param y A regex pattern.
 #' @export
 if_next_is <- function(x) {
-  p("(?=", x, ")")
+  p("(?=", escape(x), ")")
 }
 
 #' @export
 "%if_next_is%" <- function(x, y) {
-  p(x, "(?=", y, ")")
+  p(escape(x), "(?=", escape(y), ")")
 }
 
 #' @export
 if_next_isnt <- function(x) {
-  p("(?!", x, ")")
+  p("(?!", escape(x), ")")
 }
 
 #' @export
 "%if_next_isnt%" <- function(x, y) {
-  p(x, "(?!", y, ")")
+  p(x, "(?!", escape(y), ")")
 }
 
 #' @export
 if_prev_is <- function(x) {
-  p("(?<=", x, ")")
+  p("(?<=", escape(x), ")")
 }
 
 #' @export
 "%if_prev_is%" <- function(x, y) {
-  p("(?<=", y, ")", x)
+  p("(?<=", escape(y), ")", escape(x))
 }
 
 #' @export
 if_prev_isnt <- function(x) {
-  p("(?<!", x, ")")
+  p("(?<!", escape(x), ")")
 }
 
 #' @export
 "%if_prev_isnt%" <- function(x, y) {
-  p(x, "(?<!", y, ")")
+  p(escape(x), "(?<!", escape(y), ")")
 }
 
 #' @export

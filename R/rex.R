@@ -2,7 +2,7 @@
 #' @export
 #' @family rex
 p <- function(...) {
-  regex(paste( sep="", collapse="", ... ))
+  regex(paste( sep="", collapse="", ...))
 }
 
 #' @export
@@ -13,19 +13,19 @@ capture <- . <- function(...) {
 
 #' @export
 #' @family rex
-named_capture <- .. <- function( name, ... ) {
+named_capture <- .. <- function(name, ... ) {
   p( "(?<", name, ">", escape_dots(...), ")" )
 }
 
 #' @export
 #' @family rex
 rex <- function(...) {
-  
+
   ## Paste / repeater
   "*" <- function(x, y) {
     paste( rep(x, times=y), collapse="" )
   }
-  
+
   ## Character class shortcuts
   alnum <- regex("[[:alnum:]]")
   alpha <- letter <- regex("[[:alpha:]]")
@@ -39,22 +39,22 @@ rex <- function(...) {
   space <- regex("[[:space:]]")
   upper <- regex("[[:upper:]]")
   xdigit <- regex("[[:xdigit:]]")
-  
+
   space <- regex("\\s")
   spaces <- regex("\\s+")
   non_space <- regex("\\S")
-  
+
   number <- digit <- regex("\\d")
   numbers <- digits <- regex("\\d+")
   non_number <- non_digit <- regex("\\D")
-  
+
   letter <- regex("[a-zA-Z]")
   letters <- regex("[a-zA-Z]+")
   non_letter <- regex("[^a-zA-Z]")
-  
+
   start <- regex("^")
   end <- regex("$")
-  
+
   dot <- "\\."
   any <- any_char <- regex(".")
   any_chars <- regex(".+")
@@ -65,12 +65,20 @@ rex <- function(...) {
   return(output)
 }
 
+#' @export
 regex <- function(x) structure(x, class='regex')
+
+#' @export
 print.regex <- function(x, ...){
   cat(paste(strwrap(x), collapse="\n"), "\n", sep="")
 }
+#' @export
 escape <- function(x) UseMethod("escape")
+
+#' @export
 escape.regex <- function(x) x
+
+#' @export
 escape.character <- function(x) {
   chars =
     c('*',
@@ -88,8 +96,13 @@ escape.character <- function(x) {
       '}')
   gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE)
 }
+
+#' @export
+escape.default <- escape.character
+
+#' @export
 escape.list <- function(x) {
-  lapply(x, escape)
+  unlist(lapply(x, escape))
 }
 
 escape_dots <- function(...) {

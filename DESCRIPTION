@@ -6,5 +6,8 @@ Date: 2013-01-16
 Author: Kevin Ushey, Jim Hester
 Maintainer: Kevin Ushey <kevinushey@gmail.com>
 Description: Rex provides a simpler, human-readable interface to the construction of regular expressions.
+Imports:
+    magrittr
 License: GPL (>=2)
-Suggests: testthat
+Suggests:
+    testthat

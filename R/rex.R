@@ -2,19 +2,19 @@
 #' @export
 #' @family rex
 p <- function(...) {
-  paste( sep="", collapse="", ... )
+  regex(paste( sep="", collapse="", ... ))
 }
 
 #' @export
 #' @family rex
 capture <- . <- function(...) {
-  p( "(", ..., ")" )
+  p( "(", escape_dots(...), ")" )
 }
 
 #' @export
 #' @family rex
 named_capture <- .. <- function( name, ... ) {
-  p( "(?<", name, ">", ..., ")" )
+  p( "(?<", name, ">", escape_dots(...), ")" )
 }
 
 #' @export
@@ -27,41 +27,79 @@ rex <- function(...) {
   }
   
   ## Character class shortcuts
-  alnum <- "[[:alnum:]]"
-  alpha <- letter <- "[[:alpha:]]"
-  blank <- "[[:blank:]]"
-  cntrl <- "[[:cntrl:]]"
-  digit <- "[[:digit:]]"
-  graph <- "[[:graph:]]"
-  lower <- "[[:lower:]]"
-  print <- "[[:print:]]"
-  punct <- "[[:punct:]]"
-  space <- "[[:space:]]"
-  upper <- "[[:upper:]]"
-  xdigit <- "[[:xdigit:]]"
+  alnum <- regex("[[:alnum:]]")
+  alpha <- letter <- regex("[[:alpha:]]")
+  blank <- regex("[[:blank:]]")
+  cntrl <- regex("[[:cntrl:]]")
+  digit <- regex("[[:digit:]]")
+  graph <- regex("[[:graph:]]")
+  lower <- regex("[[:lower:]]")
+  print <- regex("[[:print:]]")
+  punct <- regex("[[:punct:]]")
+  space <- regex("[[:space:]]")
+  upper <- regex("[[:upper:]]")
+  xdigit <- regex("[[:xdigit:]]")
   
-  space <- "\\s"
-  spaces <- "\\s+"
-  non_space <- "\\S"
+  space <- regex("\\s")
+  spaces <- regex("\\s+")
+  non_space <- regex("\\S")
   
-  number <- digit <- "\\d"
-  numbers <- digits <- "\\d+"
-  non_number <- non_digit <- "\\D"
+  number <- digit <- regex("\\d")
+  numbers <- digits <- regex("\\d+")
+  non_number <- non_digit <- regex("\\D")
   
-  letter <- "[a-zA-Z]"
-  letters <- "[a-zA-Z]+"
-  non_letter <- "[^a-zA-Z]"
+  letter <- regex("[a-zA-Z]")
+  letters <- regex("[a-zA-Z]+")
+  non_letter <- regex("[^a-zA-Z]")
   
-  start <- "^"
-  end <- "$"
+  start <- regex("^")
+  end <- regex("$")
   
   dot <- "\\."
-  any <- any_char <- "."
+  any <- any_char <- regex(".")
   
-  output <- eval(substitute(p(...)), enclos = parent.frame())
+  output <- eval(substitute(p(escape(list(...)))), enclos = parent.frame())
   n <- nchar(output)
-  if (substring(output, n, n) != "$")
-    output <- paste0(output, ".*$")
   return(output)
-  
 }
+
+regex <- function(x) structure(x, class='regex')
+print.regex <- function(x, ...){
+  cat(paste(strwrap(x), collapse="\n"), "\n", sep="")
+}
+escape <- function(x) UseMethod("escape")
+escape.regex <- function(x) x
+escape.character <- function(x) {
+  chars =
+    c('*',
+      '.',
+      '?',
+      '^',
+      '+',
+      '$',
+      '|',
+      '(',
+      ')',
+      '[',
+      ']',
+      '{',
+      '}')
+  gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE)
+}
+escape.list <- function(x) {
+  lapply(x, escape)
+}
+
+escape_dots <- function(...) {
+  escape(list(...))
+}
+
+#' Pipe operator
+#'
+#' @name %>%
+#' @rdname pipe
+#' @keywords internal
+#' @export
+#' @importFrom magrittr %>%
+#' @usage lhs \%>\% rhs
+NULL

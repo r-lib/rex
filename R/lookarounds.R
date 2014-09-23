@@ -50,10 +50,10 @@ if_prev_isnt <- function(x) {
 
 #' @export
 begin <- starts_with <- function(...) {
-  p("^", ...)
+  p("^", escape_dots(...))
 }
 
 #' @export
 end <- ends_with <- function(...) {
-  p(..., "$")
+  p(escape_dots(...), "$")
 }

@@ -49,11 +49,11 @@ if_prev_isnt <- function(x) {
 }
 
 #' @export
-begin <- function(...) {
+begin <- starts_with <- function(...) {
   p("^", ...)
 }
 
 #' @export
-end <- function(...) {
+end <- ends_with <- function(...) {
   p(..., "$")
 }

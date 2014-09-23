@@ -28,7 +28,7 @@ rex <- function(...) {
   
   ## Character class shortcuts
   alnum <- "[[:alnum:]]"
-  alpha <- "[[:alpha:]]"
+  alpha <- letter <- "[[:alpha:]]"
   blank <- "[[:blank:]]"
   cntrl <- "[[:cntrl:]]"
   digit <- "[[:digit:]]"
@@ -40,26 +40,28 @@ rex <- function(...) {
   upper <- "[[:upper:]]"
   xdigit <- "[[:xdigit:]]"
   
-  space <- whitespace <- "\\s"
-  non_whitespace <- "\\S"
+  space <- "\\s"
   spaces <- "\\s+"
+  non_space <- "\\S"
   
   number <- digit <- "\\d"
-  numbers <- "\\d+"
+  numbers <- digits <- "\\d+"
   non_number <- non_digit <- "\\D"
   
-  numbers <- "\\d+"
-  letters <- "\\w+"
+  letter <- "[a-zA-Z]"
+  letters <- "[a-zA-Z]+"
+  non_letter <- "[^a-zA-Z]"
+  
   start <- "^"
   end <- "$"
-  word <- char <- "\\w"
-  non_word <- non_char <- "\\W"
-  any_char <- "."
   
-  output <- eval( substitute( p(...) ), enclos=parent.frame() )
+  dot <- "\\."
+  any <- any_char <- "."
+  
+  output <- eval(substitute(p(...)), enclos = parent.frame())
   n <- nchar(output)
-  if (substring(output, n-1, n) != ".*")
-    output <- paste0(output, ".*")
+  if (substring(output, n, n) != "$")
+    output <- paste0(output, ".*$")
   return(output)
   
 }

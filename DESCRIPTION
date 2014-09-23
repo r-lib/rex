@@ -1,11 +1,10 @@
 Package: rex
 Type: Package
-Title: Rex makes Regular Expressions Easier
+Title: Simpler Regular Expressions
 Version: 0.1.0
 Date: 2013-01-16
-Author: Kevin Ushey
+Author: Kevin Ushey, Jim Hester
 Maintainer: Kevin Ushey <kevinushey@gmail.com>
-Description: Rex allows you to write the tiny, compact regular expressions in a
- more human-readable way.
+Description: Rex provides a simpler, human-readable interface to the construction of regular expressions.
 License: GPL (>=2)
 Suggests: testthat

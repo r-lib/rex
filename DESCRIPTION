@@ -8,7 +8,8 @@ Maintainer: Kevin Ushey <kevinushey@gmail.com>
 Description: Rex provides a simpler, human-readable interface to the
     construction of regular expressions.
 Imports:
-    magrittr
+    magrittr,
+    lazyeval
 License: GPL (>=2)
 Suggests:
     testthat,

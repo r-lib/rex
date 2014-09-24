@@ -125,7 +125,7 @@ test_that("Simple URL parsing works", {
 
 
 test_that("URL Validation works", {
-  valid_chars = regex('[a-z0-9\u00a1-\uffff]')
+  valid_chars <- regex('[a-z0-9\u00a1-\uffff]')
 
   re = rex(
     start,
@@ -242,7 +242,7 @@ test_that("matches basic characters", {
 })
 
 test_that("matches special identifiers", {
-  expect_equal(rex(starts_with(digit) %>% n_times(2)), regex("(?:^\\d){2}"))
+  expect_equal(rex(starts_with(number) %>% n_times(2)), regex("(?:^\\d){2}"))
 })
 
 context("append")
@@ -254,7 +254,7 @@ test_that("adds basic characters", {
 })
 
 test_that("escapes special characters", {
-  expect_equal(rex(digits %>% between(0, 2), '.', ends_with("$")),
+  expect_equal(rex(numbers %>% between(0, 2), '.', ends_with("$")),
     regex("(?:\\d+){0,2}\\.\\$$"), ended=TRUE)
 })
 
@@ -314,7 +314,7 @@ test_that('recognizes basic characters', {
 })
 
 test_that('recognizes special identifiers', {
-  expect_equal(rex(zero_or_more(digit), 'b'),
+  expect_equal(rex(zero_or_more(number), 'b'),
     regex('(?:\\d)*b'))
 })
 
@@ -356,7 +356,7 @@ test_that('returns a well-formed regex', {
 context('examples')
 re =
   rex(start,
-    digit %>% n_times(3),
+    number %>% n_times(3),
     '-',
     letter %>% n_times(2),
     maybe('#'),

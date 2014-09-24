@@ -25,60 +25,29 @@ group <- function(...) {
 
 #' @export
 #' @family rex
-rex <- function(...) {
-
-  ## Paste / repeater
-  "*" <- function(x, y) {
-    paste( rep(x, times=y), collapse="" )
-  }
-
-  ## Character class shortcuts
-  alnum <- regex("[[:alnum:]]")
-  alpha <- letter <- regex("[[:alpha:]]")
-  blank <- regex("[[:blank:]]")
-  cntrl <- regex("[[:cntrl:]]")
-  digit <- regex("[[:digit:]]")
-  graph <- regex("[[:graph:]]")
-  lower <- regex("[[:lower:]]")
-  print <- regex("[[:print:]]")
-  punct <- regex("[[:punct:]]")
-  space <- regex("[[:space:]]")
-  upper <- regex("[[:upper:]]")
-  xdigit <- regex("[[:xdigit:]]")
-
-  space <- regex("\\s")
-  spaces <- regex("\\s+")
-  non_space <- regex("\\S")
-  non_spaces <- regex("\\S+")
-
-  number <- digit <- regex("\\d")
-  numbers <- digits <- regex("\\d+")
-  non_number <- non_digit <- regex("\\D")
-
-  letter <- regex("[a-zA-Z]")
-  letters <- regex("[a-zA-Z]+")
-  non_letter <- regex("[^a-zA-Z]")
-
-  start <- regex("^")
-  end <- regex("$")
-
-  dot <- "\\."
-  any <- any_char <- regex(".")
-  any_chars <- regex(".+")
-  anything <- regex(".*")
-
-  output <- eval(substitute(p(escape(list(...)))), enclos = parent.frame())
-  n <- nchar(output)
-  return(output)
+rex <- function(..., env = parent.frame()) {
+  args = lazyeval::lazy_dots(...)
+  rex_(args, env)
 }
 
 #' @export
 regex <- function(x) structure(x, class='regex')
 
 #' @export
+rex_ <- function(args, env = parent.frame()) {
+
+  args <- lazyeval::as.lazy_dots(args, env)
+
+  output <- regex(p(escape(lazyeval::lazy_eval(args, shortcuts))))
+
+  return(output)
+}
+
+#' @export
 print.regex <- function(x, ...){
   cat(paste(strwrap(x), collapse="\n"), "\n", sep="")
 }
+
 #' @export
 escape <- function(x) UseMethod("escape")
 
@@ -125,3 +94,47 @@ escape_dots <- function(...) {
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
+
+shortcuts = list(
+
+  ## Paste / repeater
+  "*" = function(x, y) {
+    paste( rep(x, times=y), collapse="" )
+  },
+
+  ## Character class shortcuts
+  alnum = regex("[[:alnum:]]"),
+  alpha = letter <- regex("[[:alpha:]]"),
+  blank = regex("[[:blank:]]"),
+  cntrl = regex("[[:cntrl:]]"),
+  digit = regex("[[:digit:]]"),
+  graph = regex("[[:graph:]]"),
+  lower = regex("[[:lower:]]"),
+  print = regex("[[:print:]]"),
+  punct = regex("[[:punct:]]"),
+  space = regex("[[:space:]]"),
+  upper = regex("[[:upper:]]"),
+  xdigit = regex("[[:xdigit:]]"),
+
+  space = regex("\\s"),
+  spaces = regex("\\s+"),
+  non_space = regex("\\S"),
+  non_spaces = regex("\\S+"),
+
+  number = regex("\\d"),
+  numbers = regex("\\d+"),
+  non_number = non_digit <- regex("\\D"),
+
+  letter = regex("[a-zA-Z]"),
+  letters = regex("[a-zA-Z]+"),
+  non_letter = regex("[^a-zA-Z]"),
+
+  start = regex("^"),
+  end = regex("$"),
+
+  dot = escape("."),
+
+  any = any_char <- regex("."),
+  any_chars = regex(".+"),
+  anything = regex(".*")
+)

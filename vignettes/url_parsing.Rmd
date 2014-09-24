@@ -24,6 +24,8 @@ The problem with this is that while you can copy it now, what happens when later
 
 However with `rex` you can re-create the same regex which is much easier to later understand and modify.
 ```{r url_parsing_url}
+library(rex)
+
 valid_chars = regex('[a-z0-9\u00a1-\uffff]')
 
 re = rex(

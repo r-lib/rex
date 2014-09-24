@@ -26,7 +26,7 @@ group <- function(...) {
 #' @export
 #' @family rex
 rex <- function(..., env = parent.frame()) {
-  args = lazyeval::lazy_dots(...)
+  args -> lazyeval::lazy_dots(...)
   rex_(args, env)
 }
 
@@ -56,7 +56,7 @@ escape.regex <- function(x) x
 
 #' @export
 escape.character <- function(x) {
-  chars =
+  chars ->
     c('*',
       '.',
       '?',
@@ -95,7 +95,7 @@ escape_dots <- function(...) {
 #' @usage lhs \%>\% rhs
 NULL
 
-shortcuts = list(
+shortcuts -> list(
 
   ## Paste / repeater
   "*" = function(x, y) {

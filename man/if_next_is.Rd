@@ -3,7 +3,7 @@
 \alias{if_next_is}
 \title{Lookarounds}
 \usage{
-if_next_is(x)
+if_next_is(...)
 }
 \arguments{
 \item{x}{A regex pattern.}

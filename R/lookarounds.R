@@ -9,8 +9,8 @@
 #' @param x A regex pattern.
 #' @param y A regex pattern.
 #' @export
-if_next_is <- function(x) {
-  p("(?=", escape(x), ")")
+if_next_is <- function(...) {
+  p("(?=", p(escape_dots(...)), ")")
 }
 
 #' @export
@@ -19,8 +19,8 @@ if_next_is <- function(x) {
 }
 
 #' @export
-if_next_isnt <- function(x) {
-  p("(?!", escape(x), ")")
+if_next_isnt <- function(...) {
+  p("(?!", p(escape_dots(...)), ")")
 }
 
 #' @export
@@ -29,8 +29,8 @@ if_next_isnt <- function(x) {
 }
 
 #' @export
-if_prev_is <- function(x) {
-  p("(?<=", escape(x), ")")
+if_prev_is <- function(...) {
+  p("(?<=", p(escape_dots(...)), ")")
 }
 
 #' @export
@@ -39,8 +39,8 @@ if_prev_is <- function(x) {
 }
 
 #' @export
-if_prev_isnt <- function(x) {
-  p("(?<!", escape(x), ")")
+if_prev_isnt <- function(...) {
+  p("(?<!", p(escape_dots(...)), ")")
 }
 
 #' @export
@@ -50,10 +50,10 @@ if_prev_isnt <- function(x) {
 
 #' @export
 begin <- starts_with <- function(...) {
-  p("^", escape_dots(...))
+  p("^", p(escape_dots(...)))
 }
 
 #' @export
 end <- ends_with <- function(...) {
-  p(escape_dots(...), "$")
+  p(p(escape_dots(...)), "$")
 }

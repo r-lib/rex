@@ -9,5 +9,5 @@
 #' @param y A string.
 #' @export
 "%or%" <- function(x, y) {
-  p("(?:", escape(x), "|", escape(y), ")")
+  p("(?:", p(escape(x)), "|", p(escape(y)), ")")
 }

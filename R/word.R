@@ -1,11 +1,11 @@
 ##' @export
 n_times <- function(x, n) {
-  p("(?:", escape(x), "){", n, "}")
+  p("(?:", p(escape(x)), "){", n, "}")
 }
 
 ##' @export
 between <- function(x, low, high) {
-  p("(?:", escape(x), "){", low, ",", high, "}")
+  p("(?:", p(escape(x)), "){", low, ",", high, "}")
 }
 
 ##' @export

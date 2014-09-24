@@ -11,4 +11,6 @@ Imports:
     magrittr
 License: GPL (>=2)
 Suggests:
-    testthat
+    testthat,
+    knitr
+VignetteBuilder: knitr

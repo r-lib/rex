@@ -19,6 +19,12 @@ named_capture <- .. <- function(name, ... ) {
 
 #' @export
 #' @family rex
+group <- function(...) {
+  p( "(?:", escape_dots(...), ")" )
+}
+
+#' @export
+#' @family rex
 rex <- function(...) {
 
   ## Paste / repeater
@@ -43,6 +49,7 @@ rex <- function(...) {
   space <- regex("\\s")
   spaces <- regex("\\s+")
   non_space <- regex("\\S")
+  non_spaces <- regex("\\S+")
 
   number <- digit <- regex("\\d")
   numbers <- digits <- regex("\\d+")
@@ -102,11 +109,11 @@ escape.default <- escape.character
 
 #' @export
 escape.list <- function(x) {
-  unlist(lapply(x, escape))
+  lapply(x, escape)
 }
 
 escape_dots <- function(...) {
-  escape(list(...))
+  p(escape(list(...)))
 }
 
 #' Pipe operator

@@ -17,12 +17,12 @@ From that page two conclusions can be made.
 
 Because of this one may be tempted to simply copy the best regex you can find ([gist](https://gist.github.com/dperini/729294)).
 
-The problem with this is that while you can copy it now, what happens when later you find a case it does not handle correctly?  How do you modify this mess?
+The problem with this is that while you can copy it now, what happens later when you find a case that is not handled correctly?  Can you correctly interpret and modify this?
 ```{r url_parsing_stock, eval=F}
 "^(?:(?:http(?:s)?|ftp)://)(?:\\S+(?::(?:\\S)*)?@)?(?:(?:[a-z0-9\u00a1-uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)(?:\\.(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)*(?:\\.(?:[a-z0-9\u00a1-\uffff]){2,})(?::(?:\\d){2,5})?(?:/(?:\\S)*)?$"
 ```
 
-However with `rex` you can re-create the same regex which is much easier to later understand and modify.
+However if you re-create the regex with `rex` it is much easier to understand and modify later if needed.
 ```{r url_parsing_url}
 library(rex)
 
@@ -58,7 +58,7 @@ re = rex(
 )
 ```
 
-We can then validate that it correctly identifies both good and bad URLs. (Note I removed the IP address validation from the regex and the tests)
+We can then validate that it correctly identifies both good and bad URLs. (_IP address validation removed_)
 
 ```{r url_parsing_validate}
 good <- c("http://foo.com/blah_blah",
@@ -134,4 +134,4 @@ all(grepl(re, good) == TRUE)
 all(grepl(re, bad) == FALSE)
 ```
 
-This shows the power and expressiveness of building regular expressions with `rex`!
+You can now see the power and expressiveness of building regular expressions with `rex`!

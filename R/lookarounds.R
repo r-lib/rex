@@ -47,13 +47,3 @@ if_prev_isnt <- function(...) {
 "%if_prev_isnt%" <- function(x, y) {
   p(escape(x), "(?<!", escape(y), ")")
 }
-
-#' @export
-begin <- starts_with <- function(...) {
-  p("^", p(escape_dots(...)))
-}
-
-#' @export
-end <- ends_with <- function(...) {
-  p(p(escape_dots(...)), "$")
-}

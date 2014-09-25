@@ -1,9 +1,9 @@
 context("rex")
 
-test_that("starts_with works", {
+test_that("start works", {
   
   r <- rex(
-    starts_with(letter)
+    start, letter
   )
   
   expect_true(grepl(r, "abcdef"))
@@ -11,10 +11,10 @@ test_that("starts_with works", {
   
 })
 
-test_that("ends_with works", {
+test_that("end works", {
   
   r <- rex(
-    ends_with("Z")
+    "Z", end
   )
   
   expect_true(grepl(r, "abcZ"))
@@ -46,7 +46,7 @@ test_that("version parsing works", {
 test_that("verbs in rex work", {
   
   r <- rex(
-    starts_with("foo"), zero_or_more(any), ends_with("bar")
+    start, "foo", zero_or_more(any), "bar", end
   )
   
   expect_true(grepl(r, "fooABCbar", perl = TRUE))
@@ -57,7 +57,7 @@ test_that("verbs in rex work", {
 test_that("lookarounds work", {
   
   r <- rex(
-    starts_with("foo") %if_next_isnt% "bar"
+    start, "foo" %if_next_isnt% "bar"
   )
   
   expect_true(grepl(r, "fooba", perl = TRUE))
@@ -228,21 +228,21 @@ bad <- c(
   expect_true(all(grepl(re, bad) == FALSE))
 })
 
-context("start_with")
+context("start")
 test_that("matches basic characters", {
-  expect_equal(rex(starts_with("f")), regex("^f"))
+  expect_equal(rex(start, "f"), regex("^f"))
 })
 
 test_that("escapes special characters", {
-  expect_equal(rex(starts_with(".")), regex("^\\."))
+  expect_equal(rex(start, "."), regex("^\\."))
 })
 
 test_that("matches basic characters", {
-  expect_equal(rex(starts_with("x") %>% n_times(3)), regex("(?:^x){3}"))
+  expect_equal(rex(start, "x" %>% n_times(3)), regex("^(?:x){3}"))
 })
 
 test_that("matches special identifiers", {
-  expect_equal(rex(starts_with(number) %>% n_times(2)), regex("(?:^\\d){2}"))
+  expect_equal(rex(start, number %>% n_times(2)), regex("^(?:\\d){2}"))
 })
 
 context("append")
@@ -254,8 +254,8 @@ test_that("adds basic characters", {
 })
 
 test_that("escapes special characters", {
-  expect_equal(rex(numbers %>% between(0, 2), '.', ends_with("$")),
-    regex("(?:\\d+){0,2}\\.\\$$"), ended=TRUE)
+  expect_equal(rex(numbers %>% between(0, 2), '.', "$", end),
+    regex("(?:\\d+){0,2}\\.\\$$"))
 })
 
 # TODO: Error if end is not last
@@ -331,13 +331,13 @@ test_that('recognizes special identifiers', {
 
 context('end_with')
 test_that('matches basic characters', {
-  expect_equal(rex('x', ends_with('y')),
+  expect_equal(rex('x', "y", end),
     regex('xy$'))
 })
 
 
 test_that('escapes special characters', {
-  expect_equal(rex('x', ends_with('$')),
+  expect_equal(rex('x', "$", end),
     regex('x\\$$'))
 })
 
@@ -349,7 +349,7 @@ test_that('escapes special characters', {
 
 context('general regex')
 test_that('returns a well-formed regex', {
-  expect_equal(rex(starts_with('w'), 'x' %or% 'y', ends_with('z')),
+  expect_equal(rex(start, 'w', 'x' %or% 'y', 'z', end),
     regex('^w(?:x|y)z$'))
 })
 
@@ -362,7 +362,8 @@ re =
     maybe('#'),
     'a' %or% 'b',
     'c' %>% between(2, 4),
-    ends_with('$')
+    '$',
+    end
     )
 
 expect_true(grepl(re, "123-xy#accc$", perl=TRUE))

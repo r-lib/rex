@@ -103,3 +103,6 @@ shortcuts <- list(
   any_chars = regex(".+"),
   anything = regex(".*")
 )
+
+#' @export
+regex <- function(x) structure(x, class='regex')

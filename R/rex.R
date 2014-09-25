@@ -5,19 +5,19 @@ NULL
 #' @export
 #' @family rex
 capture <- . <- function(...) {
-  p( "(", escape_dots(...), ")" )
+  p( "(", p(escape_dots(...)), ")" )
 }
 
 #' @export
 #' @family rex
 named_capture <- .. <- function(name, ... ) {
-  p( "(?<", name, ">", escape_dots(...), ")" )
+  p( "(?<", name, ">", p(escape_dots(...)), ")" )
 }
 
 #' @export
 #' @family rex
 group <- function(...) {
-  p( "(?:", escape_dots(...), ")" )
+  p( "(?:", p(escape_dots(...)), ")" )
 }
 
 #' @export
@@ -30,13 +30,13 @@ rex <- function(..., env = parent.frame()) {
 #' @export
 #' @family rex
 any_of <- function(...) {
-  p( "[", escape_dots(...), "]" )
+  p( "[", p(escape_dots(...)), "]" )
 }
 
 #' @export
 #' @family rex
 any_except <- none_of <- function(...) {
-  p( "[^", escape_dots(...), "]" )
+  p( "[^", p(escape_dots(...)), "]" )
 }
 
 #' @export

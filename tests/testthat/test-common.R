@@ -386,3 +386,12 @@ test_that('escapes special characters', {
 test_that('none_of is the same as any_except', {
   expect_equal(rex(none_of('^', 'b', 1:10)), rex(any_except('^', 'b', 1:10)))
 })
+
+context('or')
+test_that('or with multiple inputs works', {
+  re = rex(or('x', 'yx', 'z'))
+  expect_equal(re, regex('(?:x|yx|z)'))
+  expect_true(all(grepl(re, c('x', 'yx', 'z'), perl=TRUE) == TRUE))
+
+  expect_false(grepl(re, c('y')))
+})

@@ -34,5 +34,5 @@ escape.list <- function(x) {
 }
 
 escape_dots <- function(...) {
-  p(escape(list(...)))
+  escape(list(...))
 }

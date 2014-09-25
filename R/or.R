@@ -13,5 +13,10 @@ NULL
 #' @param y A string.
 #' @export
 "%or%" <- function(x, y) {
-  p("(?:", p(escape(x)), "|", p(escape(y)), ")")
+  group(p(escape(x)), regex("|"), p(escape(y)))
+}
+
+#' @export
+or <- function(...) {
+  group(regex(paste0(collapse='|', escape_dots(...))))
 }

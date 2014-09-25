@@ -373,3 +373,16 @@ test_that('matches basic characters', {
 test_that('escapes special characters', {
   expect_equal(rex(any_of('^', 'b')), regex('[\\^b]'))
 })
+
+context('any_except')
+test_that('matches basic characters', {
+  expect_equal(rex(any_except('a', 'b', 'rst')), regex('[^abrst]'))
+})
+
+test_that('escapes special characters', {
+  expect_equal(rex(any_except('^', 'b')), regex('[^\\^b]'))
+})
+
+test_that('none_of is the same as any_except', {
+  expect_equal(rex(none_of('^', 'b', 1:10)), rex(any_except('^', 'b', 1:10)))
+})

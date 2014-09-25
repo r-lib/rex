@@ -1,4 +1,6 @@
+#' @include escape.R
 #' @include utils.R
+NULL
 
 #' @export
 #' @family rex
@@ -33,7 +35,7 @@ any_of <- function(...) {
 
 #' @export
 #' @family rex
-any_except <- function(...) {
+any_except <- none_of <- function(...) {
   p( "[^", escape_dots(...), "]" )
 }
 

@@ -19,6 +19,7 @@ Collate:
     'utils.R'
     'escape.R'
     'lookarounds.R'
+    'match.R'
     'modifiers.R'
     'or.R'
     'rex.R'

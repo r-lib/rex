@@ -1,3 +1,6 @@
+#' @include utils.R
+NULL
+
 #' Or
 #' 
 #' The special binary function \code{\%or\%} can be used to specify a set

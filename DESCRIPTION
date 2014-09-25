@@ -15,3 +15,10 @@ Suggests:
     testthat,
     knitr
 VignetteBuilder: knitr
+Collate:
+    'utils.R'
+    'lookarounds.R'
+    'modifiers.R'
+    'or.R'
+    'rex.R'
+    'word.R'

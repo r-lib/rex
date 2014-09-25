@@ -341,12 +341,6 @@ test_that('escapes special characters', {
     regex('x\\$$'))
 })
 
-# TODO: error if multiple ends
-#test_that('raises an error when called twice', {
-  #expect_error(re %>% end_with('x') %>% end_with('x'))
-#})
-
-
 context('general regex')
 test_that('returns a well-formed regex', {
   expect_equal(rex(start, 'w', 'x' %or% 'y', 'z', end),
@@ -370,3 +364,12 @@ expect_true(grepl(re, "123-xy#accc$", perl=TRUE))
 expect_true(grepl(re, "999-dfbcc$"))
 expect_false(grepl(re, "000-df#baccccccccc$"))
 expect_false(grepl(re, "444-dd3ac$"))
+
+context('any_of')
+test_that('matches basic characters', {
+  expect_equal(rex(any_of('a', 'b', 'rst')), regex('[abrst]'))
+})
+
+test_that('escapes special characters', {
+  expect_equal(rex(any_of('^', 'b')), regex('[\\^b]'))
+})

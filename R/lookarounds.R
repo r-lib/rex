@@ -1,3 +1,6 @@
+#' @include utils.R
+NULL
+
 #' Lookarounds
 #' 
 #' These functions provide an interface to perl lookarounds.
@@ -8,6 +11,10 @@
 #' 
 #' @param x A regex pattern.
 #' @param y A regex pattern.
+#' @name lookarounds
+#' @title Lookarounds
+NULL
+
 #' @export
 if_next_is <- function(...) {
   p("(?=", p(escape_dots(...)), ")")

@@ -1,9 +1,4 @@
-## generic pasting function
-#' @export
-#' @family rex
-p <- function(...) {
-  regex(paste( sep="", collapse="", ...))
-}
+#' @include utils.R
 
 #' @export
 #' @family rex
@@ -31,7 +26,22 @@ rex <- function(..., env = parent.frame()) {
 }
 
 #' @export
-regex <- function(x) structure(x, class='regex')
+#' @family rex
+any_of <- function(...) {
+  p( "[", escape_dots(...), "]" )
+}
+
+#' @export
+#' @family rex
+any_except <- function(...) {
+  p( "[^", escape_dots(...), "]" )
+}
+
+#' @export
+#' @family rex
+range <- function(x, y) {
+  p(escape(x), '-', escape(y))
+}
 
 #' @export
 rex_ <- function(args, env = parent.frame()) {
@@ -84,16 +94,6 @@ escape.list <- function(x) {
 escape_dots <- function(...) {
   p(escape(list(...)))
 }
-
-#' Pipe operator
-#'
-#' @name %>%
-#' @rdname pipe
-#' @keywords internal
-#' @export
-#' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-NULL
 
 shortcuts <- list(
 

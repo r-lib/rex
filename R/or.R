@@ -1,4 +1,5 @@
 #' @include utils.R
+#' @include escape.R
 NULL
 
 #' Or

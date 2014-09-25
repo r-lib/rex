@@ -1,3 +1,4 @@
+#' @include escape.R
 #' @include utils.R
 NULL
 

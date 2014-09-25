@@ -22,6 +22,12 @@ capturing, the output is a list of lists.
 \description{
 Match function
 }
+\examples{
+string = c("this is a Test", "string")
+re_matches(string, "test") # FALSE FALSE
+re_matches(string, "Test", options='i') # TRUE FALSE
+re_matches(string, "(Test)") # "Test" "FALSE"
+}
 \seealso{
 \code{\link{regex}} Section `Perl-like Regular Expressions` for a
 discussion of the supported options

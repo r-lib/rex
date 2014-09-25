@@ -10,6 +10,11 @@
 #' capturing, the output is a list of lists.
 #' @seealso \code{\link{regex}} Section `Perl-like Regular Expressions` for a
 #' discussion of the supported options
+#' @examples
+#' string = c("this is a Test", "string")
+#' re_matches(string, "test") # FALSE FALSE
+#' re_matches(string, "Test", options='i') # TRUE FALSE
+#' re_matches(string, "(Test)") # "Test" "FALSE"
 #' @export
 re_matches <- function(data, pattern, options = "") {
   process_matches <- function(res, data) {
@@ -49,8 +54,8 @@ re_matches <- function(data, pattern, options = "") {
 #' discussion of the supported options
 #' @examples
 #' string = c("this is a Test", "string")
-#' s(string, "test", "not a test", "i")
-#' s(string, "i", "x", "g")
+#' re_substitutes(string, "test", "not a test", "i")
+#' re_substitutes(string, "i", "x", "g")
 #' @export
 re_substitutes <- function(data, pattern, replacement, options = "") {
   res <- if (grepl(options, "g") == TRUE) {

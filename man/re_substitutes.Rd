@@ -19,8 +19,8 @@ Substitution function
 }
 \examples{
 string = c("this is a Test", "string")
-s(string, "test", "not a test", "i")
-s(string, "i", "x", "g")
+re_substitutes(string, "test", "not a test", "i")
+re_substitutes(string, "i", "x", "g")
 }
 \seealso{
 \code{\link{regex}} Section "Perl-like Regular Expressions" for a

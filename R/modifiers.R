@@ -26,8 +26,3 @@ possessive <- function(...) {
 lazy <- first_match <- match_once <- function(...) {
   p("(?:", p(escape_dots(...)), ")*?")
 }
-
-#' @export
-not <- function(...) {
-  p("[^", p(escape_dots(...)), "]")
-}

@@ -21,6 +21,9 @@ NULL
   p(escape(x), "(?=", escape(y), ")")
 }
 
+not <- if_next_isnt <- function(...) {
+  p("(?:(?!", escape_dots(...), ").)*")
+}
 #' @export
 "%if_next_isnt%" <- function(x, y) {
   p(escape(x), "(?!", escape(y), ")")

@@ -30,13 +30,13 @@ rex <- function(..., env = parent.frame()) {
 #' @export
 #' @family rex
 one_of <- function(...) {
-  p( "[", p(escape_dots(...)), "]" )
+  p( "[", p(bracket_escape(list(...))), "]" )
 }
 
 #' @export
 #' @family rex
 except <- none_of <- function(...) {
-  p( "[^", p(escape_dots(...)), "]" )
+  p( "[^", p(bracket_escape(list(...))), "]" )
 }
 
 #' @export
@@ -60,6 +60,13 @@ print.regex <- function(x, ...){
   cat(paste(strwrap(x), collapse="\n"), "\n", sep="")
 }
 
+
+#' @export
+regex <- function(x) structure(x, class='regex')
+
+#' @export
+POSIX <- function(x) structure(x, class='POSIX')
+
 shortcuts <- list(
 
   ## Paste / repeater
@@ -68,18 +75,22 @@ shortcuts <- list(
   },
 
   ## Character class shortcuts
-  alnum = regex("[[:alnum:]]"),
-  alpha = letter <- regex("[[:alpha:]]"),
-  blank = regex("[[:blank:]]"),
-  cntrl = regex("[[:cntrl:]]"),
-  digit = regex("[[:digit:]]"),
-  graph = regex("[[:graph:]]"),
-  lower = regex("[[:lower:]]"),
-  print = regex("[[:print:]]"),
-  punct = regex("[[:punct:]]"),
-  space = regex("[[:space:]]"),
-  upper = regex("[[:upper:]]"),
-  xdigit = regex("[[:xdigit:]]"),
+  alnum = POSIX("[:alnum:]"),
+  alpha = letter <- POSIX("[:alpha:]"),
+  blank = POSIX("[:blank:]"),
+  cntrl = POSIX("[:cntrl:]"),
+  digit = POSIX("[:digit:]"),
+  graph = POSIX("[:graph:]"),
+  lower = POSIX("[:lower:]"),
+  print = POSIX("[:print:]"),
+  punct = POSIX("[:punct:]"),
+  space = POSIX("[:space:]"),
+  upper = POSIX("[:upper:]"),
+  xdigit = POSIX("[:xdigit:]"),
+
+  letter = POSIX("a-zA-Z"),
+  letters = regex("[a-zA-Z]+"),
+  non_letter = POSIX("^a-zA-Z"),
 
   space = regex("\\s"),
   spaces = regex("\\s+"),
@@ -90,10 +101,6 @@ shortcuts <- list(
   numbers = regex("\\d+"),
   non_number = non_digit <- regex("\\D"),
 
-  letter = regex("[a-zA-Z]"),
-  letters = regex("[a-zA-Z]+"),
-  non_letter = regex("[^a-zA-Z]"),
-
   start = regex("^"),
   end = regex("$"),
 
@@ -103,6 +110,3 @@ shortcuts <- list(
   any_chars = regex(".+"),
   anything = regex(".*")
 )
-
-#' @export
-regex <- function(x) structure(x, class='regex')

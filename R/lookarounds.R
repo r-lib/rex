@@ -17,28 +17,13 @@ NULL
 NULL
 
 #' @export
-if_next_is <- function(...) {
-  p("(?=", p(escape_dots(...)), ")")
-}
-
-#' @export
 "%if_next_is%" <- function(x, y) {
   p(escape(x), "(?=", escape(y), ")")
 }
 
 #' @export
-if_next_isnt <- function(...) {
-  p("(?!", p(escape_dots(...)), ")")
-}
-
-#' @export
 "%if_next_isnt%" <- function(x, y) {
-  p(x, "(?!", escape(y), ")")
-}
-
-#' @export
-if_prev_is <- function(...) {
-  p("(?<=", p(escape_dots(...)), ")")
+  p(escape(x), "(?!", escape(y), ")")
 }
 
 #' @export
@@ -47,11 +32,6 @@ if_prev_is <- function(...) {
 }
 
 #' @export
-if_prev_isnt <- function(...) {
-  p("(?<!", p(escape_dots(...)), ")")
-}
-
-#' @export
 "%if_prev_isnt%" <- function(x, y) {
-  p(escape(x), "(?<!", escape(y), ")")
+  p("(?<!", escape(y), ")", escape(x))
 }

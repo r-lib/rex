@@ -29,13 +29,13 @@ rex <- function(..., env = parent.frame()) {
 
 #' @export
 #' @family rex
-any_of <- function(...) {
+one_of <- function(...) {
   p( "[", p(escape_dots(...)), "]" )
 }
 
 #' @export
 #' @family rex
-any_except <- none_of <- function(...) {
+except <- none_of <- function(...) {
   p( "[^", p(escape_dots(...)), "]" )
 }
 

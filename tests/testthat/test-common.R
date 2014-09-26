@@ -125,7 +125,7 @@ test_that("Simple URL parsing works", {
 
 
 test_that("URL Validation works", {
-  valid_chars <- any_of('a-z0-9\u00a1-\uffff')
+  valid_chars <- one_of('a-z0-9\u00a1-\uffff')
 
   re = rex(
     start,
@@ -365,26 +365,26 @@ expect_true(grepl(re, "999-dfbcc$"))
 expect_false(grepl(re, "000-df#baccccccccc$"))
 expect_false(grepl(re, "444-dd3ac$"))
 
-context('any_of')
+context('one_of')
 test_that('matches basic characters', {
-  expect_equal(rex(any_of('a', 'b', 'rst')), regex('[abrst]'))
+  expect_equal(rex(one_of('a', 'b', 'rst')), regex('[abrst]'))
 })
 
 test_that('escapes special characters', {
-  expect_equal(rex(any_of('^', 'b')), regex('[\\^b]'))
+  expect_equal(rex(one_of('^', 'b')), regex('[\\^b]'))
 })
 
-context('any_except')
+context('except')
 test_that('matches basic characters', {
-  expect_equal(rex(any_except('a', 'b', 'rst')), regex('[^abrst]'))
+  expect_equal(rex(except('a', 'b', 'rst')), regex('[^abrst]'))
 })
 
 test_that('escapes special characters', {
-  expect_equal(rex(any_except('^', 'b')), regex('[^\\^b]'))
+  expect_equal(rex(except('^', 'b')), regex('[^\\^b]'))
 })
 
-test_that('none_of is the same as any_except', {
-  expect_equal(rex(none_of('^', 'b', 1:10)), rex(any_except('^', 'b', 1:10)))
+test_that('none_of is the same as except', {
+  expect_equal(rex(none_of('^', 'b', 1:10)), rex(except('^', 'b', 1:10)))
 })
 
 context('or')

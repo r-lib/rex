@@ -284,6 +284,11 @@ test_that("creates a negative lookahead", {
   expect_true(grepl(re, "x432tsrz", perl=TRUE))
   expect_true(grepl(re, "x432yartsrz", perl=TRUE))
   expect_false(grepl(re, "x432yarstsrz", perl=TRUE))
+
+  re = rex(start, not("ars"), "x432")
+  expect_true(grepl(re, "x432", perl=TRUE))
+  expect_true(grepl(re, "arx432", perl=TRUE))
+  expect_false(grepl(re, "arsx432", perl=TRUE))
 })
 
 context('or')

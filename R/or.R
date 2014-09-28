@@ -18,5 +18,5 @@ NULL
 
 #' @export
 or <- function(...) {
-  group(regex(paste0(collapse='|', escape_dots(...))))
+  group(regex(paste0(collapse='|', unlist(escape_dots(...)))))
 }

@@ -124,35 +124,35 @@ test_that("Simple URL parsing works", {
     
 })
 
-
+context("URL Validation")
 test_that("URL Validation works", {
-  valid_chars <- one_of(regex('a-z0-9\u00a1-\uffff'))
+  valid_chars <- one_of(regex("a-z0-9\u00a1-\uffff"))
 
   re = rex(
     start,
 
     # protocol identifier (optional) + //
-    group(list('http', maybe('s')) %or% 'ftp', '://'),
+    group(list("http", maybe("s")) %or% "ftp", "://"),
 
     # user:pass authentication (optional)
     maybe(non_spaces,
-      maybe(':', zero_or_more(non_space)),
-      '@'),
+      maybe(":", zero_or_more(non_space)),
+      "@"),
 
     #host name
-    group(zero_or_more(valid_chars, zero_or_more('-')), one_or_more(valid_chars)),
+    group(zero_or_more(valid_chars, zero_or_more("-")), one_or_more(valid_chars)),
 
     #domain name
-    zero_or_more('.', zero_or_more(valid_chars, zero_or_more('-')), one_or_more(valid_chars)),
+    zero_or_more(".", zero_or_more(valid_chars, zero_or_more("-")), one_or_more(valid_chars)),
 
     #TLD identifier
-    group('.', valid_chars %>% at_least(2)),
+    group(".", valid_chars %>% at_least(2)),
 
     # server port number (optional)
-    maybe(':', digit %>% between(2, 5)),
+    maybe(":", digit %>% between(2, 5)),
 
     # resource path (optional)
-    maybe('/', non_space %>% zero_or_more()),
+    maybe("/", non_space %>% zero_or_more()),
 
     end
     )
@@ -225,8 +225,12 @@ bad <- c(
   "http://www.foo.bar./",
   "http://.www.foo.bar./")
 
-  expect_true(all(grepl(re, good) == TRUE))
-  expect_true(all(grepl(re, bad) == FALSE))
+  lapply(good, function(x) {
+    expect_true(grepl(re, x, perl = TRUE), info=x)
+  })
+  lapply(bad, function(x) {
+    expect_false(grepl(re, x, perl = TRUE), info=x)
+  })
 })
 
 context("start")
@@ -255,7 +259,7 @@ test_that("adds basic characters", {
 })
 
 test_that("escapes special characters", {
-  expect_equal(rex(numbers %>% between(0, 2), '.', "$", end),
+  expect_equal(rex(numbers %>% between(0, 2), ".", "$", end),
     regex("(?:\\d+){0,2}\\.\\$$"))
 })
 
@@ -291,83 +295,83 @@ test_that("creates a negative lookahead", {
   expect_false(grepl(re, "arsx432", perl=TRUE))
 })
 
-context('or')
-test_that('%or% creates an alternation', {
-  re = rex('w', 'x' %or% 'y', 'z')
-  expect_equal(re, regex('w(?:x|y)z'))
-  expect_true(grepl(re, 'wxz'))
-  expect_true(grepl(re, 'wyz'))
-  expect_false(grepl(re, 'waz'))
+context("or")
+test_that("%or% creates an alternation", {
+  re = rex("w", "x" %or% "y", "z")
+  expect_equal(re, regex("w(?:x|y)z"))
+  expect_true(grepl(re, "wxz"))
+  expect_true(grepl(re, "wyz"))
+  expect_false(grepl(re, "waz"))
 })
 
-context('between')
-test_that('creates a bounded repetition', {
-  expect_equal(rex('x' %>% between(2, 4)),
-    regex('(?:x){2,4}'))
+context("between")
+test_that("creates a bounded repetition", {
+  expect_equal(rex("x" %>% between(2, 4)),
+    regex("(?:x){2,4}"))
 })
 
-context('at_least')
-test_that('creates a bounded repetition', {
-  expect_equal(rex('x' %>% at_least(3)),
-    regex('(?:x){3,}'))
+context("at_least")
+test_that("creates a bounded repetition", {
+  expect_equal(rex("x" %>% at_least(3)),
+    regex("(?:x){3,}"))
 })
 
-context('at_most')
-test_that('creates a repetition of n times at most', {
-  expect_equal(rex('x' %>% at_most(3)),
-    regex('(?:x){,3}'))
+context("at_most")
+test_that("creates a repetition of n times at most", {
+  expect_equal(rex("x" %>% at_most(3)),
+    regex("(?:x){,3}"))
 })
 
-context('zero_or_more')
-test_that('recognizes basic characters', {
-  expect_equal(rex(zero_or_more('a'), 'b'),
-    regex('(?:a)*b'))
+context("zero_or_more")
+test_that("recognizes basic characters", {
+  expect_equal(rex(zero_or_more("a"), "b"),
+    regex("(?:a)*b"))
 })
 
-test_that('recognizes special identifiers', {
-  expect_equal(rex(zero_or_more(number), 'b'),
-    regex('(?:\\d)*b'))
+test_that("recognizes special identifiers", {
+  expect_equal(rex(zero_or_more(number), "b"),
+    regex("(?:\\d)*b"))
 })
 
-context('one_or_more')
-test_that('recognizes basic characters', {
-  expect_equal(rex(one_or_more('a'), 'b'),
-    regex('(?:a)+b'))
+context("one_or_more")
+test_that("recognizes basic characters", {
+  expect_equal(rex(one_or_more("a"), "b"),
+    regex("(?:a)+b"))
 })
 
-test_that('recognizes special identifiers', {
-  expect_equal(rex(one_or_more(letter), 'b'),
-    regex('(?:[a-zA-Z])+b'))
+test_that("recognizes special identifiers", {
+  expect_equal(rex(one_or_more(letter), "b"),
+    regex("(?:[a-zA-Z])+b"))
 })
 
-context('end_with')
-test_that('matches basic characters', {
-  expect_equal(rex('x', "y", end),
-    regex('xy$'))
+context("end_with")
+test_that("matches basic characters", {
+  expect_equal(rex("x", "y", end),
+    regex("xy$"))
 })
 
 
-test_that('escapes special characters', {
-  expect_equal(rex('x', "$", end),
-    regex('x\\$$'))
+test_that("escapes special characters", {
+  expect_equal(rex("x", "$", end),
+    regex("x\\$$"))
 })
 
-context('general regex')
-test_that('returns a well-formed regex', {
-  expect_equal(rex(start, 'w', 'x' %or% 'y', 'z', end),
-    regex('^w(?:x|y)z$'))
+context("general regex")
+test_that("returns a well-formed regex", {
+  expect_equal(rex(start, "w", "x" %or% "y", "z", end),
+    regex("^w(?:x|y)z$"))
 })
 
-context('examples')
+context("examples")
 re =
   rex(start,
     number %>% n_times(3),
-    '-',
+    "-",
     letter %>% n_times(2),
-    maybe('#'),
-    'a' %or% 'b',
-    'c' %>% between(2, 4),
-    '$',
+    maybe("#"),
+    "a" %or% "b",
+    "c" %>% between(2, 4),
+    "$",
     end
     )
 
@@ -376,35 +380,48 @@ expect_true(grepl(re, "999-dfbcc$"))
 expect_false(grepl(re, "000-df#baccccccccc$"))
 expect_false(grepl(re, "444-dd3ac$"))
 
-context('one_of')
-test_that('matches basic characters', {
-  expect_equal(rex(one_of('a', 'b', 'rst')), regex('[abrst]'))
+context("one_of")
+test_that("matches basic characters", {
+  expect_equal(rex(one_of("a", "b", "rst")), regex("[abrst]"))
 })
 
-test_that('escapes special characters', {
-  expect_equal(rex(one_of('^', 'b')), regex('[\\^b]'))
+test_that("escapes special characters", {
+  expect_equal(rex(one_of("^", "b")), regex("[\\^b]"))
 })
 
-context('except')
-test_that('matches basic characters', {
-  expect_equal(rex(except('a', 'b', 'rst')), regex('[^abrst]'))
+context("except")
+test_that("matches basic characters", {
+  expect_equal(rex(except("a", "b", "rst")), regex("[^abrst]"))
 })
 
-test_that('escapes special characters', {
-  expect_equal(rex(except('^', 'b')), regex('[^\\^b]'))
+test_that("escapes special characters", {
+  expect_equal(rex(except("^", "b")), regex("[^\\^b]"))
 })
 
-test_that('none_of is the same as except', {
-  expect_equal(rex(none_of('^', 'b', 1:10)), rex(except('^', 'b', 1:10)))
+test_that("none_of is the same as except", {
+  expect_equal(rex(none_of("^", "b", 1:10)), rex(except("^", "b", 1:10)))
 })
 
-context('or')
-test_that('or with multiple inputs works', {
-  re = rex(or('x', 'yx', 'z'))
-  expect_equal(re, regex('(?:x|yx|z)'))
-  expect_true(all(grepl(re, c('x', 'yx', 'z'), perl=TRUE) == TRUE))
+context("or")
+test_that("or with multiple inputs works", {
+  re = rex(or("x", "yx", "z"))
+  expect_equal(re, regex("(?:x|yx|z)"))
+  lapply(c("x", "yx", "z"), function(x) {
+    expect_true(grepl(re, x, perl=TRUE), info=x)
+  })
 
-  expect_false(grepl(re, c('y')))
+  expect_false(grepl(re, c("y")))
+  expect_false(grepl(re, c("a")))
+})
+test_that("or with variable inputs works", {
+  variable = c("test", "variable")
+  re = rex(or(variable))
+
+  expect_equal(re, regex("(?:test|variable)"))
+
+  lapply(variable, function(x){
+    expect_true(grepl(re, x), info=x)
+  })
 })
 
 context("if_next_is")
@@ -466,5 +483,5 @@ test_that("escapes special characters", {
 context("issues")
 test_that("#11 Modifiers and named character classes", {
   p <- rex(none_of(alpha))
-  expect_true(grepl(p, '6', perl=TRUE))
+  expect_true(grepl(p, "6", perl=TRUE))
 })

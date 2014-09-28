@@ -27,7 +27,7 @@ escape.character <- function(x) {
       ']',
       '{',
       '}')
-  regex(gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE))
+  gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE)
 }
 
 #' @export
@@ -41,7 +41,7 @@ escape.list <- function(x) {
 }
 
 escape_dots <- function(...) {
-  escape(list(...))
+  unlist(escape(eval(list(...))))
 }
 
 ## Use different escaping within character classes

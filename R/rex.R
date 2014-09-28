@@ -16,6 +16,13 @@ named_capture <- .. <- function(name, ... ) {
 
 #' @export
 #' @family rex
+capture_group <- function(name) {
+  # \g{something} syntax supports both digits and named groups
+  p( "\\g{", name, "}" )
+}
+
+#' @export
+#' @family rex
 group <- function(...) {
   p( "(?:", p(escape_dots(...)), ")" )
 }
@@ -108,5 +115,7 @@ shortcuts <- list(
 
   any = any_char <- regex("."),
   any_chars = regex(".+"),
-  anything = regex(".*")
+  anything = regex(".*"),
+
+  quotes = POSIX("'\"")
 )

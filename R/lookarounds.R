@@ -18,22 +18,22 @@ NULL
 
 #' @export
 "%if_next_is%" <- function(x, y) {
-  p(escape(x), "(?=", escape(y), ")")
+  p("(?:", escape(x), "(?=", escape(y), ")", ")")
 }
 
 #' @export
 "%if_next_isnt%" <- function(x, y) {
-  p(escape(x), "(?!", escape(y), ")")
+  p("(?:", escape(x), "(?!", escape(y), ")", ")")
 }
 
 #' @export
 "%if_prev_is%" <- function(x, y) {
-  p("(?<=", escape(y), ")", escape(x))
+  p("(?:", "(?<=", escape(y), ")", escape(x), ")")
 }
 
 #' @export
 "%if_prev_isnt%" <- function(x, y) {
-  p("(?<!", escape(y), ")", escape(x))
+  p("(?:", "(?<!", escape(y), ")", escape(x), ")")
 }
 
 #' @export

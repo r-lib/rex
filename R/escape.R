@@ -27,7 +27,7 @@ escape.character <- function(x) {
       ']',
       '{',
       '}')
-  gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE)
+  regex(gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE))
 }
 
 #' @export
@@ -49,12 +49,15 @@ escape_dots <- function(...) {
 bracket_escape <- function(x) UseMethod("bracket_escape")
 
 #' @export
-bracket_escape.regex <- bracket_escape.POSIX <- function(x) x
+bracket_escape.regex <- function(x) x
+
+#' @export
+bracket_escape.POSIX <- bracket_escape.regex
 
 #' @export
 bracket_escape.character <- function(x) {
   chars <- c("-", "^", "[", "]")
-  gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE)
+  regex(gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE))
 }
 
 #' @export

@@ -18,6 +18,7 @@ VignetteBuilder: knitr
 Collate:
     'utils.R'
     'escape.R'
+    'capture.R'
     'lookarounds.R'
     'modifiers.R'
     'or.R'

@@ -17,8 +17,8 @@ NULL
 #' @param name of the group.  Unnamed capture groups are numbers starting at 1
 #' in the order they appear in the regular expression.  If two groups have the
 #' same name, the leftmost group is the used in any reference.
-#' @param ... variables to capture.  Can be \code{\link{shortcuts}}, R
-#' variables, text, or other \pkg{rex} functions.
+#' @param ... \code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
+#' functions.
 #' @export
 #' @family rex
 #' @rdname capture

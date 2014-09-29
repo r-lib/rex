@@ -1,4 +1,5 @@
 #' @include escape.R
+#' @include character_class.R
 #' @include utils.R
 NULL
 
@@ -7,24 +8,6 @@ NULL
 rex <- function(..., env = parent.frame()) {
   args <- lazyeval::lazy_dots(...)
   rex_(args, env)
-}
-
-#' @export
-#' @family rex
-one_of <- function(...) {
-  p( "[", p(character_class_escape(list(...))), "]" )
-}
-
-#' @export
-#' @family rex
-except <- none_of <- function(...) {
-  p( "[^", p(character_class_escape(list(...))), "]" )
-}
-
-#' @export
-#' @family rex
-range <- function(x, y) {
-  character_class(p(character_class_escape(x), '-', character_class_escape(y)))
 }
 
 #' @export
@@ -45,9 +28,6 @@ print.regex <- function(x, ...){
 
 #' @export
 regex <- function(x) structure(x, class='regex')
-
-#' @export
-character_class <- function(x) structure(x, class=c("character_class", "regex"))
 
 shortcuts <- list(
 

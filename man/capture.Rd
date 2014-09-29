@@ -14,8 +14,8 @@ named_capture(name, ...)
 capture_group(name)
 }
 \arguments{
-\item{...}{variables to capture.  Can be \code{\link{shortcuts}}, R
-variables, text, or other \pkg{rex} functions.}
+\item{...}{\code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
+functions.}
 
 \item{name}{of the group.  Unnamed capture groups are numbers starting at 1
 in the order they appear in the regular expression.  If two groups have the
@@ -56,6 +56,8 @@ re <- rex(
 \code{\link{group}} for grouping without capturing.  Perl 5 Capture
 Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
 
-Other rex: \code{\link{group}}
+Other rex: \code{\link{character_class}},
+  \code{\link{except}}, \code{\link{one_of}},
+  \code{\link{range}}; \code{\link{group}}
 }
 

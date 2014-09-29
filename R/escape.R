@@ -69,3 +69,8 @@ character_class_escape.list <- function(x) {
 character_class_escape.default <- function(x) {
   character_class_escape.character(as.character(x))
 }
+
+#' @export
+character_class_escape_dots <- function(...) {
+  unlist(character_class_escape(eval(list(...))))
+}

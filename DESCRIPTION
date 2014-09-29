@@ -19,6 +19,7 @@ Collate:
     'utils.R'
     'escape.R'
     'capture.R'
+    'character_class.R'
     'lookarounds.R'
     'modifiers.R'
     'or.R'

@@ -6,8 +6,8 @@
 group(...)
 }
 \arguments{
-\item{...}{variables to capture.  Can be \code{\link{shortcuts}}, R
-variables, text, or other \pkg{rex} functions.}
+\item{...}{\code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
+functions.}
 }
 \description{
 This is similar to \code{\link{capture}} except that it does not store the
@@ -20,6 +20,8 @@ Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 
 Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{capture}}, \code{\link{capture_group}},
-  \code{\link{named_capture}}
+  \code{\link{named_capture}};
+  \code{\link{character_class}}, \code{\link{except}},
+  \code{\link{one_of}}, \code{\link{range}}
 }
 

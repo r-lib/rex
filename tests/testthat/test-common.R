@@ -480,8 +480,100 @@ test_that("escapes special characters", {
   expect_false(grepl(re, "!<?[", perl=TRUE))
 })
 
+context("range")
+test_that("matches basic characters", {
+  re <- rex(range(1, 3))
+
+  expect_equal(re, regex("[1-3]"))
+
+  lapply(1:3, function(x) {
+    expect_true(grepl(re, x), info=x)
+  })
+
+  lapply(4:9, function(x) {
+    expect_false(grepl(re, x), info=x)
+  })
+
+})
+test_that("escapes special characters", {
+  re <- rex(range("[", "}"))
+
+  expect_equal(re, regex("[\\[-}]"))
+
+  lapply(c("[", "}"), function(x) {
+    expect_true(grepl(re, x), info=x)
+  })
+
+})
+
+context("capture")
+test_that("matches basic characters", {
+  x = "text"
+  re <- rex(capture(x))
+
+  expect_equal(re, regex("(text)"))
+
+  expect_true(grepl(re, x))
+
+  expect_equal(gsub(re, "\\1", x), x)
+
+  expect_equal(gsub(re, "replacement", x), "replacement")
+})
+
+test_that("escapes special characters", {
+  x = "^[x$"
+  re <- rex(capture(x))
+
+  expect_equal(re, regex("(\\^\\[x\\$)"))
+
+  expect_true(grepl(re, x))
+
+  expect_equal(gsub(re, "\\1", x), x)
+
+  expect_equal(gsub(re, "replacement", x), "replacement")
+})
+
+test_that("examples work", {
+ re <- rex(
+   # first quotation mark
+   capture(quotes),
+
+   # match all non-matching quotation marks
+   zero_or_more(except(capture_group(1))),
+
+   # end quotation mark (matches first)
+   capture_group(1)
+ )
+
+ expect_equal(re, regex("(['\"])(?:[^\\g{1}])*\\g{1}"))
+
+ lapply(c("\"\"", "\"'\"", "\"arst\"", "''", "'arst'", "'\"'"),
+   function(x) {
+     expect_true(grepl(re, x, perl = TRUE), info=x)
+   }
+ )
+
+ lapply(c("'a", "'asr\""), function(x) {
+    expect_false(grepl(re, x, perl = TRUE), info = x)
+ })
+
+})
+
+context("named_capture")
+test_that("examples work", {
+  re <- rex(
+    named_capture("fruit", or("apple", "orange")),
+    "=",
+    capture_group("fruit")
+    )
+
+  expect_true(grepl(re, "apple=apple", perl=TRUE))
+  expect_true(grepl(re, "orange=orange", perl=TRUE))
+  expect_false(grepl(re, "apple=orange", perl=TRUE))
+})
+
 context("issues")
 test_that("#11 Modifiers and named character classes", {
   p <- rex(none_of(alpha))
-  expect_true(grepl(p, "6", perl=TRUE))
+  expect_true(grepl(p, "6", perl = TRUE))
 })

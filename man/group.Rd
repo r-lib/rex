@@ -11,10 +11,13 @@ variables, text, or other \pkg{rex} functions.}
 }
 \description{
 This is similar to \code{\link{capture}} except that it does not store the
-value of the group.  This can be used when you want to combine several parts
-together but do not need to later reference the grouped value.
+value of the group.  Best used when you want to combine several parts
+together and do not reference or extract the grouped value later.
 }
 \seealso{
+\code{\link{capture}} for grouping with capturing.  Perl 5 Extended
+Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
+
 Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{capture}}, \code{\link{capture_group}},
   \code{\link{named_capture}}

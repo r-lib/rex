@@ -23,7 +23,8 @@ same name, the leftmost group is the used in any reference.}
 }
 \description{
 Used to save the matched value within the group for use later in the regular
-expression or to extract the values captured.  Types of capture groups.
+expression or to extract the values captured.  There are two types of
+capture groups.  Both types can later be referenced using \code{\link{capture_group}}.
 \describe{
   \item{Unnamed Capture}{- \code{\link{capture}} or
   \code{\link{.}}.  The groups are numbered incrementally starting at one.}
@@ -43,10 +44,17 @@ re <- rex(
   # end quotation mark (matches first)
   capture_group(1)
 )
+
+#named capture - don't match apples to oranges
+re <- rex(
+  named_capture("fruit", or("apple", "orange")),
+  "=",
+  capture_group("fruit")
+)
 }
 \seealso{
-\code{\link{group}} for grouping without capturing.  Perl 5 capture
-groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
+\code{\link{group}} for grouping without capturing.  Perl 5 Capture
+Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
 
 Other rex: \code{\link{group}}
 }

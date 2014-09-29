@@ -5,7 +5,8 @@ NULL
 #' Create a capture group
 #'
 #' Used to save the matched value within the group for use later in the regular
-#' expression or to extract the values captured.  Types of capture groups.
+#' expression or to extract the values captured.  There are two types of
+#' capture groups.  Both types can later be referenced using \code{\link{capture_group}}.
 #' \describe{
 #'   \item{Unnamed Capture}{- \code{\link{capture}} or
 #'   \code{\link{.}}.  The groups are numbered incrementally starting at one.}
@@ -22,8 +23,8 @@ NULL
 #' @family rex
 #' @rdname capture
 #' @aliases .
-#' @seealso \code{\link{group}} for grouping without capturing.  Perl 5 capture
-#' groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
+#' @seealso \code{\link{group}} for grouping without capturing.  Perl 5 Capture
+#' Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
 #' @examples
 #'
 #' # Match paired quotation marks
@@ -36,6 +37,13 @@ NULL
 #'
 #'   # end quotation mark (matches first)
 #'   capture_group(1)
+#' )
+#'
+#' #named capture - don't match apples to oranges
+#' re <- rex(
+#'   named_capture("fruit", or("apple", "orange")),
+#'   "=",
+#'   capture_group("fruit")
 #' )
 capture <- . <- function(...) {
   p( "(", p(escape_dots(...)), ")" )
@@ -51,17 +59,18 @@ named_capture <- .. <- function(name, ... ) {
 #' @export
 #' @rdname capture
 capture_group <- function(name) {
-  # \g{something}
   p( "\\g{", name, "}" )
 }
 
 #' Create a grouped expression
 #'
 #' This is similar to \code{\link{capture}} except that it does not store the
-#' value of the group.  This can be used when you want to combine several parts
-#' together but do not need to later reference the grouped value.
+#' value of the group.  Best used when you want to combine several parts
+#' together and do not reference or extract the grouped value later.
 #' @inheritParams capture
 #' @export
+#' @seealso \code{\link{capture}} for grouping with capturing.  Perl 5 Extended
+#' Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 #' @family rex
 group <- function(...) {
   p( "(?:", p(escape_dots(...)), ")" )
@@ -89,7 +98,7 @@ except <- none_of <- function(...) {
 #' @export
 #' @family rex
 range <- function(x, y) {
-  p(escape(x), '-', escape(y))
+  POSIX(p(bracket_escape(x), '-', bracket_escape(y)))
 }
 
 #' @export

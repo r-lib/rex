@@ -7,7 +7,7 @@ escape <- function(x) UseMethod("escape")
 escape.regex <- function(x) x
 
 #' @export
-escape.POSIX <- function(x) {
+escape.character_class <- function(x) {
   p('[', x, ']')
 }
 
@@ -46,26 +46,26 @@ escape_dots <- function(...) {
 
 ## Use different escaping within character classes
 #' @export
-bracket_escape <- function(x) UseMethod("bracket_escape")
+character_class_escape <- function(x) UseMethod("character_class_escape")
 
 #' @export
-bracket_escape.regex <- function(x) x
+character_class_escape.regex <- function(x) x
 
 #' @export
-bracket_escape.POSIX <- bracket_escape.regex
+character_class_escape.character_class <- character_class_escape.regex
 
 #' @export
-bracket_escape.character <- function(x) {
+character_class_escape.character <- function(x) {
   chars <- c("-", "^", "[", "]")
   regex(gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE))
 }
 
 #' @export
-bracket_escape.list <- function(x) {
-  lapply(x, bracket_escape)
+character_class_escape.list <- function(x) {
+  lapply(x, character_class_escape)
 }
 
 #' @export
-bracket_escape.default <- function(x) {
-  bracket_escape.character(as.character(x))
+character_class_escape.default <- function(x) {
+  character_class_escape.character(as.character(x))
 }

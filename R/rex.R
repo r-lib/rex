@@ -12,19 +12,19 @@ rex <- function(..., env = parent.frame()) {
 #' @export
 #' @family rex
 one_of <- function(...) {
-  p( "[", p(bracket_escape(list(...))), "]" )
+  p( "[", p(character_class_escape(list(...))), "]" )
 }
 
 #' @export
 #' @family rex
 except <- none_of <- function(...) {
-  p( "[^", p(bracket_escape(list(...))), "]" )
+  p( "[^", p(character_class_escape(list(...))), "]" )
 }
 
 #' @export
 #' @family rex
 range <- function(x, y) {
-  POSIX(p(bracket_escape(x), '-', bracket_escape(y)))
+  character_class(p(character_class_escape(x), '-', character_class_escape(y)))
 }
 
 #' @export
@@ -47,7 +47,7 @@ print.regex <- function(x, ...){
 regex <- function(x) structure(x, class='regex')
 
 #' @export
-POSIX <- function(x) structure(x, class='POSIX')
+character_class <- function(x) structure(x, class=c("character_class", "regex"))
 
 shortcuts <- list(
 
@@ -57,22 +57,22 @@ shortcuts <- list(
   },
 
   ## Character class shortcuts
-  alnum = POSIX("[:alnum:]"),
-  alpha = letter <- POSIX("[:alpha:]"),
-  blank = POSIX("[:blank:]"),
-  cntrl = POSIX("[:cntrl:]"),
-  digit = POSIX("[:digit:]"),
-  graph = POSIX("[:graph:]"),
-  lower = POSIX("[:lower:]"),
-  print = POSIX("[:print:]"),
-  punct = POSIX("[:punct:]"),
-  space = POSIX("[:space:]"),
-  upper = POSIX("[:upper:]"),
-  xdigit = POSIX("[:xdigit:]"),
+  alnum = character_class("[:alnum:]"),
+  alpha = letter <- character_class("[:alpha:]"),
+  blank = character_class("[:blank:]"),
+  cntrl = character_class("[:cntrl:]"),
+  digit = character_class("[:digit:]"),
+  graph = character_class("[:graph:]"),
+  lower = character_class("[:lower:]"),
+  print = character_class("[:print:]"),
+  punct = character_class("[:punct:]"),
+  space = character_class("[:space:]"),
+  upper = character_class("[:upper:]"),
+  xdigit = character_class("[:xdigit:]"),
 
-  letter = POSIX("a-zA-Z"),
+  letter = character_class("a-zA-Z"),
   letters = regex("[a-zA-Z]+"),
-  non_letter = POSIX("^a-zA-Z"),
+  non_letter = character_class("^a-zA-Z"),
 
   space = regex("\\s"),
   spaces = regex("\\s+"),
@@ -92,5 +92,5 @@ shortcuts <- list(
   any_chars = regex(".+"),
   anything = regex(".*"),
 
-  quotes = POSIX("'\"")
+  quotes = character_class("'\"")
 )

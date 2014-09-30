@@ -24,8 +24,6 @@ NULL
 #' @seealso Perl 5 Documentation \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 NULL
 
-#
-
 #' @export
 #' @rdname lookarounds
 "%if_next_is%" <- function(x, y) {

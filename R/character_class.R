@@ -8,6 +8,9 @@ NULL
 
 #' @describeIn character_class explicitly define a character class
 #' @inheritParams capture
+#' @param start beginning of character class
+#' @param end end of character class
+#' @param x text to include in the character class (must be escaped manually)
 #' @export
 #' @family rex
 #' @examples
@@ -25,7 +28,7 @@ NULL
 #' re <- rex(range("a", "e"))
 #' grepl(re, c("b", "d", "f")) # TRUE TRUE FALSE
 #'
-#' # Explicit creation (note you have to escape manually here)
+#' # Explicit creation
 #' re <- rex(character_class("abcd\\["))
 #' grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
 character_class <- function(x) structure(x, class=c("character_class", "regex"))
@@ -48,12 +51,12 @@ except <- none_of
 
 #' @export
 #' @describeIn character_class specify a range of which characters to include
-range <- function(x, y) {
-  character_class(p(character_class_escape(x), '-', character_class_escape(y)))
+range <- function(start, end) {
+  character_class(p(character_class_escape(start), '-', character_class_escape(end)))
 }
 
 #' @export
 #' @describeIn character_class specify a range of which characters to exclude
-exclude_range <- function(x, y) {
-  character_class(p('^', character_class_escape(x), '-', character_class_escape(y)))
+exclude_range <- function(start, end) {
+  character_class(p('^', character_class_escape(start), '-', character_class_escape(end)))
 }

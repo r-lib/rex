@@ -14,13 +14,19 @@ one_of(...)
 
 none_of(...)
 
-range(x, y)
+range(start, end)
 
-exclude_range(x, y)
+exclude_range(start, end)
 }
 \arguments{
+\item{x}{text to include in the character class (must be escaped manually)}
+
 \item{...}{\code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
 functions.}
+
+\item{start}{beginning of character class}
+
+\item{end}{end of character class}
 }
 \description{
 There are four different ways you can create a character class.
@@ -52,7 +58,7 @@ grepl(re, c("k", "l", "e")) # TRUE TRUE FALSE
 re <- rex(range("a", "e"))
 grepl(re, c("b", "d", "f")) # TRUE TRUE FALSE
 
-# Explicit creation (note you have to escape manually here)
+# Explicit creation
 re <- rex(character_class("abcd\\\\["))
 grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
 }

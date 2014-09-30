@@ -37,6 +37,25 @@ There are four different ways you can create a character class.
 
 \item \code{exclude_range}: specify a range of which characters to exclude
 }}
+\examples{
+# grey = gray
+re <- rex("gr", one_of("a", "e"), "y")
+grepl(re, c("grey", "gray")) # TRUE TRUE
+
+# Match non-vowels
+re <- rex(none_of("a", "e", "i", "o", "u"))
+# They can also be in the same string
+re <- rex(none_of("aeiou"))
+grepl(re, c("k", "l", "e")) # TRUE TRUE FALSE
+
+# Match range
+re <- rex(range("a", "e"))
+grepl(re, c("b", "d", "f")) # TRUE TRUE FALSE
+
+# Explicit creation (note you have to escape manually here)
+re <- rex(character_class("abcd\\\\["))
+grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
+}
 \seealso{
 Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{capture}}, \code{\link{capture_group}},

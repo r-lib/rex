@@ -10,6 +10,24 @@ NULL
 #' @inheritParams capture
 #' @export
 #' @family rex
+#' @examples
+#' # grey = gray
+#' re <- rex("gr", one_of("a", "e"), "y")
+#' grepl(re, c("grey", "gray")) # TRUE TRUE
+#'
+#' # Match non-vowels
+#' re <- rex(none_of("a", "e", "i", "o", "u"))
+#' # They can also be in the same string
+#' re <- rex(none_of("aeiou"))
+#' grepl(re, c("k", "l", "e")) # TRUE TRUE FALSE
+#'
+#' # Match range
+#' re <- rex(range("a", "e"))
+#' grepl(re, c("b", "d", "f")) # TRUE TRUE FALSE
+#'
+#' # Explicit creation (note you have to escape manually here)
+#' re <- rex(character_class("abcd\\["))
+#' grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
 character_class <- function(x) structure(x, class=c("character_class", "regex"))
 
 #' @export

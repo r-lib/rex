@@ -20,12 +20,22 @@ one_of <- function(...) {
 
 #' @export
 #' @describeIn character_class specify which characters to exclude
-except <- none_of <- function(...) {
+#' @aliases except
+none_of <- function(...) {
   p( "[^", p(character_class_escape_dots(...)), "]" )
 }
+
+#' @export
+except <- none_of
 
 #' @export
 #' @describeIn character_class specify a range of which characters to include
 range <- function(x, y) {
   character_class(p(character_class_escape(x), '-', character_class_escape(y)))
+}
+
+#' @export
+#' @describeIn character_class specify a range of which characters to exclude
+exclude_range <- function(x, y) {
+  character_class(p('^', character_class_escape(x), '-', character_class_escape(y)))
 }

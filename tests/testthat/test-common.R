@@ -506,6 +506,34 @@ test_that("escapes special characters", {
 
 })
 
+context("exclude_range")
+test_that("matches basic characters", {
+  re <- rex(exclude_range(1, 3))
+
+  expect_equal(re, regex("[^1-3]"))
+
+  lapply(1:3, function(x) {
+    expect_false(grepl(re, x, perl = TRUE), info=x)
+  })
+
+  lapply(4:9, function(x) {
+    expect_true(grepl(re, x, perl = TRUE), info=x)
+  })
+
+})
+test_that("escapes special characters", {
+  re <- rex(exclude_range("[", "}"))
+
+  expect_equal(re, regex("[^\\[-}]"))
+
+  lapply(c("[", "}"), function(x) {
+    expect_false(grepl(re, x, perl = TRUE), info=x)
+  })
+
+  expect_true(grepl(re, "A", perl = TRUE))
+
+})
+
 context("capture")
 test_that("matches basic characters", {
   x = "text"

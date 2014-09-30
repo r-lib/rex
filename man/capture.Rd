@@ -56,7 +56,11 @@ re <- rex(
 \code{\link{group}} for grouping without capturing.  Perl 5 Capture
 Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
 
-Other rex: \code{\link{character_class}},
+Other rex: \code{\link{\%if_next_is\%}},
+  \code{\link{\%if_next_isnt\%}},
+  \code{\link{\%if_prev_is\%}},
+  \code{\link{\%if_prev_isnt\%}},
+  \code{\link{lookarounds}}; \code{\link{character_class}},
   \code{\link{except}}, \code{\link{exclude_range}},
   \code{\link{none_of}}, \code{\link{one_of}},
   \code{\link{range}}; \code{\link{group}}

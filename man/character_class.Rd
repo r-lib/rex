@@ -59,6 +59,11 @@ grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
 \seealso{
 Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{capture}}, \code{\link{capture_group}},
-  \code{\link{named_capture}}; \code{\link{group}}
+  \code{\link{named_capture}};
+  \code{\link{\%if_next_is\%}},
+  \code{\link{\%if_next_isnt\%}},
+  \code{\link{\%if_prev_is\%}},
+  \code{\link{\%if_prev_isnt\%}},
+  \code{\link{lookarounds}}; \code{\link{group}}
 }
 

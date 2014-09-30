@@ -70,6 +70,9 @@ Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},
   \code{\link{\%if_prev_isnt\%}},
-  \code{\link{lookarounds}}; \code{\link{group}}
+  \code{\link{lookarounds}}; \code{\link{at_least}},
+  \code{\link{at_most}}, \code{\link{between}},
+  \code{\link{n}}, \code{\link{n_times}};
+  \code{\link{group}}
 }
 

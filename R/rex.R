@@ -39,3 +39,8 @@ print.regex <- function(x, ...){
 #' escaped.
 #' @export
 regex <- function(x) structure(x, class='regex')
+
+#' @describeIn regex Object printing
+#' @param x \code{regex} object to be coerced.
+#' @export
+as.character.regex <- function(x) escape(x)

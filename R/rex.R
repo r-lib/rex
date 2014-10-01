@@ -31,11 +31,6 @@ regex <- function(x) structure(x, class='regex')
 
 shortcuts <- list(
 
-  ## Paste / repeater
-  "*" = function(x, y) {
-    paste( rep(x, times=y), collapse="" )
-  },
-
   ## Character class shortcuts
   alnum = character_class("[:alnum:]"),
   alpha = letter <- character_class("[:alpha:]"),

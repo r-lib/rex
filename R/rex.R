@@ -3,8 +3,13 @@
 #' @include utils.R
 NULL
 
+#' Generate a regular expression.
 #' @export
 #' @family rex
+#' @param ... \code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
+#' functions.
+#' @param env environment to evaluate the rex expression in.
+#' @aliases rex_
 rex <- function(..., env = parent.frame()) {
   args <- lazyeval::lazy_dots(...)
   rex_(args, env)
@@ -20,52 +25,17 @@ rex_ <- function(args, env = parent.frame()) {
   return(output)
 }
 
+#' @describeIn regex Object printing
+#' @param x \code{regex} object to be printed
+#' @param ... further args ignored by method
 #' @export
 print.regex <- function(x, ...){
   cat(paste(strwrap(x), collapse="\n"), "\n", sep="")
 }
 
-
+#' Regular Expression
+#'
+#' Specify an explicit regular expression.  This expression must already be
+#' escaped.
 #' @export
 regex <- function(x) structure(x, class='regex')
-
-shortcuts <- list(
-
-  ## Character class shortcuts
-  alnum = character_class("[:alnum:]"),
-  alpha = letter <- character_class("[:alpha:]"),
-  blank = character_class("[:blank:]"),
-  cntrl = character_class("[:cntrl:]"),
-  digit = character_class("[:digit:]"),
-  graph = character_class("[:graph:]"),
-  lower = character_class("[:lower:]"),
-  print = character_class("[:print:]"),
-  punct = character_class("[:punct:]"),
-  space = character_class("[:space:]"),
-  upper = character_class("[:upper:]"),
-  xdigit = character_class("[:xdigit:]"),
-
-  letter = character_class("a-zA-Z"),
-  letters = regex("[a-zA-Z]+"),
-  non_letter = character_class("^a-zA-Z"),
-
-  space = regex("\\s"),
-  spaces = regex("\\s+"),
-  non_space = regex("\\S"),
-  non_spaces = regex("\\S+"),
-
-  number = regex("\\d"),
-  numbers = regex("\\d+"),
-  non_number = non_digit <- regex("\\D"),
-
-  start = regex("^"),
-  end = regex("$"),
-
-  dot = escape("."),
-
-  any = any_char <- regex("."),
-  any_chars = regex(".+"),
-  anything = regex(".*"),
-
-  quotes = character_class("'\"")
-)

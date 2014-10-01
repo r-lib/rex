@@ -24,4 +24,5 @@ Collate:
     'lookarounds.R'
     'or.R'
     'rex.R'
+    'shortcuts.R'
     'wildcards.R'

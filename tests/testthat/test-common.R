@@ -70,7 +70,7 @@ test_that("Simple URL parsing works", {
   ## Decompose a URL into its components.
   ## Example by LT (http://www.cs.uiowa.edu/~luke/R/regexp.html).
   x <- "http://stat.umn.edu:80/xyz"
-  re <- "^(?:(((?:(?:(?!:).)*)+)://))?((?:(?:(?!:/).)*)+)(?:(:((?:\\d+)+)))?(?:(/(?:.)*))?$"
+  re <- "^(?:(((?:(?:(?!:).)*)+)://))?((?:(?:(?!:/).)*)+)(?:(:((?:[[:digit:]]+)+)))?(?:(/(?:.)*))?$"
   #m <- regexec(re, x)
   #m
   #regmatches(x, m)
@@ -247,7 +247,7 @@ test_that("matches basic characters", {
 })
 
 test_that("matches special identifiers", {
-  expect_equal(rex(start, number %>% n_times(2)), regex("^(?:\\d){2}"))
+  expect_equal(rex(start, number %>% n_times(2)), regex("^(?:[[:digit:]]){2}"))
 })
 
 context("append")
@@ -260,7 +260,7 @@ test_that("adds basic characters", {
 
 test_that("escapes special characters", {
   expect_equal(rex(numbers %>% between(0, 2), ".", "$", end),
-    regex("(?:\\d+){0,2}\\.\\$$"))
+    regex("(?:[[:digit:]]+){0,2}\\.\\$$"))
 })
 
 # TODO: Error if end is not last
@@ -330,13 +330,13 @@ test_that("recognizes basic characters", {
 
 test_that("recognizes special identifiers", {
   expect_equal(rex(zero_or_more(number), "b"),
-    regex("(?:\\d)*b"))
+    regex("(?:[[:digit:]])*b"))
 })
 
 test_that("types", {
   re <- rex(zero_or_more(number, type = "lazy"), "E")
   expect_equal(re,
-    regex("(?:\\d)*?E"))
+    regex("(?:[[:digit:]])*?E"))
 
   expect_equal(regmatches(m=regexpr(re, "123EEE", perl = TRUE), "123EEE"), "123E")
 })
@@ -349,7 +349,7 @@ test_that("recognizes basic characters", {
 
 test_that("recognizes special identifiers", {
   expect_equal(rex(one_or_more(letter), "b"),
-    regex("(?:[a-zA-Z])+b"))
+    regex("(?:[[:alpha:]])+b"))
 })
 
 context("end_with")
@@ -593,7 +593,7 @@ test_that("escapes special characters", {
 test_that("examples work", {
  re <- rex(
    # first quotation mark
-   capture(quotes),
+   capture(quote),
 
    # match all non-matching quotation marks
    zero_or_more(except(capture_group(1))),

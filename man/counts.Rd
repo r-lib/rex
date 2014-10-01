@@ -58,6 +58,7 @@ Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{lookarounds}}; \code{\link{character_class}},
   \code{\link{except}}, \code{\link{exclude_range}},
   \code{\link{none_of}}, \code{\link{one_of}},
-  \code{\link{range}}; \code{\link{group}}
+  \code{\link{range}}; \code{\link{group}};
+  \code{\link{not}}; \code{\link{rex}}, \code{\link{rex_}}
 }
 

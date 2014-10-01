@@ -48,6 +48,9 @@ NULL
   p("(?:", "(?<!", escape(y), ")", escape(x), ")")
 }
 
+#' Do not match
+#'
+#' @inheritParams capture
 #' @export
 #' @family rex
 # This is slightly different than if_next_isn't because we want to match

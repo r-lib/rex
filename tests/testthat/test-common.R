@@ -333,6 +333,14 @@ test_that("recognizes special identifiers", {
     regex("(?:\\d)*b"))
 })
 
+test_that("types", {
+  re <- rex(zero_or_more(number, type = "lazy"), "E")
+  expect_equal(re,
+    regex("(?:\\d)*?E"))
+
+  expect_equal(regmatches(m=regexpr(re, "123EEE", perl = TRUE), "123EEE"), "123E")
+})
+
 context("one_or_more")
 test_that("recognizes basic characters", {
   expect_equal(rex(one_or_more("a"), "b"),

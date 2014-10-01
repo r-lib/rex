@@ -13,18 +13,22 @@ NULL
 #'   \item \code{lazy}: match the shortest string.  This matches the shortest string from the same anchor point, not necessarily the shortest global string.
 #'   \item \code{possessive}: match and don't allow backtracking
 #' }
+#' @name wildcards
+NULL
+
+#' @describeIn wildcards match \code{...} zero or more times.
 #' @export
 zero_or_more <- function(..., type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape_dots(...)), ")*"), type)
 }
 
-#' @describeIn zero_or_more match one or more
+#' @describeIn wildcards match \code{...} one or more times.
 #' @export
 one_or_more <- function(..., type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape_dots(...)), ")+"), type)
 }
 
-#' @describeIn zero_or_more match zero or one
+#' @describeIn wildcards match \code{...} zero or one times.
 #' @aliases zero_or_one
 #' @export
 maybe <- zero_or_one <- function(..., type = c("greedy", "lazy", "possessive")) {

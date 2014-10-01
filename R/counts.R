@@ -10,9 +10,13 @@ NULL
 #' @param low An integer number for the lower limit.
 #' @param high An integer number for the upper limit.
 #' @inheritParams zero_or_more
-#' @aliases n
 #' @family rex
+#' @name counts
+NULL
+
 #' @export
+#' @aliases n
+#' @describeIn counts \code{x} must occur exactly \code{n} times.
 n_times <- function(x, n, type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape(x)), "){", n, "}"), type)
 }
@@ -21,19 +25,19 @@ n_times <- function(x, n, type = c("greedy", "lazy", "possessive")) {
 n <- n_times
 
 #' @export
-#' @describeIn n_times \code{x} must occur between \code{low} and \code{high} times.
+#' @describeIn counts \code{x} must occur between \code{low} and \code{high} times.
 between <- function(x, low, high, type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape(x)), "){", low, ",", high, "}"), type)
 }
 
 #' @export
-#' @describeIn n_times \code{x} must occur at least \code{n} times.
+#' @describeIn counts \code{x} must occur at least \code{n} times.
 at_least <- function(x, n, type = c("greedy", "lazy", "possessive")) {
   add_type(between(x, n, ''), type)
 }
 
 #' @export
-#' @describeIn n_times \code{x} must occur at most \code{n} times.
+#' @describeIn counts \code{x} must occur at most \code{n} times.
 at_most <- function(x, n, type = c("greedy", "lazy", "possessive")) {
   add_type(between(x, '', n), type)
 }

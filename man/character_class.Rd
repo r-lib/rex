@@ -29,7 +29,7 @@ functions.}
 \item{end}{end of character class}
 }
 \description{
-There are four different ways you can create a character class.
+There are multiple ways you can create a character class.
 }
 \section{Functions}{
 \itemize{
@@ -72,7 +72,7 @@ Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{\%if_prev_isnt\%}},
   \code{\link{lookarounds}}; \code{\link{at_least}},
   \code{\link{at_most}}, \code{\link{between}},
-  \code{\link{n}}, \code{\link{n_times}};
-  \code{\link{group}}
+  \code{\link{counts}}, \code{\link{n}},
+  \code{\link{n_times}}; \code{\link{group}}
 }
 

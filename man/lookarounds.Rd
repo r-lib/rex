@@ -44,10 +44,10 @@ Other rex: \code{\link{.}}, \code{\link{..}},
   \code{\link{capture}}, \code{\link{capture_group}},
   \code{\link{named_capture}}; \code{\link{at_least}},
   \code{\link{at_most}}, \code{\link{between}},
-  \code{\link{n}}, \code{\link{n_times}};
-  \code{\link{character_class}}, \code{\link{except}},
-  \code{\link{exclude_range}}, \code{\link{none_of}},
-  \code{\link{one_of}}, \code{\link{range}};
-  \code{\link{group}}
+  \code{\link{counts}}, \code{\link{n}},
+  \code{\link{n_times}}; \code{\link{character_class}},
+  \code{\link{except}}, \code{\link{exclude_range}},
+  \code{\link{none_of}}, \code{\link{one_of}},
+  \code{\link{range}}; \code{\link{group}}
 }
 

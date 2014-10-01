@@ -62,10 +62,10 @@ Other rex: \code{\link{\%if_next_is\%}},
   \code{\link{\%if_prev_isnt\%}},
   \code{\link{lookarounds}}; \code{\link{at_least}},
   \code{\link{at_most}}, \code{\link{between}},
-  \code{\link{n}}, \code{\link{n_times}};
-  \code{\link{character_class}}, \code{\link{except}},
-  \code{\link{exclude_range}}, \code{\link{none_of}},
-  \code{\link{one_of}}, \code{\link{range}};
-  \code{\link{group}}
+  \code{\link{counts}}, \code{\link{n}},
+  \code{\link{n_times}}; \code{\link{character_class}},
+  \code{\link{except}}, \code{\link{exclude_range}},
+  \code{\link{none_of}}, \code{\link{one_of}},
+  \code{\link{range}}; \code{\link{group}}
 }
 

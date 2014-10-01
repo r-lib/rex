@@ -4,7 +4,7 @@ NULL
 
 #' Create character classes
 #'
-#' There are four different ways you can create a character class.
+#' There are multiple ways you can create a character class.
 
 #' @describeIn character_class explicitly define a character class
 #' @inheritParams capture

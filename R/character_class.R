@@ -31,7 +31,7 @@ NULL
 #' # Explicit creation
 #' re <- rex(character_class("abcd\\["))
 #' grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
-character_class <- function(x) structure(x, class=c("character_class", "regex"))
+character_class <- function(x) structure(x, class = c("character_class", "regex"))
 
 #' @export
 #' @describeIn character_class specify which characters to include

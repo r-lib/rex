@@ -1,8 +1,8 @@
 p <- function(...) {
-  regex(paste( sep="", collapse="", ...))
+  regex(paste( sep = "", collapse = "", ...))
 }
 
-regex <- function(x) structure(x, class='regex')
+regex <- function(x) structure(x, class = 'regex')
 
 #' Pipe operator
 #'

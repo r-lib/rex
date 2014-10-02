@@ -34,7 +34,7 @@ escape.character <- function(x) {
       ']',
       '{',
       '}')
-  regex(gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE))
+  regex(gsub(paste0('([\\', paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
 }
 
 #' @describeIn escape default escape coerces to character and escapes.
@@ -70,7 +70,7 @@ character_class_escape.character_class <- character_class_escape.regex
 #' @export
 character_class_escape.character <- function(x) {
   chars <- c("-", "^", "[", "]")
-  regex(gsub(paste0('([\\', paste0(collapse="\\", chars), "])"), "\\\\\\1", x, perl=TRUE))
+  regex(gsub(paste0('([\\', paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
 }
 
 #' @describeIn character_class_escape call \code{character_class_escape} on all elements of the list.

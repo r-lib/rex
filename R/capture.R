@@ -21,7 +21,6 @@ NULL
 #' functions.
 #' @export
 #' @family rex
-#' @rdname capture
 #' @aliases .
 #' @seealso \code{\link{group}} for grouping without capturing.  Perl 5 Capture
 #' Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
@@ -41,19 +40,15 @@ NULL
 #'
 #' #named capture - don't match apples to oranges
 #' re <- rex(
-#'   named_capture("fruit", or("apple", "orange")),
+#'   capture(name = "fruit", or("apple", "orange")),
 #'   "=",
 #'   capture_group("fruit")
 #' )
-capture <- . <- function(...) {
-  p( "(", p(escape_dots(...)), ")" )
-}
-
-#' @export
-#' @rdname capture
-#' @aliases ..
-named_capture <- .. <- function(name, ... ) {
-  p( "(?<", name, ">", p(escape_dots(...)), ")" )
+capture <- . <- function(..., name = NULL) {
+  if(!is.null(name)) {
+    name = paste0("?<", name, ">")
+  }
+  p( "(", name, p(escape_dots(...)), ")" )
 }
 
 #' @export

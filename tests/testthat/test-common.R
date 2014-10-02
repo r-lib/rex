@@ -616,10 +616,10 @@ test_that("examples work", {
 
 })
 
-context("named_capture")
+context("named capture")
 test_that("examples work", {
   re <- rex(
-    named_capture("fruit", or("apple", "orange")),
+    capture(name = "fruit", or("apple", "orange")),
     "=",
     capture_group("fruit")
     )

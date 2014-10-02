@@ -48,9 +48,8 @@ Functions to restrict a regex to a specific number
 \item \code{at_most}: \code{x} must occur at most \code{n} times.
 }}
 \seealso{
-Other rex: \code{\link{.}}, \code{\link{..}},
-  \code{\link{capture}}, \code{\link{capture_group}},
-  \code{\link{named_capture}};
+Other rex: \code{\link{.}}, \code{\link{capture}},
+  \code{\link{capture_group}};
   \code{\link{\%if_next_is\%}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},

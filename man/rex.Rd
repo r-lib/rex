@@ -16,9 +16,8 @@ functions.}
 Generate a regular expression.
 }
 \seealso{
-Other rex: \code{\link{.}}, \code{\link{..}},
-  \code{\link{capture}}, \code{\link{capture_group}},
-  \code{\link{named_capture}};
+Other rex: \code{\link{.}}, \code{\link{capture}},
+  \code{\link{capture_group}};
   \code{\link{\%if_next_is\%}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},

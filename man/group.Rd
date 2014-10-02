@@ -18,9 +18,8 @@ together and do not reference or extract the grouped value later.
 \code{\link{capture}} for grouping with capturing.  Perl 5 Extended
 Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 
-Other rex: \code{\link{.}}, \code{\link{..}},
-  \code{\link{capture}}, \code{\link{capture_group}},
-  \code{\link{named_capture}};
+Other rex: \code{\link{.}}, \code{\link{capture}},
+  \code{\link{capture_group}};
   \code{\link{\%if_next_is\%}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},

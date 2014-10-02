@@ -40,9 +40,8 @@ and end of that word.
 \seealso{
 Perl 5 Documentation \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 
-Other rex: \code{\link{.}}, \code{\link{..}},
-  \code{\link{capture}}, \code{\link{capture_group}},
-  \code{\link{named_capture}}; \code{\link{at_least}},
+Other rex: \code{\link{.}}, \code{\link{capture}},
+  \code{\link{capture_group}}; \code{\link{at_least}},
   \code{\link{at_most}}, \code{\link{between}},
   \code{\link{counts}}, \code{\link{n}},
   \code{\link{n_times}}; \code{\link{character_class}},

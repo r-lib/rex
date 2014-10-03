@@ -5,14 +5,8 @@ NULL
 #' Create a capture group
 #'
 #' Used to save the matched value within the group for use later in the regular
-#' expression or to extract the values captured.  There are two types of
-#' capture groups.  Both types can later be referenced using \code{\link{capture_group}}.
-#' \describe{
-#'   \item{Unnamed Capture}{- \code{\link{capture}} or
-#'   \code{\link{.}}.  The groups are numbered incrementally starting at one.}
-#'   \item{Named Capture}{- \code{\link{named_capture}} or
-#'   \code{\link{..}}.  The groups are named explicitly by the user.}
-#' }
+#' expression or to extract the values captured.  Both named and unnamed groups
+#' can later be referenced using \code{\link{capture_group}}.
 #'
 #' @param name of the group.  Unnamed capture groups are numbers starting at 1
 #' in the order they appear in the regular expression.  If two groups have the

@@ -19,14 +19,8 @@ same name, the leftmost group is the used in any reference.}
 }
 \description{
 Used to save the matched value within the group for use later in the regular
-expression or to extract the values captured.  There are two types of
-capture groups.  Both types can later be referenced using \code{\link{capture_group}}.
-\describe{
-  \item{Unnamed Capture}{- \code{\link{capture}} or
-  \code{\link{.}}.  The groups are numbered incrementally starting at one.}
-  \item{Named Capture}{- \code{\link{named_capture}} or
-  \code{\link{..}}.  The groups are named explicitly by the user.}
-}
+expression or to extract the values captured.  Both named and unnamed groups
+can later be referenced using \code{\link{capture_group}}.
 }
 \examples{
 # Match paired quotation marks

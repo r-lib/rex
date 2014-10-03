@@ -25,9 +25,15 @@ rex_ <- function(args, env = parent.frame()) {
   return(output)
 }
 
-#' @describeIn regex Object printing
-#' @param x \code{regex} object to be printed
-#' @param ... further args ignored by method
+#' Convert regex to a character
+#' @param x \code{regex} object.
+#' @param ... further args ignored by method.
+#' @export
+as.character.regex <- function(x, ...) escape(x)
+
+#' Print regex object
+#' @param x Object to be printed.
+#' @param ... further args are ignored.
 #' @export
 print.regex <- function(x, ...){
   cat(paste(strwrap(x), collapse = "\n"), "\n", sep = "")
@@ -37,10 +43,7 @@ print.regex <- function(x, ...){
 #'
 #' Specify an explicit regular expression.  This expression must already be
 #' escaped.
+#' @param x Object to be coerced to a regex.
 #' @export
 regex <- function(x) structure(x, class = "regex")
 
-#' @describeIn regex Object printing
-#' @param x \code{regex} object to be coerced.
-#' @export
-as.character.regex <- function(x) escape(x)

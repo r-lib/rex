@@ -8,6 +8,15 @@ not(..., type = c("greedy", "lazy", "possessive"))
 \arguments{
 \item{...}{\code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
 functions.}
+
+\item{type}{the type of match to perform.
+
+There are three match types
+\enumerate{
+  \item \code{greedy}: match the longest string.  This is the default matching type.
+  \item \code{lazy}: match the shortest string.  This matches the shortest string from the same anchor point, not necessarily the shortest global string.
+  \item \code{possessive}: match and don't allow backtracking
+}}
 }
 \description{
 Do not match

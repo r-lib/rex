@@ -51,6 +51,7 @@ NULL
 #' Do not match
 #'
 #' @inheritParams capture
+#' @inheritParams zero_or_more
 #' @export
 #' @family rex
 # This is slightly different than if_next_isn't because we want to match

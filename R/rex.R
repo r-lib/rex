@@ -38,7 +38,7 @@ print.regex <- function(x, ...){
 #' Specify an explicit regular expression.  This expression must already be
 #' escaped.
 #' @export
-regex <- function(x) structure(x, class = 'regex')
+regex <- function(x) structure(x, class = "regex")
 
 #' @describeIn regex Object printing
 #' @param x \code{regex} object to be coerced.

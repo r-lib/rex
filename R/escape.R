@@ -14,27 +14,27 @@ escape.regex <- function(x) x
 #' @describeIn escape Objects are surrounded by braces.
 #' @export
 escape.character_class <- function(x) {
-  p('[', x, ']')
+  p("[", x, "]")
 }
 
 #' @describeIn escape Objects are properly escaped for regular expressions.
 #' @export
 escape.character <- function(x) {
   chars <-
-    c('*',
-      '.',
-      '?',
-      '^',
-      '+',
-      '$',
-      '|',
-      '(',
-      ')',
-      '[',
-      ']',
-      '{',
-      '}')
-  regex(gsub(paste0('([\\', paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
+    c("*",
+      ".",
+      "?",
+      "^",
+      "+",
+      "$",
+      "|",
+      "(",
+      ")",
+      "[",
+      "]",
+      "{",
+      "}")
+  regex(gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
 }
 
 #' @describeIn escape default escape coerces to character and escapes.
@@ -70,7 +70,7 @@ character_class_escape.character_class <- character_class_escape.regex
 #' @export
 character_class_escape.character <- function(x) {
   chars <- c("-", "^", "[", "]")
-  regex(gsub(paste0('([\\', paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
+  regex(gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
 }
 
 #' @describeIn character_class_escape call \code{character_class_escape} on all elements of the list.

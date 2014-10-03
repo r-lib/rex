@@ -20,5 +20,5 @@ NULL
 #' describeIn or regular function can also be used, useful for more than 2 arguments.
 #' @export
 or <- function(...) {
-  group(regex(paste0(collapse = '|', unlist(escape_dots(...)))))
+  group(regex(paste0(collapse = "|", unlist(escape_dots(...)))))
 }

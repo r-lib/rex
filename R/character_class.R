@@ -52,11 +52,11 @@ except <- none_of
 #' @export
 #' @describeIn character_class specify a range of which characters to include
 range <- function(start, end) {
-  character_class(p(character_class_escape(start), '-', character_class_escape(end)))
+  character_class(p(character_class_escape(start), "-", character_class_escape(end)))
 }
 
 #' @export
 #' @describeIn character_class specify a range of which characters to exclude
 exclude_range <- function(start, end) {
-  character_class(p('^', character_class_escape(start), '-', character_class_escape(end)))
+  character_class(p("^", character_class_escape(start), "-", character_class_escape(end)))
 }

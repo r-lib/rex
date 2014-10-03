@@ -33,11 +33,11 @@ between <- function(x, low, high, type = c("greedy", "lazy", "possessive")) {
 #' @export
 #' @describeIn counts \code{x} must occur at least \code{n} times.
 at_least <- function(x, n, type = c("greedy", "lazy", "possessive")) {
-  add_type(between(x, n, ''), type)
+  add_type(between(x, n, ""), type)
 }
 
 #' @export
 #' @describeIn counts \code{x} must occur at most \code{n} times.
 at_most <- function(x, n, type = c("greedy", "lazy", "possessive")) {
-  add_type(between(x, '', n), type)
+  add_type(between(x, "", n), type)
 }

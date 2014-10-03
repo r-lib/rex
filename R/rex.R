@@ -25,16 +25,28 @@ rex_ <- function(args, env = parent.frame()) {
   return(output)
 }
 
-#' Convert regex to a character
-#' @param x \code{regex} object.
-#' @param ... further args ignored by method.
+#' @describeIn regex coerce regex object to a character
 #' @export
-as.character.regex <- function(x, ...) escape(x)
+as.character.regex <- function(x, ...) x
 
-#' Print regex object
-#' @param x Object to be printed.
-#' @param ... further args are ignored.
+#' Coerce objects to a \code{\link{regex}}.
+#' @name as.regex
+#' @param x Object to coerce to \code{\link{regex}}.
+#' @param ... further arguments passed to methods.
 #' @export
+as.regex <- function(x, ...) UseMethod("as.regex")
+
+#' @export
+#' @describeIn as.regex Simply escape the Object.
+as.regex.default <- function(x, ...) escape(x)
+
+#' @describeIn regex concatenate regex
+c.regex <- function(...) {
+  p(escape_dots(...))
+}
+
+#' @export
+#' @describeIn regex Print regex object
 print.regex <- function(x, ...){
   cat(paste(strwrap(x), collapse = "\n"), "\n", sep = "")
 }
@@ -43,7 +55,9 @@ print.regex <- function(x, ...){
 #'
 #' Specify an explicit regular expression.  This expression must already be
 #' escaped.
-#' @param x Object to be coerced to a regex.
+#' @param x Object
+#' @param ... further arguments
+#' @seealso \code{\link{as.regex}} to coerce to a regex object.
 #' @export
-regex <- function(x) structure(x, class = "regex")
+regex <- function(x, ...) structure(x, class = "regex")
 

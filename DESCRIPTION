@@ -22,6 +22,7 @@ Collate:
     'character_class.R'
     'counts.R'
     'lookarounds.R'
+    'match.R'
     'or.R'
     'rex.R'
     'shortcuts.R'

@@ -49,6 +49,12 @@ plural <- function(x) {
   x
 }
 
+multiple <- function(x) {
+  x[] <- lapply(x, function(xx) { val = paste0(escape(xx), "*"); class(val) <- "regex"; val })
+  names(x) <- paste0("any_", names(x))
+  x
+}
+
 #' Shortcuts
 #'
 #' Commonly used character classes and regular expressions.  These shortcuts
@@ -58,6 +64,8 @@ shortcuts <- c(
   basic_shortcuts,
   single_shortcuts,
   plural(single_shortcuts),
+  multiple(single_shortcuts),
   inverse(single_shortcuts),
-  plural(inverse(single_shortcuts))
+  plural(inverse(single_shortcuts)),
+  multiple(inverse(single_shortcuts))
 )

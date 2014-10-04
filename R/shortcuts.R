@@ -51,7 +51,7 @@ plural <- function(x) {
 
 multiple <- function(x) {
   x[] <- lapply(x, function(xx) { val = paste0(escape(xx), "*"); class(val) <- "regex"; val })
-  names(x) <- paste0("any_", names(x))
+  names(x) <- paste0("any_", names(x), "s")
   x
 }
 

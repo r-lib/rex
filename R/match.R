@@ -2,74 +2,64 @@
 #'
 #' @param data character vector to match against
 #' @param pattern regular expression to use for matching
-#' @param options regular expression options to use
 #' @return if no captures, returns a logical vector the same length as the
 #' input character vector specifying if the relevant value matched or not.  If
-#' there are captures in the regular expression, returns a list of named
-#' character vectors with the captured text.  If the g option is used with
-#' capturing, the output is a list of lists.
-#' @seealso \code{\link{regex}} Section `Perl-like Regular Expressions` for a
-#' discussion of the supported options
+#' there are captures in the regular expression, returns a data.frame with a
+#' column for each capture group.
 #' @examples
-#' string = c("this is a Test", "string")
-#' re_matches(string, "test") # FALSE FALSE
-#' re_matches(string, "Test", options='i') # TRUE FALSE
-#' re_matches(string, "(Test)") # "Test" "FALSE"
-#' @export
-re_matches <- function(data, pattern, options = "") {
-  process_matches <- function(res, data) {
-    starts <- attr(res, "capture.start")
-    if (is.null(starts)) {
-      return(res != -1)
-    }
-    lengths <- attr(res, "capture.length")
-    names <- attr(res, "capture.names")
-    ret = list()
-    for (itr in seq_len(ncol(starts))) {
-      ret[[itr]] = unname(ifelse(starts[,itr] == -1, "FALSE",
-                          substring(data, starts[,itr], starts[,itr] + lengths[,itr] - 1)))
-    }
-    names(ret) = ifelse(names == "", 1:ncol(starts), names)
-    ret
-  }
-
-  if (grepl("g", options)) {
-    options <- gsub("g", "", options)
-    pattern <- add_options(pattern, options)
-    mapply(process_matches, gregexpr(pattern = pattern, data, perl = TRUE), data)
-  }
-  else {
-    pattern <- add_options(pattern, options)
-    process_matches(regexpr(pattern = pattern, data, perl = TRUE), data)
-  }
-}
-
-#' Substitution function
+#' string = c("this is a", "test string")
+#' re_matches(string, rex("test")) # FALSE FALSE
 #'
-#' @param data character vector to substitute
-#' @param pattern regular expression to match
-#' @param replacement replacement text to use
-#' @param options option flags
-#' @seealso \code{\link{regex}} Section "Perl-like Regular Expressions" for a
-#' discussion of the supported options
-#' @examples
-#' string = c("this is a Test", "string")
-#' re_substitutes(string, "test", "not a test", "i")
-#' re_substitutes(string, "i", "x", "g")
+#' # named capture
+#' re_matches(string, rex(capture(alphas, name = "first_word"), space,
+#'   capture(alphas, name = "second_word")))
+#' #   first_word second_word
+#' # 1       this          is
+#' # 2       test      string
+#'
+#' # capture returns NA when it fails to match
+#' re_matches(string, rex(capture("test")))
+#' #      1
+#' # 1 test
+#' # 2 <NA>
 #' @export
-re_substitutes <- function(data, pattern, replacement, options = "") {
-  res <- if (grepl(options, "g") == TRUE) {
-    options <- gsub("g", "", options)
-    pattern <- add_options(pattern, options)
-    gsub(x = data, pattern = pattern, replacement = replacement, perl = TRUE)
+re_matches <- function(data, pattern) {
+  process_matches <- function(match, string) {
+
+    # if no capture just return if the regex matched
+    if(no_capture(match)) {
+      return(match != -1)
+    }
+
+    # if a capture return a data frame with the capture results for each string
+    starts <- attr(match, "capture.start")
+    lengths <- attr(match, "capture.length")
+    ends <- starts + lengths - 1
+
+    strings = substring(string, starts, ends)
+
+    not_matched <- starts == -1L
+    strings[not_matched] <- NA
+
+    res = matrix(nrow = length(data), strings)
+
+    colnames(res) = auto_name(attr(match, "capture.names"))
+
+    as.data.frame(res, stringsAsFactors = FALSE)
   }
-  else {
-    pattern <- add_options(pattern, options)
-    sub(x = data, pattern = pattern, replacement = replacement, perl = TRUE)
-  }
-  res
+
+  process_matches(regexpr(pattern = pattern, data, perl = TRUE), data)
 }
 
-add_options <- function(pattern, options) {
-  p("(?", p(options), ")", pattern)
+no_capture <- function(match) {
+  is.null(attr(match, "capture.start", exact = TRUE))
+}
+
+auto_name <- function(names) {
+  missing <- names == ""
+  if (all(!missing)) {
+    return(names)
+  }
+  names[ names == "" ] = seq_along(names)[ names == "" ]
+  names
 }

@@ -16,6 +16,7 @@ Suggests:
     knitr
 VignetteBuilder: knitr
 Collate:
+    'aaa.R'
     'utils.R'
     'escape.R'
     'capture.R'
@@ -24,6 +25,8 @@ Collate:
     'lookarounds.R'
     'match.R'
     'or.R'
+    'rex-mode.R'
     'rex.R'
     'shortcuts.R'
     'wildcards.R'
+    'zzz.R'

@@ -44,3 +44,15 @@ add_type <- function(x, type = c("greedy", "lazy", "possessive")) {
     possessive = p(x, "+")
   )
 }
+
+#' Do not match
+#'
+#' @inheritParams capture
+#' @inheritParams zero_or_more
+#' @family rex
+# This is slightly different than if_next_isn't because we want to match
+# anything that is not the search term as well
+not <- function(..., type = c("greedy", "lazy", "possessive")) {
+  add_type(p("(?:(?!", escape_dots(...), ").)*"), type = type)
+}
+register(not)

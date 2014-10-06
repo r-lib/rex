@@ -285,15 +285,6 @@ test_that("creates a negative lookahead", {
   expect_false(grepl(re, "arsx432", perl=TRUE))
 })
 
-context("or")
-test_that("%or% creates an alternation", {
-  re = rex("w", "x" %or% "y", "z")
-  expect_equal(re, regex("w(?:x|y)z"))
-  expect_true(grepl(re, "wxz"))
-  expect_true(grepl(re, "wyz"))
-  expect_false(grepl(re, "waz"))
-})
-
 context("zero_or_more")
 test_that("recognizes basic characters", {
   expect_equal(rex(zero_or_more("a"), "b"),

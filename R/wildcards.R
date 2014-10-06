@@ -17,23 +17,23 @@ NULL
 NULL
 
 #' @describeIn wildcards match \code{...} zero or more times.
-#' @export
 zero_or_more <- function(..., type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape_dots(...)), ")*"), type)
 }
+register(zero_or_more)
 
 #' @describeIn wildcards match \code{...} one or more times.
-#' @export
 one_or_more <- function(..., type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape_dots(...)), ")+"), type)
 }
+register(one_or_more)
 
 #' @describeIn wildcards match \code{...} zero or one times.
 #' @aliases zero_or_one
-#' @export
 maybe <- zero_or_one <- function(..., type = c("greedy", "lazy", "possessive")) {
   p("(?:", p(escape_dots(...)), ")?")
 }
+register(maybe, zero_or_one)
 
 add_type <- function(x, type = c("greedy", "lazy", "possessive")) {
   type = match.arg(type)

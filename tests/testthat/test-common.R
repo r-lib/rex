@@ -116,7 +116,7 @@ test_that("Simple URL parsing works", {
 
 context("URL Validation")
 test_that("URL Validation works", {
-  valid_chars <- one_of(regex("a-z0-9\u00a1-\uffff"))
+  valid_chars <- rex(one_of(regex("a-z0-9\u00a1-\uffff")))
 
   re = rex(
     start,

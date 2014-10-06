@@ -13,3 +13,5 @@ regex <- function(x) structure(x, class = "regex")
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
+
+register(`%>%`)

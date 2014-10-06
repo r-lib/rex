@@ -14,30 +14,27 @@ NULL
 #' @name counts
 NULL
 
-#' @export
 #' @aliases n
 #' @describeIn counts \code{x} must occur exactly \code{n} times.
-n_times <- function(x, n, type = c("greedy", "lazy", "possessive")) {
+n_times <- n <- function(x, n, type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape(x)), "){", n, "}"), type)
 }
+register(n_times, n)
 
-#' @export
-n <- n_times
-
-#' @export
 #' @describeIn counts \code{x} must occur between \code{low} and \code{high} times.
 between <- function(x, low, high, type = c("greedy", "lazy", "possessive")) {
   add_type(p("(?:", p(escape(x)), "){", low, ",", high, "}"), type)
 }
+register(between)
 
-#' @export
 #' @describeIn counts \code{x} must occur at least \code{n} times.
 at_least <- function(x, n, type = c("greedy", "lazy", "possessive")) {
   add_type(between(x, n, ""), type)
 }
+register(at_least)
 
-#' @export
 #' @describeIn counts \code{x} must occur at most \code{n} times.
 at_most <- function(x, n, type = c("greedy", "lazy", "possessive")) {
   add_type(between(x, "", n), type)
 }
+register(at_most)

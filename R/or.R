@@ -12,13 +12,13 @@ NULL
 #' @param x A string.
 #' @param y A string.
 #' @inheritParams capture
-#' @export
-"%or%" <- function(x, y) {
+`%or%` <- function(x, y) {
   group(p(escape(x)), regex("|"), p(escape(y)))
 }
+register(`%or%`)
 
 #' describeIn or regular function can also be used, useful for more than 2 arguments.
-#' @export
 or <- function(...) {
   group(regex(paste0(collapse = "|", unlist(escape_dots(...)))))
 }
+register(or)

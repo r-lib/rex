@@ -13,7 +13,6 @@ NULL
 #' same name, the leftmost group is the used in any reference.
 #' @param ... \code{\link{shortcuts}}, R variables, text, or other \pkg{rex}
 #' functions.
-#' @export
 #' @family rex
 #' @aliases .
 #' @seealso \code{\link{group}} for grouping without capturing.  Perl 5 Capture
@@ -44,12 +43,13 @@ capture <- . <- function(..., name = NULL) {
   }
   p( "(", name, p(escape_dots(...)), ")" )
 }
+register(capture, .)
 
-#' @export
 #' @rdname capture
 capture_group <- function(name) {
   p( "\\g{", name, "}" )
 }
+register(capture_group)
 
 #' Create a grouped expression
 #'
@@ -57,10 +57,10 @@ capture_group <- function(name) {
 #' value of the group.  Best used when you want to combine several parts
 #' together and do not reference or extract the grouped value later.
 #' @inheritParams capture
-#' @export
 #' @seealso \code{\link{capture}} for grouping with capturing.  Perl 5 Extended
 #' Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 #' @family rex
 group <- function(...) {
   p( "(?:", p(escape_dots(...)), ")" )
 }
+register(group)

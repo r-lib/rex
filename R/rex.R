@@ -20,7 +20,9 @@ rex_ <- function(args, env = parent.frame()) {
 
   args <- lazyeval::as.lazy_dots(args, env)
 
-  output <- regex(p(escape(lazyeval::lazy_eval(args, shortcuts))))
+  # this needs the as.list because eval only looks at the enclos if envir is
+  # not an environment
+  output <- regex(p(escape(lazyeval::lazy_eval(args, as.list(.rex$env)))))
 
   return(output)
 }
@@ -60,4 +62,3 @@ print.regex <- function(x, ...){
 #' @seealso \code{\link{as.regex}} to coerce to a regex object.
 #' @export
 regex <- function(x, ...) structure(x, class = "regex")
-

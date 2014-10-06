@@ -33,30 +33,27 @@ NULL
 #' grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
 character_class <- function(x) structure(x, class = c("character_class", "regex"))
 
-#' @export
 #' @describeIn character_class specify which characters to include
 one_of <- function(...) {
   p( "[", p(character_class_escape_dots(...)), "]" )
 }
+register(one_of)
 
-#' @export
 #' @describeIn character_class specify which characters to exclude
 #' @aliases except
-none_of <- function(...) {
+none_of <- except <- function(...) {
   p( "[^", p(character_class_escape_dots(...)), "]" )
 }
+register(none_of, except)
 
-#' @export
-except <- none_of
-
-#' @export
 #' @describeIn character_class specify a range of which characters to include
 range <- function(start, end) {
   character_class(p(character_class_escape(start), "-", character_class_escape(end)))
 }
+register(range)
 
-#' @export
 #' @describeIn character_class specify a range of which characters to exclude
 exclude_range <- function(start, end) {
   character_class(p("^", character_class_escape(start), "-", character_class_escape(end)))
 }
+register(exclude_range)

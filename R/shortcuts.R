@@ -1,7 +1,6 @@
 #' Single shortcuts
 #'
 #' Each of these shortcuts has both a plural (-s) and inverse (non_) form.
-#' @export
 single_shortcuts <- list(
 
   ## Character class shortcuts

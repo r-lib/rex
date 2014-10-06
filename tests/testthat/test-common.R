@@ -294,24 +294,6 @@ test_that("%or% creates an alternation", {
   expect_false(grepl(re, "waz"))
 })
 
-context("between")
-test_that("creates a bounded repetition", {
-  expect_equal(rex("x" %>% between(2, 4)),
-    regex("(?:x){2,4}"))
-})
-
-context("at_least")
-test_that("creates a bounded repetition", {
-  expect_equal(rex("x" %>% at_least(3)),
-    regex("(?:x){3,}"))
-})
-
-context("at_most")
-test_that("creates a repetition of n times at most", {
-  expect_equal(rex("x" %>% at_most(3)),
-    regex("(?:x){,3}"))
-})
-
 context("zero_or_more")
 test_that("recognizes basic characters", {
   expect_equal(rex(zero_or_more("a"), "b"),

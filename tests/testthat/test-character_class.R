@@ -74,6 +74,70 @@ test_that("escapes correctly", {
   expect_true(grepl(re, "{", perl = TRUE))
 })
 
+context("range")
+test_that("matches basic characters", {
+  re <- rex(range(1, 3))
+
+  expect_equal(re, regex("[1-3]"))
+
+  lapply(1:3, function(x) {
+    expect_true(grepl(re, x), info=x)
+  })
+
+  lapply(4:9, function(x) {
+    expect_false(grepl(re, x), info=x)
+  })
+
+})
+test_that("escapes special characters", {
+  re <- rex(range("[", "}"))
+
+  expect_equal(re, regex("[\\[-}]"))
+
+  lapply(c("[", "}"), function(x) {
+    expect_true(grepl(re, x), info=x)
+  })
+
+})
+
+context("exclude_range")
+test_that("matches basic characters", {
+  re <- rex(exclude_range(1, 3))
+
+  expect_equal(re, regex("[^1-3]"))
+
+  lapply(1:3, function(x) {
+    expect_false(grepl(re, x, perl = TRUE), info=x)
+  })
+
+  lapply(4:9, function(x) {
+    expect_true(grepl(re, x, perl = TRUE), info=x)
+  })
+
+})
+
+context("one_of")
+test_that("matches basic characters", {
+  expect_equal(rex(one_of("a", "b", "rst")), regex("[abrst]"))
+})
+
+test_that("escapes special characters", {
+  expect_equal(rex(one_of("^", "b")), regex("[\\^b]"))
+})
+
+context("except")
+test_that("matches basic characters", {
+  expect_equal(rex(except("a", "b", "rst")), regex("[^abrst]"))
+})
+
+test_that("escapes special characters", {
+  expect_equal(rex(except("^", "b")), regex("[^\\^b]"))
+})
+
+test_that("none_of is the same as except", {
+  expect_equal(rex(none_of("^", "b", 1:10)), rex(except("^", "b", 1:10)))
+})
+
 context("character_class")
 test_that("examples are correct", {
   # grey = gray

@@ -271,7 +271,7 @@ test_that("returns a well-formed regex", {
     regex("^w(?:x|y)z$"))
 })
 
-context("examples")
+context("rex examples")
 re =
   rex(start,
     number %>% n_times(3),
@@ -288,92 +288,6 @@ expect_true(grepl(re, "123-xy#accc$", perl=TRUE))
 expect_true(grepl(re, "999-dfbcc$"))
 expect_false(grepl(re, "000-df#baccccccccc$"))
 expect_false(grepl(re, "444-dd3ac$"))
-
-context("one_of")
-test_that("matches basic characters", {
-  expect_equal(rex(one_of("a", "b", "rst")), regex("[abrst]"))
-})
-
-test_that("escapes special characters", {
-  expect_equal(rex(one_of("^", "b")), regex("[\\^b]"))
-})
-
-context("except")
-test_that("matches basic characters", {
-  expect_equal(rex(except("a", "b", "rst")), regex("[^abrst]"))
-})
-
-test_that("escapes special characters", {
-  expect_equal(rex(except("^", "b")), regex("[^\\^b]"))
-})
-
-test_that("none_of is the same as except", {
-  expect_equal(rex(none_of("^", "b", 1:10)), rex(except("^", "b", 1:10)))
-})
-
-context("or")
-test_that("or with multiple inputs works", {
-  re = rex(or("x", "yx", "z"))
-  expect_equal(re, regex("(?:x|yx|z)"))
-  lapply(c("x", "yx", "z"), function(x) {
-    expect_true(grepl(re, x, perl=TRUE), info=x)
-  })
-
-  expect_false(grepl(re, c("y")))
-  expect_false(grepl(re, c("a")))
-})
-test_that("or with variable inputs works", {
-  variable = c("test", "variable")
-  re = rex(or(variable))
-
-  expect_equal(re, regex("(?:test|variable)"))
-
-  lapply(variable, function(x){
-    expect_true(grepl(re, x), info=x)
-  })
-})
-
-context("range")
-test_that("matches basic characters", {
-  re <- rex(range(1, 3))
-
-  expect_equal(re, regex("[1-3]"))
-
-  lapply(1:3, function(x) {
-    expect_true(grepl(re, x), info=x)
-  })
-
-  lapply(4:9, function(x) {
-    expect_false(grepl(re, x), info=x)
-  })
-
-})
-test_that("escapes special characters", {
-  re <- rex(range("[", "}"))
-
-  expect_equal(re, regex("[\\[-}]"))
-
-  lapply(c("[", "}"), function(x) {
-    expect_true(grepl(re, x), info=x)
-  })
-
-})
-
-context("exclude_range")
-test_that("matches basic characters", {
-  re <- rex(exclude_range(1, 3))
-
-  expect_equal(re, regex("[^1-3]"))
-
-  lapply(1:3, function(x) {
-    expect_false(grepl(re, x, perl = TRUE), info=x)
-  })
-
-  lapply(4:9, function(x) {
-    expect_true(grepl(re, x, perl = TRUE), info=x)
-  })
-
-})
 
 context("issues")
 test_that("#11 Modifiers and named character classes", {

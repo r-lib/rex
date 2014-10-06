@@ -3,18 +3,23 @@
 \alias{re_matches}
 \title{Match function}
 \usage{
-re_matches(data, pattern)
+re_matches(data, pattern, global = FALSE, options = NULL, ...)
 }
 \arguments{
 \item{data}{character vector to match against}
 
 \item{pattern}{regular expression to use for matching}
+
+\item{global}{use global matching}
+
+\item{options}{regular expression options}
 }
 \value{
 if no captures, returns a logical vector the same length as the
 input character vector specifying if the relevant value matched or not.  If
-there are captures in the regular expression, returns a data.frame with a
-column for each capture group.
+there are captures in the regular expression, returns a \code{data.frame} with a
+column for each capture group.  If \code{global} is \code{TRUE}, returns a
+list of \code{data.frame}s.
 }
 \description{
 Match function
@@ -35,5 +40,9 @@ re_matches(string, rex(capture("test")))
 #      1
 # 1 test
 # 2 <NA>
+}
+\seealso{
+\code{\link{regexp}} Section "Perl-like Regular Expressions" for a
+discussion of the supported options
 }
 

@@ -30,10 +30,27 @@ test_that("re_matches capture returns a data frame", {
         `2`=c("is", NA_character_, NA_character_)))
 })
 
+test_that("re_matches with global returns a list of matches", {
+
+  # Global without captures doesn't make a ton of sense but lets test it anyway
+  expect_equal(re_matches(string, rex('is'), global = TRUE),
+    list(c(TRUE, TRUE), FALSE, FALSE))
+})
+
+test_that("re_matches with global returns a list of data.frames", {
+
+  expect_equal(re_matches(string, rex(capture(any_letters, 'is')), global = TRUE),
+    list(df2(`1` = c("this", "is")), df2(`1` = NA_character_), df2(`1` = NA_character_)) )
+  expect_equal(re_matches(string, rex(capture(digits, name = "number")), global = TRUE),
+    list(df2("number" = NA_character_), df2("number" = "12"), df2("number" = c("12343", "66544456"))))
+})
+
 test_that("re_matches named capture returns named data frame", {
 
-  expect_equal(re_matches(string, rex(capture(digits, name = "numbers"))), df2(numbers=c(NA_character_, "12", "12343")))
-  expect_equal(re_matches(string, rex(capture(alphas, name = "letters"))), df2(letters=c("this", "chr", NA_character_)))
+  expect_equal(re_matches(string, rex(capture(digits, name = "numbers"))),
+    df2(numbers=c(NA_character_, "12", "12343")))
+  expect_equal(re_matches(string, rex(capture(alphas, name = "letters"))),
+    df2(letters=c("this", "chr", NA_character_)))
 })
 
 test_that("examples are correct", {
@@ -43,5 +60,18 @@ expect_equal(re_matches(string, rex(capture(alphas, name = "first_word"), space,
             df2(first_word = c("this", "test"),
                 second_word = c("is", "string")))
 
-expect_equal(re_matches(string, rex(capture("test"))), df2(`1`=c(NA_character_, "test")))
+expect_equal(re_matches(string, rex(capture("test"))),
+  df2(`1`=c(NA_character_, "test")))
+})
+
+context("re_substitutes")
+test_that("s substitutes properly, with and without options", {
+  expect_equal(re_substitutes(string, rex('Text'), 'test'),
+    c('this is test', 'chr-12', '12343 66544456'))
+
+  expect_equal(re_substitutes(string, rex('text'), 'test', options='insensitive'),
+    c('this is test', 'chr-12', '12343 66544456'))
+
+  expect_equal(re_substitutes(string, 'i', 'x', global = TRUE),
+    c('thxs xs Text', 'chr-12', '12343 66544456'))
 })

@@ -4,6 +4,7 @@
 #' @param pattern regular expression to use for matching
 #' @param global use global matching
 #' @param options regular expression options
+#' @param ... options passed to regexpr or gregexpr
 #' @return if no captures, returns a logical vector the same length as the
 #' input character vector specifying if the relevant value matched or not.  If
 #' there are captures in the regular expression, returns a \code{data.frame} with a
@@ -70,7 +71,9 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, ...) {
 #' @param data character vector to substitute
 #' @param pattern regular expression to match
 #' @param replacement replacement text to use
+#' @param global substitute all occurrences
 #' @param options option flags
+#' @param ... options passed to sub or gsub
 #' @seealso \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
 #' discussion of the supported options
 #' @examples

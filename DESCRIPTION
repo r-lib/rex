@@ -13,7 +13,8 @@ Imports:
 License: GPL (>=2)
 Suggests:
     testthat,
-    knitr
+    knitr,
+    dplyr
 VignetteBuilder: knitr
 Collate:
     'aaa.R'

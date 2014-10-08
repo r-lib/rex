@@ -1,0 +1,74 @@
+---
+title: "Server Log Parsing"
+author: "Jim Hester"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+Parsing server log files are a common task in server administration REF.  Historically
+R would not be well suited to this task and it would be better performed using
+a scripting language such as perl.  However rex makes even this task easy to do
+and allows you to perform both the data cleaning and analysis in R!
+
+Common server logs consist of space separated fields.
+
+> 198.214.42.14 - - [21/Jul/1995:14:31:46 -0400] "GET /images/ HTTP/1.0" 200 17688
+
+> lahal.ksc.nasa.gov - - [24/Jul/1995:12:42:40 -0400] "GET /images/USA-logosmall.gif HTTP/1.0" 200 234
+
+The logs used in this vignette come from two month's worth of all HTTP requests
+to the NASA Kennedy Space Center WWW server in Florida and are freely available
+for use. [1](http://ita.ee.lbl.gov/html/contrib/NASA-HTTP.html)
+
+
+```{r show.warnings=FALSE}
+library(rex)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+
+parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
+  re_matches(
+    rex(
+
+      # Get the time of the request
+      "[",
+        capture(name = "time",
+          none_of("]") %>% zero_or_more()
+        ),
+      "]",
+
+      space, double_quote, "GET", space,
+
+      # Get the filetype of the request if requesting a file
+      maybe(
+        non_spaces, ".",
+        capture(name = 'filetype',
+          none_of(space, ".", "?", double_quote) %>% one_or_more()
+        )
+      )
+    )
+  ) %>%
+  mutate(filetype = tolower(filetype),
+         time = as.POSIXct(time, format="%d/%b/%Y:%H:%M:%S %z"))
+```
+
+This gives us a nicely formatted data frame of the time and filetypes of the requests.
+```{r echo = FALSE}
+kable(head(parsed, n = 10))
+```
+
+We can also easily generate a histogram of the filetypes, or a plot of requests over time.
+```{r FALSE, fig.show='hold', warning = FALSE, message = FALSE}
+x_angle <- theme(axis.text.x = element_text(size = 7,
+      hjust = 0,
+      vjust = 1,
+      angle = 310))
+
+ggplot(na.omit(parsed)) + geom_histogram(aes(x=filetype)) + x_angle
+ggplot(na.omit(parsed)) + geom_histogram(aes(x=time)) + ggtitle("Requests over time")
+```

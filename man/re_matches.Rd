@@ -13,6 +13,8 @@ re_matches(data, pattern, global = FALSE, options = NULL, ...)
 \item{global}{use global matching}
 
 \item{options}{regular expression options}
+
+\item{...}{options passed to regexpr or gregexpr}
 }
 \value{
 if no captures, returns a logical vector the same length as the

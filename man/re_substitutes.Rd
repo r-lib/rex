@@ -13,7 +13,11 @@ re_substitutes(data, pattern, replacement, global = FALSE, options = NULL,
 
 \item{replacement}{replacement text to use}
 
+\item{global}{substitute all occurrences}
+
 \item{options}{option flags}
+
+\item{...}{options passed to sub or gsub}
 }
 \description{
 Substitution function

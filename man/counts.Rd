@@ -54,10 +54,12 @@ Other rex: \code{\link{.}}, \code{\link{capture}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},
   \code{\link{\%if_prev_isnt\%}},
-  \code{\link{lookarounds}}; \code{\link{character_class}},
-  \code{\link{except}}, \code{\link{exclude_range}},
-  \code{\link{none_of}}, \code{\link{one_of}},
-  \code{\link{range}}; \code{\link{group}};
+  \code{\link{lookarounds}}; \code{\link{any_of}},
+  \code{\link{character_class}}, \code{\link{except}},
+  \code{\link{except_any}}, \code{\link{except_some}},
+  \code{\link{exclude_range}}, \code{\link{none_of}},
+  \code{\link{one_of}}, \code{\link{range}},
+  \code{\link{some_of}}; \code{\link{group}};
   \code{\link{not}}; \code{\link{rex}}, \code{\link{rex_}}
 }
 

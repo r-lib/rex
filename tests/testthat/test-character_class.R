@@ -36,6 +36,55 @@ test_that("escapes correctly", {
   expect_false(grepl(re, "{", perl = TRUE))
 })
 
+tests <- c(quote("a"),
+      quote(any),
+      quote(quote),
+      quote(quotes),
+      quote(lower),
+      quote(upper),
+      quote(list(upper, lower)),
+      quote(list("[", "]")))
+
+test_that("any_of equals zero_or_more(one_of())", {
+  lapply(tests,
+    function(x) {
+      re1 <- rex(zero_or_more(one_of(eval(x))))
+      re2 <- rex(any_of(eval(x)))
+
+      expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
+    })
+})
+
+test_that("some_of equals one_or_more(one_of())", {
+  lapply(tests,
+    function(x) {
+      re1 <- rex(one_or_more(one_of(eval(x))))
+      re2 <- rex(some_of(eval(x)))
+
+      expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
+    })
+})
+
+test_that("except_any equals zero_or_more(none_of())", {
+  lapply(tests,
+    function(x) {
+      re1 <- rex(zero_or_more(none_of(eval(x))))
+      re2 <- rex(except_any(eval(x)))
+
+      expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
+    })
+})
+
+test_that("except_some equals one_or_more(none_of())", {
+  lapply(tests,
+    function(x) {
+      re1 <- rex(one_or_more(none_of(eval(x))))
+      re2 <- rex(except_some(eval(x)))
+
+      expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
+    })
+})
+
 context("none_of")
 test_that("simple text is correct", {
   re <- rex(none_of(1:9))

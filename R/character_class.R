@@ -68,6 +68,7 @@ register(except_any)
 except_some <- function(...) {
   one_or_more(none_of(...))
 }
+register(except_some)
 
 #' @describeIn character_class matches one of any of the characters in the range.
 range <- function(start, end) {

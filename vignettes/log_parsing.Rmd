@@ -24,12 +24,14 @@ The logs used in this vignette come from two month's worth of all HTTP requests
 to the NASA Kennedy Space Center WWW server in Florida and are freely available
 for use. [1](http://ita.ee.lbl.gov/html/contrib/NASA-HTTP.html)
 
-
-```{r show.warnings=FALSE}
+```{r include = FALSE}
 library(rex)
 library(dplyr)
 library(knitr)
 library(ggplot2)
+```
+
+```{r show.warnings=FALSE}
 
 parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
   re_matches(
@@ -38,7 +40,7 @@ parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
       # Get the time of the request
       "[",
         capture(name = "time",
-          none_of("]") %>% zero_or_more()
+          except_any("]")
         ),
       "]",
 
@@ -48,7 +50,7 @@ parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
       maybe(
         non_spaces, ".",
         capture(name = 'filetype',
-          none_of(space, ".", "?", double_quote) %>% one_or_more()
+          except_some(space, ".", "?", double_quote)
         )
       )
     )

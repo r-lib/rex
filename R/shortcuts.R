@@ -68,3 +68,5 @@ shortcuts <- c(
   plural(inverse(single_shortcuts)),
   multiple(inverse(single_shortcuts))
 )
+
+register_object(shortcuts)

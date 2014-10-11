@@ -10,3 +10,10 @@ register <- function(...) {
     .rex$env[[names[itr]]] <- vals[[itr]]
   }
 }
+
+register_object <- function(object) {
+  for(itr in seq_along(object)) {
+    name <- names(object)[[itr]]
+    .rex$env[[name]] <- object[[itr]]
+  }
+}

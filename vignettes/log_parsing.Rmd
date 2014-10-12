@@ -32,7 +32,6 @@ library(ggplot2)
 ```
 
 ```{r show.warnings=FALSE}
-
 parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
   re_matches(
     rex(

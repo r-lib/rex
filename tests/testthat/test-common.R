@@ -82,7 +82,7 @@ test_that("Simple URL parsing works", {
 
     ## match the protocol -- may exist or may not
     maybe(capture(
-        capture(one_or_more(not(":"))),
+        capture(except_some_of(":")),
         "://"
         )),
 
@@ -90,10 +90,10 @@ test_that("Simple URL parsing works", {
     capture(one_or_more(not(":/"))),
 
     ## get the port
-    maybe(capture(":", capture(one_or_more(numbers)))),
+    maybe(capture(":", capture(numbers))),
 
     ## and the rest
-    maybe(capture("/", zero_or_more(any))),
+    maybe(capture("/", anything)),
 
     end
 

@@ -112,5 +112,31 @@ shortcuts
 Commonly used character classes and regular expressions.  These shortcuts
 are substituted inside \code{rex} calls.
 }
+\details{
+\code{names(shortcuts)} will give you the full list of available shortcuts.
+}
+\seealso{
+Other rex: \code{\link{.}}, \code{\link{capture}},
+  \code{\link{capture_group}};
+  \code{\link{\%if_next_is\%}},
+  \code{\link{\%if_next_isnt\%}},
+  \code{\link{\%if_prev_is\%}},
+  \code{\link{\%if_prev_isnt\%}},
+  \code{\link{lookarounds}}; \code{\link{\%or\%}},
+  \code{\link{or}}; \code{\link{any_of}},
+  \code{\link{character_class}}, \code{\link{except}},
+  \code{\link{except_any_of}},
+  \code{\link{except_some_of}},
+  \code{\link{exclude_range}}, \code{\link{none_of}},
+  \code{\link{one_of}}, \code{\link{range}},
+  \code{\link{some_of}}; \code{\link{at_least}},
+  \code{\link{at_most}}, \code{\link{between}},
+  \code{\link{counts}}, \code{\link{n}},
+  \code{\link{n_times}}; \code{\link{group}};
+  \code{\link{maybe}}, \code{\link{one_or_more}},
+  \code{\link{wildcards}}, \code{\link{zero_or_more}},
+  \code{\link{zero_or_one}}; \code{\link{not}};
+  \code{\link{rex}}, \code{\link{rex_}}
+}
 \keyword{datasets}
 

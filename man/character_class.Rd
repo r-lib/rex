@@ -3,8 +3,8 @@
 \alias{any_of}
 \alias{character_class}
 \alias{except}
-\alias{except_any}
-\alias{except_some}
+\alias{except_any_of}
+\alias{except_some_of}
 \alias{exclude_range}
 \alias{none_of}
 \alias{one_of}
@@ -22,9 +22,9 @@ some_of(...)
 
 none_of(...)
 
-except_any(...)
+except_any_of(...)
 
-except_some(...)
+except_some_of(...)
 
 range(start, end)
 
@@ -55,9 +55,9 @@ There are multiple ways you can define a character class.
 
 \item \code{none_of}: matches anything but one of the specified characters.
 
-\item \code{except_any}: matches zero or more of anything but the specified characters.
+\item \code{except_any_of}: matches zero or more of anything but the specified characters.
 
-\item \code{except_some}: matches one or more of anything but the specified characters.
+\item \code{except_some_of}: matches one or more of anything but the specified characters.
 
 \item \code{range}: matches one of any of the characters in the range.
 
@@ -89,10 +89,15 @@ Other rex: \code{\link{.}}, \code{\link{capture}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},
   \code{\link{\%if_prev_isnt\%}},
-  \code{\link{lookarounds}}; \code{\link{at_least}},
+  \code{\link{lookarounds}}; \code{\link{\%or\%}},
+  \code{\link{or}}; \code{\link{at_least}},
   \code{\link{at_most}}, \code{\link{between}},
   \code{\link{counts}}, \code{\link{n}},
   \code{\link{n_times}}; \code{\link{group}};
-  \code{\link{not}}; \code{\link{rex}}, \code{\link{rex_}}
+  \code{\link{maybe}}, \code{\link{one_or_more}},
+  \code{\link{wildcards}}, \code{\link{zero_or_more}},
+  \code{\link{zero_or_one}}; \code{\link{not}};
+  \code{\link{rex}}, \code{\link{rex_}};
+  \code{\link{shortcuts}}
 }
 

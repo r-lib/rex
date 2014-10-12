@@ -59,16 +59,16 @@ none_of <- except <- function(...) {
 register(none_of, except)
 
 #' @describeIn character_class matches zero or more of anything but the specified characters.
-except_any <- function(...) {
+except_any_of <- function(...) {
   zero_or_more(none_of(...))
 }
-register(except_any)
+register(except_any_of)
 
 #' @describeIn character_class matches one or more of anything but the specified characters.
-except_some <- function(...) {
+except_some_of <- function(...) {
   one_or_more(none_of(...))
 }
-register(except_some)
+register(except_some_of)
 
 #' @describeIn character_class matches one of any of the characters in the range.
 range <- function(start, end) {

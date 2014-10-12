@@ -13,6 +13,7 @@ NULL
 #'   \item \code{lazy}: match the shortest string.  This matches the shortest string from the same anchor point, not necessarily the shortest global string.
 #'   \item \code{possessive}: match and don't allow backtracking
 #' }
+#' @family rex
 #' @name wildcards
 NULL
 

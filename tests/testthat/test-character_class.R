@@ -69,7 +69,7 @@ test_that("except_any equals zero_or_more(none_of())", {
   lapply(tests,
     function(x) {
       re1 <- rex(zero_or_more(none_of(eval(x))))
-      re2 <- rex(except_any(eval(x)))
+      re2 <- rex(except_any_of(eval(x)))
 
       expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
     })
@@ -79,7 +79,7 @@ test_that("except_some equals one_or_more(none_of())", {
   lapply(tests,
     function(x) {
       re1 <- rex(one_or_more(none_of(eval(x))))
-      re2 <- rex(except_some(eval(x)))
+      re2 <- rex(except_some_of(eval(x)))
 
       expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
     })

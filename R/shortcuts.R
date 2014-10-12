@@ -58,7 +58,11 @@ multiple <- function(x) {
 #'
 #' Commonly used character classes and regular expressions.  These shortcuts
 #' are substituted inside \code{rex} calls.
+#'
+#' \code{names(shortcuts)} will give you the full list of available shortcuts.
 #' @export
+#' @family rex
+
 shortcuts <- c(
   basic_shortcuts,
   single_shortcuts,

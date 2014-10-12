@@ -11,6 +11,7 @@ NULL
 #' @usage x \%or\% y
 #' @param x A string.
 #' @param y A string.
+#' @family rex
 #' @inheritParams capture
 `%or%` <- function(x, y) {
   group(p(escape(x)), regex("|"), p(escape(y)))

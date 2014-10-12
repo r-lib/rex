@@ -39,7 +39,7 @@ parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
       # Get the time of the request
       "[",
         capture(name = "time",
-          except_any("]")
+          except_any_of("]")
         ),
       "]",
 
@@ -49,7 +49,7 @@ parsed <- scan('NASA.txt', what = "character", sep = "\n") %>%
       maybe(
         non_spaces, ".",
         capture(name = 'filetype',
-          except_some(space, ".", "?", double_quote)
+          except_some_of(space, ".", "?", double_quote)
         )
       )
     )

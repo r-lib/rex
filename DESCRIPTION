@@ -10,7 +10,7 @@ Description: Rex provides a simpler, human-readable interface for the
 Imports:
     magrittr,
     lazyeval
-License: GPL (>=2)
+License: MIT + file LICENSE
 Suggests:
     testthat,
     knitr,

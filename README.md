@@ -64,9 +64,8 @@ them to be auto-completed.
 
 ## See Also
 - [Regularity](https://github.com/andrewberls/regularity) - Ruby library that
-  partially inspired rex.
+  partially inspired `rex`.
 - [PCRE](http://www.pcre.org/) - Perl Compatible Regular Expressions, the
-  engine that rex regular expressions use.
-- [Perl 5 Regular Expressions](http://perldoc.perl.org/perlre.html) - Good
-  resource for Perl 5 regular expressions, which are nearly 100% compatible
-  with PCRE.
+  engine that `rex` regular expressions use.
+- [Perl 5 Regular Expressions](http://perldoc.perl.org/perlre.html) - Perl
+  regular expression documentation, which are nearly 100% compatible with PCRE.

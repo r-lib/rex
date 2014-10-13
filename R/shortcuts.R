@@ -28,7 +28,7 @@ basic_shortcuts <- list(
 
   dot = escape("."),
   any = any_char <- regex("."),
-  any_chars = regex(".+"),
+  something = regex(".+"),
   anything = regex(".*"),
 
   start = regex("^"),

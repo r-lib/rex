@@ -6,7 +6,7 @@
 \format{\preformatted{List of 108
  $ dot                  :Class 'regex'  chr "\\\\."
  $ any                  :Class 'regex'  chr "."
- $ any_chars            :Class 'regex'  chr ".+"
+ $ something            :Class 'regex'  chr ".+"
  $ anything             :Class 'regex'  chr ".*"
  $ start                :Class 'regex'  chr "^"
  $ end                  :Class 'regex'  chr "$"

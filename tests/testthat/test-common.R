@@ -116,7 +116,7 @@ test_that("Simple URL parsing works", {
 
 context("URL Validation")
 test_that("URL Validation works", {
-  valid_chars <- rex(one_of(regex("a-z0-9\u00a1-\uffff")))
+  valid_chars <- rex(except_some_of(".", "/", " ", "-"))
 
   re = rex(
     start,
@@ -176,7 +176,6 @@ test_that("URL Validation works", {
     "http://foo.bar/?q=Test%20URL-encoded%20stuff",
     "http://مثال.إختبار",
     "http://例子.测试",
-    "http://उदाहरण.परीक्षा",
     "http://-.~_!$&'()*+,;=:%40:80%2f::::::@example.com",
     "http://1337.net",
     "http://a.b-c.de",

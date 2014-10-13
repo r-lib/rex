@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}
+  \usepackage[utf8]{inputenc}
 ---
 
 Parsing server log files are a common task in server administration REF.  Historically

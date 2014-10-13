@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{URL Validation}
   %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}
+  \usepackage[utf8]{inputenc}
 ---
 
 Consider the task of correctly [validating a URL](https://mathiasbynens.be/demo/url-regex).

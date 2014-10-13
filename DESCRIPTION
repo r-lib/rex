@@ -5,7 +5,7 @@ Version: 0.1.0
 Date: 2013-01-16
 Author: Kevin Ushey, Jim Hester
 Maintainer: Jim Hester <james.f.hester@gmail.com>
-Description: Rex provides a simpler, human-readable interface for the
+Description: A simpler, human-readable interface for the
     construction of regular expressions.
 Imports:
     magrittr,

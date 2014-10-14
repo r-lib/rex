@@ -9,9 +9,9 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-Parsing server log files are a common task in server administration REF.  Historically
-R would not be well suited to this task and it would be better performed using
-a scripting language such as perl.  However rex makes even this task easy to do
+Parsing server log files is a common task in server administration REF.  Historically
+R would not be well suited to this and it would be better performed using
+a scripting language such as perl. Rex, however, makes this easy to do
 and allows you to perform both the data cleaning and analysis in R!
 
 Common server logs consist of space separated fields.
@@ -20,7 +20,7 @@ Common server logs consist of space separated fields.
 
 > lahal.ksc.nasa.gov - - [24/Jul/1995:12:42:40 -0400] "GET /images/USA-logosmall.gif HTTP/1.0" 200 234
 
-The logs used in this vignette come from two month's worth of all HTTP requests
+The logs used in this vignette come from two months of all HTTP requests
 to the NASA Kennedy Space Center WWW server in Florida and are freely available
 for use. [1](http://ita.ee.lbl.gov/html/contrib/NASA-HTTP.html)
 

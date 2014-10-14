@@ -3,3 +3,4 @@
 ^\.travis\.yml$
 ^NEWS\.md$
 ^travis-tool\.sh$
+^cran-comments\.md$

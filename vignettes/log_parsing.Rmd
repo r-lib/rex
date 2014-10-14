@@ -9,8 +9,9 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-Parsing server log files is a common task in server administration REF.  Historically
-R would not be well suited to this and it would be better performed using
+Parsing server log files is a common task in server administration
+[2](http://stackoverflow.com/search?q=%22Apache+log%22).  Historically R would
+not be well suited to this and it would be better performed using
 a scripting language such as perl. Rex, however, makes this easy to do
 and allows you to perform both the data cleaning and analysis in R!
 

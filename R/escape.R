@@ -33,7 +33,9 @@ escape.character <- function(x) {
       "[",
       "]",
       "{",
-      "}")
+      "}",
+      "\\"
+      )
   regex(gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
 }
 
@@ -69,7 +71,7 @@ character_class_escape.character_class <- character_class_escape.regex
 #' @describeIn character_class_escape objects properly escaped for character classes.
 #' @export
 character_class_escape.character <- function(x) {
-  chars <- c("-", "^", "[", "]")
+  chars <- c("-", "^", "[", "]", "\\")
   regex(gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
 }
 

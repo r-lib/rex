@@ -13,10 +13,10 @@ test_that("matches basic characters", {
 })
 
 test_that("escapes special characters", {
-  x = "^[x$"
+  x = "^[x$\\"
   re <- rex(capture(x))
 
-  expect_equal(re, regex("(\\^\\[x\\$)"))
+  expect_equal(re, regex("(\\^\\[x\\$\\\\)"))
 
   expect_true(grepl(re, x))
 

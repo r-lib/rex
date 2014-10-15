@@ -171,7 +171,7 @@ test_that("matches basic characters", {
 })
 
 test_that("escapes special characters", {
-  expect_equal(rex(one_of("^", "b")), regex("[\\^b]"))
+  expect_equal(rex(one_of("^", "b", "\\")), regex("[\\^b\\\\]"))
 })
 
 context("except")

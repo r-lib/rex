@@ -45,40 +45,40 @@ tests <- c(quote("a"),
       quote(list(upper, lower)),
       quote(list("[", "]")))
 
-test_that("any_of equals zero_or_more(one_of())", {
+test_that("any_of equals one_of() plus *", {
   lapply(tests,
     function(x) {
-      re1 <- rex(zero_or_more(one_of(eval(x))))
+      re1 <- regex(paste0(rex(one_of(eval(x))), "*"))
       re2 <- rex(any_of(eval(x)))
 
       expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
     })
 })
 
-test_that("some_of equals one_or_more(one_of())", {
+test_that("some_of equals one_of plus +", {
   lapply(tests,
     function(x) {
-      re1 <- rex(one_or_more(one_of(eval(x))))
+      re1 <- regex(paste0(rex(one_of(eval(x))), "+"))
       re2 <- rex(some_of(eval(x)))
 
       expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
     })
 })
 
-test_that("except_any equals zero_or_more(none_of())", {
+test_that("except_any equals none_of() plus *", {
   lapply(tests,
     function(x) {
-      re1 <- rex(zero_or_more(none_of(eval(x))))
+      re1 <- regex(paste0(rex(none_of(eval(x))), "*"))
       re2 <- rex(except_any_of(eval(x)))
 
       expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))
     })
 })
 
-test_that("except_some equals one_or_more(none_of())", {
+test_that("except_some equals none_of() plus +", {
   lapply(tests,
     function(x) {
-      re1 <- rex(one_or_more(none_of(eval(x))))
+      re1 <- regex(paste0(rex(none_of(eval(x))), "+"))
       re2 <- rex(except_some_of(eval(x)))
 
       expect_equal(re1, re2, info = paste(sep=" : ", re1, re2))

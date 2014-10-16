@@ -10,6 +10,7 @@ NULL
 #' @param start beginning of character class
 #' @param end end of character class
 #' @param x text to include in the character class (must be escaped manually)
+#' @inheritParams wildcards
 #' @export
 #' @family rex
 #' @examples
@@ -40,14 +41,14 @@ one_of <- function(...) {
 register(one_of)
 
 #' @describeIn character_class matches zero or more of the specified characters.
-any_of <- function(...) {
-  zero_or_more(one_of(...))
+any_of <- function(..., type = c("greedy", "lazy", "possessive")) {
+  add_type(p(one_of(...), "*"), type)
 }
 register(any_of)
 
 #' @describeIn character_class matches one or more of the specified characters.
-some_of <- function(...) {
-  one_or_more(one_of(...))
+some_of <- function(..., type = c("greedy", "lazy", "possessive")) {
+  add_type(p(one_of(...), "+"), type)
 }
 register(some_of)
 
@@ -59,14 +60,14 @@ none_of <- except <- function(...) {
 register(none_of, except)
 
 #' @describeIn character_class matches zero or more of anything but the specified characters.
-except_any_of <- function(...) {
-  zero_or_more(none_of(...))
+except_any_of <- function(..., type = c("greedy", "lazy", "possessive")) {
+  add_type(p(none_of(...), "*"), type)
 }
 register(except_any_of)
 
 #' @describeIn character_class matches one or more of anything but the specified characters.
-except_some_of <- function(...) {
-  one_or_more(none_of(...))
+except_some_of <- function(..., type = c("greedy", "lazy", "possessive")) {
+  add_type(p(none_of(...), "+"), type)
 }
 register(except_some_of)
 

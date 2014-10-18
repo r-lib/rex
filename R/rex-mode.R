@@ -1,10 +1,7 @@
-
-
-#' Rex Mode
+#' Toggles \pkg{rex} mode.
 #'
-#' \code{rex_mode()} switch \pkg{rex} mode on and off. While within
-#' rex mode, functions used within the \code{\link{rex}} function are
-#' attached, and so one can get e.g. auto-completion within editors.
+#' While within rex mode, functions used within the \code{\link{rex}} function
+#' are attached, so one can get e.g. auto-completion within editors.
 #'
 #' @export
 rex_mode <- function() {

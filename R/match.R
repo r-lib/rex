@@ -5,6 +5,8 @@
 #' @param global use global matching
 #' @param options regular expression options
 #' @param ... options passed to regexpr or gregexpr
+#' @param locations rather than outputing the values of the matched (or
+#' captured) string, output a data.frame of the match locations in the string.
 #' @return if no captures, returns a logical vector the same length as the
 #' input character vector specifying if the relevant value matched or not.  If
 #' there are captures in the regular expression, returns a \code{data.frame} with a
@@ -29,33 +31,60 @@
 #' # 1 test
 #' # 2 <NA>
 #' @export
-re_matches <- function(data, pattern, global = FALSE, options = NULL, ...) {
+re_matches <- function(data, pattern, global = FALSE, options = NULL, ..., locations = FALSE) {
 
   pattern = add_options(pattern, options)
 
   process_matches <- function(match, string) {
 
-    # if no capture just return if the regex matched
     if(no_capture(match)) {
-      return(match != -1)
+
+      # if no capture and no location just return if the regex matched
+      if(!locations) {
+        return(match != -1L)
+      }
+
+      # else return a data frame of the start and end locations
+      match[ match == -1L ] <- NA_integer_
+      starts <- match
+      attributes(starts) <- NULL
+
+      lengths <- attr(match, "match.length")
+      ends <- starts + lengths - 1L
+
+      return(data.frame(start = starts, end = ends))
     }
 
     # if a capture return a data frame with the capture results for each string
     starts <- attr(match, "capture.start")
     lengths <- attr(match, "capture.length")
-    ends <- starts + lengths - 1
-
-    strings = substring(string, starts, ends)
+    ends <- starts + lengths - 1L
 
     not_matched <- starts == -1L
-    strings[not_matched] <- NA
 
-    res = matrix(ncol = ncol(starts), strings)
+    if(!locations) {
+      strings = substring(string, starts, ends)
 
-    colnames(res) = auto_name(attr(match, "capture.names"))
+      strings[not_matched] <- NA_integer_
 
-    as.data.frame(res, stringsAsFactors = FALSE)
+      res = matrix(ncol = ncol(starts), strings)
 
+      colnames(res) = auto_name(attr(match, "capture.names"))
+
+      as.data.frame(res, stringsAsFactors = FALSE)
+    }
+    else {
+      starts[not_matched] <- NA_integer_
+
+      ends[not_matched] <- NA_integer_
+
+      nms <- auto_name(attr(match, "capture.names"))
+
+      res <- data.frame(matrix(ncol = ncol(starts), starts), matrix(ncol = ncol(ends), ends))
+
+      colnames(res) <- paste(sep=".", rep(nms, each = 2L), c("start", "end"))
+      res
+    }
   }
 
   if(global %==% TRUE) {

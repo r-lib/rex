@@ -64,6 +64,101 @@ expect_equal(re_matches(string, rex(capture("test"))),
   df2(`1`=c(NA_character_, "test")))
 })
 
+context("re_matches - locations")
+test_that("re_matches if given other than character vector", {
+
+  expect_equal(re_matches(NA, rex(digit), locations = TRUE),
+    df2(start = NA_integer_, end = NA_integer_))
+
+  expect_equal(re_matches(1, rex(digit), locations = TRUE),
+    df2(start = 1L, end = 1L))
+
+  expect_equal(re_matches(1, rex(capture(digit)), locations = TRUE),
+    df2("1.start" = 1L, "1.end" = 1L))
+
+  expect_equal(re_matches("a", rex(capture(digit)), locations = TRUE),
+    df2("1.start" = NA_integer_, "1.end" = NA_integer_))
+})
+
+test_that("re_matches no capture returns a logical", {
+
+  expect_equal(re_matches(string, rex(digit), locations = TRUE),
+    df2(start = c(NA_integer_, 5L, 1L), end = c(NA_integer_, 5L, 1L)))
+
+  expect_equal(re_matches(string, rex(digits), locations = TRUE),
+    df2(start = c(NA_integer_, 5L, 1L), end = c(NA_integer_, 6L, 5L)))
+
+  expect_equal(re_matches(string, rex(alpha), locations = TRUE),
+    df2(start = c(1L, 1L, NA_integer_), end = c(1L, 1L, NA_integer_)))
+
+  expect_equal(re_matches(string, rex("-"), locations = TRUE),
+    df2(start = c(NA_integer_, 4L, NA_integer_), end = c(NA_integer_, 4L, NA_integer_)))
+})
+
+test_that("re_matches capture returns a data frame", {
+
+  expect_equal(re_matches(string, rex(capture(digits)), locations = TRUE),
+    df2("1.start" = c(NA_integer_, 5L, 1L), "1.end" = c(NA_integer_, 6L, 5L)))
+
+  expect_equal(re_matches(string, rex(capture(alphas)), locations = TRUE),
+    df2("1.start" = c(1L, 1L, NA_integer_), "1.end" = c(4L, 3L, NA_integer_)))
+
+  expect_equal(re_matches(string, rex(capture(alphas), " ", capture(alphas)), locations = TRUE),
+    df2("1.start" = c(1L, NA_integer_, NA_integer_), "1.end" = c(6L, NA_integer_, NA_integer_),
+      "2.start" = c(4L, NA_integer_, NA_integer_), "2.end" = c(7L, NA_integer_, NA_integer_)))
+})
+
+test_that("re_matches named capture returns named data frame", {
+
+  expect_equal(re_matches(string, rex(capture(digits, name = "numbers")), locations = TRUE),
+    df2("numbers.start" = c(NA_integer_, 5L, 1L), "numbers.end" = c(NA_integer_, 6L, 5L)))
+
+  expect_equal(re_matches(string, rex(capture(alphas, name = "letters")), locations = TRUE),
+    df2("letters.start" = c(1L, 1L, NA_integer_), "letters.end" = c(4L, 3L, NA_integer_)))
+
+})
+
+test_that("re_matches with global returns a list of matches", {
+
+  expect_equal(re_matches(string, rex('is'), global = TRUE, locations = TRUE),
+    list(
+      df2(start = c(3L, 6L), end = c(4L, 7L)),
+      df2(start = NA_integer_, end = NA_integer_),
+      df2(start = NA_integer_, end = NA_integer_)
+      )
+    )
+})
+
+test_that("re_matches with global returns a list of data.frames", {
+
+  expect_equal(re_matches(string, rex(capture(any_letters, 'is')), global = TRUE, locations = TRUE),
+    list(
+      df2("1.start" = c(1L, 6L), "1.end" = c(4L, 7L)),
+      df2("1.start" = NA_integer_, "1.end" = NA_integer_),
+      df2("1.start" = NA_integer_, "1.end" = NA_integer_)
+      )
+    )
+
+  expect_equal(re_matches(string, rex(capture(digits, name = "number")), global = TRUE, locations = TRUE),
+    list(
+      df2(number.start = NA_integer_, number.end = NA_integer_),
+      df2(number.start = 5L, number.end = 6L),
+      df2(number.start = c(1L, 7L), number.end = c(5L, 14L))
+      )
+    )
+})
+
+test_that("examples are correct", {
+string = c("this is a", "test string")
+expect_equal(re_matches(string, rex(capture(alphas, name = "first_word"), space,
+                capture(alphas, name = "second_word"))),
+            df2(first_word = c("this", "test"),
+                second_word = c("is", "string")))
+
+expect_equal(re_matches(string, rex(capture("test"))),
+  df2(`1`=c(NA_character_, "test")))
+})
+
 context("re_substitutes")
 test_that("s substitutes properly, with and without options", {
   expect_equal(re_substitutes(string, rex('Text'), 'test'),

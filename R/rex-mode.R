@@ -1,8 +1,8 @@
 
 
-#' Rex Mode
-#'
-#' \code{rex_mode()} switch \pkg{rex} mode on and off. While within
+#' @title Rex Mode
+#' @description switches \code{rex} mode on or off.
+#' @details \code{rex_mode()} switches \pkg{rex} mode on and off. While within
 #' rex mode, functions used within the \code{\link{rex}} function are
 #' attached, and so one can get e.g. auto-completion within editors.
 #'

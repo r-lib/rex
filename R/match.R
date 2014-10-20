@@ -4,9 +4,10 @@
 #' @param pattern regular expression to use for matching
 #' @param global use global matching
 #' @param options regular expression options
+#' @param locations rather than returning the values of the matched (or
+#' captured) string, return a \code{data.frame} of the match locations in the
+#' string.
 #' @param ... options passed to regexpr or gregexpr
-#' @param locations rather than outputing the values of the matched (or
-#' captured) string, output a data.frame of the match locations in the string.
 #' @return if no captures, returns a logical vector the same length as the
 #' input character vector specifying if the relevant value matched or not.  If
 #' there are captures in the regular expression, returns a \code{data.frame} with a
@@ -31,7 +32,7 @@
 #' # 1 test
 #' # 2 <NA>
 #' @export
-re_matches <- function(data, pattern, global = FALSE, options = NULL, ..., locations = FALSE) {
+re_matches <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
 
   pattern = add_options(pattern, options)
 

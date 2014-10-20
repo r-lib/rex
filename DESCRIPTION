@@ -4,8 +4,8 @@ Title: Simpler Regular Expressions
 Version: 0.1.1
 Date: 2014-10-14
 Authors@R: as.person(c(
-    "Kevin Ushey <kevinushey@gmail.com> [cre]",
-    "Jim Hester <james.f.hester@gmail.com> [cre]"
+    "Kevin Ushey <kevinushey@gmail.com> [aut]",
+    "Jim Hester <james.f.hester@gmail.com> [cre, aut]"
     ))
 Maintainer: Jim Hester <james.f.hester@gmail.com>
 URL: https://github.com/kevinushey/rex

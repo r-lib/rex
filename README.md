@@ -62,6 +62,13 @@ Rex functions are not exported because they are only useful within `rex()`
 calls, but they can be temporarily attached using `rex_mode()` which allows
 them to be auto-completed.
 
+### Using Rex in other packages
+
+Using `rex` in other packages will generate spurious NOTEs from `R CMD check`
+unless you include a call to `rex::register_shortcuts()` with your package name
+somewhere in your package source.  This function registers all of the rex
+shortcuts as valid variables fixing the NOTEs.
+
 ## See Also
 - [Regularity](https://github.com/andrewberls/regularity) - Ruby library that
   partially inspired `rex`.

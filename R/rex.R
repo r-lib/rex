@@ -62,3 +62,14 @@ print.regex <- function(x, ...){
 #' @seealso \code{\link{as.regex}} to coerce to a regex object.
 #' @export
 regex <- function(x, ...) structure(x, class = "regex")
+
+#' Register the Rex shortcuts
+#'
+#' If you are using rex in another package you need to call this function to
+#' register all of the rex shortcuts so that spurious NOTEs about global
+#' variables being generated during R CMD check.
+#' @param pkg_name
+#' @export
+register_shortcuts <- function(pkg_name) {
+  utils::globalVariables(ls(.rex$env), pkg_name)
+}

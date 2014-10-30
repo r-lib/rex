@@ -68,8 +68,8 @@ regex <- function(x, ...) structure(x, class = "regex")
 #' If you are using rex in another package you need to call this function to
 #' register all of the rex shortcuts so that spurious NOTEs about global
 #' variables being generated during R CMD check.
-#' @param pkg_name
+#' @param pkg_name the package to register the shortcuts in
 #' @export
 register_shortcuts <- function(pkg_name) {
-  utils::globalVariables(ls(.rex$env), pkg_name)
+  invisible(utils::globalVariables(ls(.rex$env), pkg_name))
 }

@@ -6,7 +6,7 @@
 register_shortcuts(pkg_name)
 }
 \arguments{
-\item{pkg_name}{}
+\item{pkg_name}{the package to register the shortcuts in}
 }
 \description{
 If you are using rex in another package you need to call this function to

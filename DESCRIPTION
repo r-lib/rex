@@ -1,8 +1,8 @@
 Package: rex
 Type: Package
-Title: Simpler Regular Expressions
+Title: Friendly Regular Expressions
 Version: 0.1.2
-Date: 2014-10-14
+Date: 2014-10-31
 Authors@R: as.person(c(
     "Kevin Ushey <kevinushey@gmail.com> [aut]",
     "Jim Hester <james.f.hester@gmail.com> [cre, aut]"
@@ -10,7 +10,7 @@ Authors@R: as.person(c(
 Maintainer: Jim Hester <james.f.hester@gmail.com>
 URL: https://github.com/kevinushey/rex
 BugReports: https://github.com/kevinushey/rex/issues
-Description: A simpler, human-readable interface for the
+Description: A more friendly, human-readable interface for the
     construction of regular expressions.
 Imports:
     magrittr,

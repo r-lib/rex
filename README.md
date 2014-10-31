@@ -1,6 +1,6 @@
 # Rex
 [![Build Status](https://travis-ci.org/kevinushey/rex.png?branch=master)](https://travis-ci.org/kevinushey/rex)
-### Friendly regular expressions for R
+### Friendly Regular Expressions
 
 Regular expressions are very powerful feature, however they are often difficult
 to interpret. Rex allows you to build complex regular expressions from human

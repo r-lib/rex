@@ -18,6 +18,7 @@ single_shortcuts <- list(
   space = character_class("[:space:]"),
   upper = character_class("[:upper:]"),
   xdigit = character_class("[:xdigit:]"),
+  newline = regex("\\R"),
 
   single_quote = character_class("'"),
   double_quote = character_class("\""),

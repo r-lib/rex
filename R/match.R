@@ -34,7 +34,7 @@
 #' @export
 re_matches <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
 
-  pattern = add_options(pattern, options)
+  pattern <- add_options(pattern, options)
 
   process_matches <- function(match, string) {
 
@@ -64,13 +64,13 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, locations 
     not_matched <- starts == -1L
 
     if(!locations) {
-      strings = substring(string, starts, ends)
+      strings <- substring(string, starts, ends)
 
       strings[not_matched] <- NA_integer_
 
-      res = matrix(ncol = ncol(starts), strings)
+      res <- matrix(ncol = ncol(starts), strings)
 
-      colnames(res) = auto_name(attr(match, "capture.names"))
+      colnames(res) <- auto_name(attr(match, "capture.names"))
 
       as.data.frame(res, stringsAsFactors = FALSE)
     }
@@ -125,7 +125,7 @@ re_substitutes <- function(data, pattern, replacement, global = FALSE, options =
 
 add_options <-  function(pattern, options) {
   if (!is.null(options)) {
-    options = match_args(options, names(option_map))
+    options <- match_args(options, names(option_map))
     pattern <- p("(?", p(option_map[options]), ")", pattern)
   }
   else {
@@ -142,7 +142,7 @@ match_args <- function(arg, choices) {
   choices[matches]
 }
 
-option_map = c(
+option_map <- c(
   "insensitive" = "i",
   "multi-line" = "m",
   "single-line" = "s",
@@ -159,6 +159,6 @@ auto_name <- function(names) {
   if (all(!missing)) {
     return(names)
   }
-  names[ names == "" ] = seq_along(names)[ names == "" ]
+  names[ names == "" ] <- seq_along(names)[ names == "" ]
   names
 }

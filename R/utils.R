@@ -1,5 +1,5 @@
 p <- function(...) {
-  regex(paste( sep = "", collapse = "", ...))
+  regex(paste(sep = "", collapse = "", ...))
 }
 
 regex <- function(x) structure(x, class = "regex")
@@ -16,4 +16,6 @@ NULL
 
 register(`%>%`)
 
-`%==%` <- function(x, y) { identical(x, y) }
+`%==%` <- function(x, y) {
+  identical(x, y)
+}

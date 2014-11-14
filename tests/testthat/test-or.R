@@ -1,6 +1,6 @@
 context("or")
 test_that("%or% creates an alternation", {
-  re = rex("w", "x" %or% "y", "z")
+  re <- rex("w", "x" %or% "y", "z")
   expect_equal(re, regex("w(?:x|y)z"))
 
   expect_true(grepl(re, "wxz"))
@@ -9,7 +9,7 @@ test_that("%or% creates an alternation", {
 })
 
 test_that("or with multiple inputs works", {
-  re = rex(or("x", "yx", "z"))
+  re <- rex(or("x", "yx", "z"))
   expect_equal(re, regex("(?:x|yx|z)"))
   lapply(c("x", "yx", "z"), function(x) {
     expect_true(grepl(re, x, perl=TRUE), info=x)
@@ -19,8 +19,8 @@ test_that("or with multiple inputs works", {
   expect_false(grepl(re, c("a")))
 })
 test_that("or with variable inputs works", {
-  variable = c("test", "variable")
-  re = rex(or(variable))
+  variable <- c("test", "variable")
+  re <- rex(or(variable))
 
   expect_equal(re, regex("(?:test|variable)"))
 
@@ -28,4 +28,3 @@ test_that("or with variable inputs works", {
     expect_true(grepl(re, x), info=x)
   })
 })
-

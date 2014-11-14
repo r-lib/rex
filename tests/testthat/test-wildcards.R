@@ -31,7 +31,7 @@ test_that("recognizes special identifiers", {
 
 context("maybe")
 test_that("recognizes basic characters", {
-    re = rex("x", maybe("y"), "z")
+    re <- rex("x", maybe("y"), "z")
     expect_equal(re, regex("x(?:y)?z"))
     expect_true(grepl(re, "xyz"))
     expect_true(grepl(re, "xz"))
@@ -39,18 +39,18 @@ test_that("recognizes basic characters", {
 
 context("not")
 test_that("creates a negative lookahead", {
-  re = rex("x", not("y"), "z")
+  re <- rex("x", not("y"), "z")
   expect_equal(re, regex("x(?:(?!y).)*z"))
   expect_true(grepl(re, "xazbc", perl=TRUE))
   expect_true(grepl(re, "xxzabc", perl=TRUE))
   expect_false(grepl(re, "xyzabc", perl=TRUE))
 
-  re = rex("x432", not("yars"), "tsrz")
+  re <- rex("x432", not("yars"), "tsrz")
   expect_true(grepl(re, "x432tsrz", perl=TRUE))
   expect_true(grepl(re, "x432yartsrz", perl=TRUE))
   expect_false(grepl(re, "x432yarstsrz", perl=TRUE))
 
-  re = rex(start, not("ars"), "x432")
+  re <- rex(start, not("ars"), "x432")
   expect_true(grepl(re, "x432", perl=TRUE))
   expect_true(grepl(re, "arx432", perl=TRUE))
   expect_false(grepl(re, "arsx432", perl=TRUE))

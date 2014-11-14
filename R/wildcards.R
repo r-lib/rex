@@ -37,7 +37,7 @@ maybe <- zero_or_one <- function(..., type = c("greedy", "lazy", "possessive")) 
 register(maybe, zero_or_one)
 
 add_type <- function(x, type = c("greedy", "lazy", "possessive")) {
-  type = match.arg(type)
+  type <- match.arg(type)
 
   switch(type,
     greedy = x,

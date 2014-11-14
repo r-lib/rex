@@ -118,7 +118,7 @@ context("URL Validation")
 test_that("URL Validation works", {
   valid_chars <- rex(except_some_of(".", "/", " ", "-"))
 
-  re = rex(
+  re <- rex(
     start,
 
     # protocol identifier (optional) + //
@@ -271,17 +271,17 @@ test_that("returns a well-formed regex", {
 })
 
 context("rex examples")
-re =
-rex(start,
-  number %>% n_times(3),
-  "-",
-  letter %>% n_times(2),
-  maybe("#"),
-  "a" %or% "b",
-  "c" %>% between(2, 4),
-  "$",
-  end
-  )
+re <-
+  rex(start,
+    number %>% n_times(3),
+    "-",
+    letter %>% n_times(2),
+    maybe("#"),
+    "a" %or% "b",
+    "c" %>% between(2, 4),
+    "$",
+    end
+    )
 
 expect_true(grepl(re, "123-xy#accc$", perl=TRUE))
 expect_true(grepl(re, "999-dfbcc$"))

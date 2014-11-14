@@ -39,7 +39,7 @@ NULL
 #' )
 capture <- . <- function(..., name = NULL) {
   if(!is.null(name)) {
-    name = paste0("?<", name, ">")
+    name <- paste0("?<", name, ">")
   }
   p( "(", name, p(escape_dots(...)), ")" )
 }

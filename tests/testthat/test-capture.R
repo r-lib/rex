@@ -1,6 +1,6 @@
 context("capture")
 test_that("matches basic characters", {
-  x = "text"
+  x <- "text"
   re <- rex(capture(x))
 
   expect_equal(re, regex("(text)"))
@@ -13,7 +13,7 @@ test_that("matches basic characters", {
 })
 
 test_that("escapes special characters", {
-  x = "^[x$\\"
+  x <- "^[x$\\"
   re <- rex(capture(x))
 
   expect_equal(re, regex("(\\^\\[x\\$\\\\)"))

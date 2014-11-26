@@ -1,3 +1,11 @@
+## Rex Version 0.2.0 ##
+
+### Enhancements
+
+* Add a newline shortcut
+* add register_shortcuts to allow use of rex in external packages without
+  spurious NOTES.
+
 ## Rex Version 0.1.1 ##
 
 ### Enhancements

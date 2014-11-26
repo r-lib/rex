@@ -1,7 +1,7 @@
 Package: rex
 Type: Package
 Title: Friendly Regular Expressions
-Version: 0.1.2
+Version: 0.2.0
 Date: 2014-10-31
 Authors@R: as.person(c(
     "Kevin Ushey <kevinushey@gmail.com> [aut]",

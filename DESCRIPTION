@@ -10,8 +10,7 @@ Authors@R: as.person(c(
 Maintainer: Jim Hester <james.f.hester@gmail.com>
 URL: https://github.com/kevinushey/rex
 BugReports: https://github.com/kevinushey/rex/issues
-Description: A more friendly, human-readable interface for the
-    construction of regular expressions.
+Description: A friendly interface for the construction of regular expressions.
 Imports:
     magrittr,
     lazyeval

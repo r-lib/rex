@@ -33,8 +33,10 @@ basic_shortcuts <- list(
   anything = regex(".*"),
 
   start = regex("^"),
-  end = regex("$")
+  end = regex("$"),
 
+  boundary = regex("\\b"),
+  non_boundary = regex("\\B")
 )
 
 inverse <- function(x) {

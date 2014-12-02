@@ -4,13 +4,15 @@
 \name{shortcuts}
 \alias{shortcuts}
 \title{Shortcuts}
-\format{\preformatted{List of 114
+\format{\preformatted{List of 116
  $ dot                  :Class 'regex'  chr "\\\\."
  $ any                  :Class 'regex'  chr "."
  $ something            :Class 'regex'  chr ".+"
  $ anything             :Class 'regex'  chr ".*"
  $ start                :Class 'regex'  chr "^"
  $ end                  :Class 'regex'  chr "$"
+ $ boundary             :Class 'regex'  chr "\\\\b"
+ $ non_boundary         :Class 'regex'  chr "\\\\B"
  $ alnum                :Classes 'character_class', 'regex'  chr "[:alnum:]"
  $ alpha                :Classes 'character_class', 'regex'  chr "[:alpha:]"
  $ letter               :Classes 'character_class', 'regex'  chr "[:alpha:]"
@@ -102,8 +104,6 @@
  $ non_double_quotes    :Class 'regex'  chr "[^\\"]+"
  $ non_quotes           :Class 'regex'  chr "[^'\\"]+"
  $ any_non_alnums       :Class 'regex'  chr "[^[:alnum:]]*"
- $ any_non_alphas       :Class 'regex'  chr "[^[:alpha:]]*"
- $ any_non_letters      :Class 'regex'  chr "[^[:alpha:]]*"
   [list output truncated]
 }}
 \usage{

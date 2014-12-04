@@ -19,7 +19,9 @@ Suggests:
     testthat,
     knitr,
     dplyr,
-    ggplot2
+    ggplot2,
+    stringr,
+    rvest
 VignetteBuilder: knitr
 Collate:
     'aaa.R'

@@ -378,3 +378,87 @@ bodytext <- minimal %>%
   html_text
 
 re_substitutes(bodytext, rex(spaces), "", global = TRUE)
+
+#' ### <http://stackoverflow.com/questions/27227229>
+#+ message=FALSE
+string <- "this\\(system) {is} [full]."
+library(Hmisc)
+gsub("\\\\(.)", "\\1", escapeRegex(string))
+
+#' Alternatively [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
+library(rex)
+re_substitutes(escape(string), rex("\\", capture(any)), "\\1", global = TRUE)
+
+#' ### <http://stackoverflow.com/questions/27317497>
+#' [rex](http://cran.r-project.org/web/packages/rex/) has a [vignette for parsing server logs](http://cran.r-project.org/web/packages/rex/vignettes/log_parsing.html). While the format is not exactly the same as your log you should be able to adapt it to your case fairly easily.
+#' As far as reading the log in assuming the file fits in memory your best bet is to read the whole file first with `readLines()`, then the following will put each field into a `data.frame` column.
+x <- "Feb  6 12:14:14 localhost haproxy[14389]: 10.0.1.2:33317 [06/Feb/2009:12:14:14.655] http-in static/srv1 10/0/30/69/109 200 2750 - - ---- 1/1/1/1/0 0/0 {1wt.eu} {} \"GET /index.html HTTP/1.1\""
+library(rex)
+re <- rex(
+
+  capture(name = "process_name", alpha),
+  "[",
+    capture(name = "pid", digits),
+  "]:",
+  spaces,
+  capture(name = "client_ip", any_of(digit, ".")),
+  ":",
+  capture(name = "client_port", digits),
+  spaces,
+  "[",
+    capture(name = "accept_date", except_some_of("]")),
+  "]",
+  spaces,
+  capture(name = "frontend_name", non_spaces),
+  spaces,
+  capture(name = "backend_name", except_some_of("/")),
+  "/",
+  capture(name = "server_name", non_spaces),
+  spaces,
+  capture(name = "Tq", some_of("-", digit)),
+  "/",
+  capture(name = "Tw", some_of("-", digit)),
+  "/",
+  capture(name = "Tc", some_of("-", digit)),
+  "/",
+  capture(name = "Tr", some_of("-", digit)),
+  "/",
+  capture(name = "Tt", some_of("+", digit)),
+  spaces,
+  capture(name = "status_code", digits),
+  spaces,
+  capture(name = "bytes_read", some_of("+", digit)),
+  spaces,
+  capture(name = "captured_request_cookie", non_spaces),
+  spaces,
+  capture(name = "captured_response_cookie", non_spaces),
+  spaces,
+  capture(name = "termination_state", non_spaces),
+  spaces,
+  capture(name = "actconn", digits),
+  "/",
+  capture(name = "feconn", digits),
+  "/",
+  capture(name = "beconn", digits),
+  "/",
+  capture(name = "srv_conn", digits),
+  "/",
+  capture(name = "retries", some_of("+", digit)),
+  spaces,
+  capture(name = "srv_queue", digits),
+  "/",
+  capture(name = "backend_queue", digits),
+  spaces,
+  "{",
+    capture(name = "captured_request_headers", except_any_of("}")),
+  "}",
+  spaces,
+  "{",
+    capture(name = "captured_response_headers", except_any_of("}")),
+  "}",
+  spaces,
+  double_quote,
+    capture(name = "http_request", non_quotes),
+  double_quote)
+
+re_matches(x, re)

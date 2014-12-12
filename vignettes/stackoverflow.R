@@ -462,3 +462,44 @@ re <- rex(
   double_quote)
 
 re_matches(x, re)
+
+#' ### <http://stackoverflow.com/questions/27422350/extract-character-preceding-first-dot-in-a-string>
+#' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
+
+my.data <- read.table(text = '
+     my.string  state
+     .........    A
+     1........    B
+     112......    C
+     11111....    D
+     1111113..    E
+     111111111    F
+     111111111    G
+', header = TRUE, stringsAsFactors = FALSE)
+
+library(rex)
+
+re_matches(my.data$my.string,
+  rex(capture(except(".")), "."))$'1'
+
+#' ### <http://stackoverflow.com/questions/27410736>
+#' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
+string <- "Shakira - Wolf - 02.Hips don't lie.mp3"
+
+library(rex)
+re_matches(string,
+  rex(capture(zero_or_more(any, type='lazy')), spaces, "-"))$'1'
+
+#' ### <http://stackoverflow.com/questions/27400286/>
+#' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
+
+string <- "I t is tim e to g o"
+
+library(rex)
+re_substitutes(string, rex(
+    space %if_next_is%
+      list(
+        list(non_space, space, at_least(non_space, 2)) %or%
+        list(non_space, end)
+      )
+    ), "", global = TRUE)

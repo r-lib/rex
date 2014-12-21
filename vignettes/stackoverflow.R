@@ -493,8 +493,7 @@ re_matches(string,
 #' ### <http://stackoverflow.com/questions/27400286/>
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
-string <- "I t is tim e to g o"
-
+string <- "I t is tim e to g o" 
 library(rex)
 re_substitutes(string, rex(
     space %if_next_is%
@@ -503,3 +502,24 @@ re_substitutes(string, rex(
         list(non_space, end)
       )
     ), "", global = TRUE)
+
+#' ### <http://stackoverflow.com/questions/27553126>
+#' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
+
+string <- "01:04:43.064 [12439] <2> xyz
+01:04:43.067 [12439] <2> a lmn
+01:04:43.068 [12439] <4> j klm
+x_times_wait to <3000>
+01:04:43.068 [12439] <4> j klm
+enter_object <5000> main k"
+
+library(rex)
+
+timestamp <- rex(n(digit, 2), ":", n(digit, 2), ":", n(digit, 2), ".", n(digit, 3))
+
+re <- rex(timestamp, space,
+          "[", digits, "]", space,
+          "<", digits, ">", space,
+          capture(anything))
+
+re_matches(string, re, global = TRUE)

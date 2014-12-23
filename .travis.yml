@@ -9,9 +9,13 @@ before_install:
 
 install:
   - ./travis-tool.sh github_package hadley/lazyeval
+  - ./travis-tool.sh github_package jimhester/covr
   - ./travis-tool.sh install_deps
 
 script: ./travis-tool.sh run_tests
+
+after_success:
+  - Rscript -e 'library(covr);coveralls()'
 
 on_failure:
   - ./travis-tool.sh dump_logs

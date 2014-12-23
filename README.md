@@ -1,5 +1,7 @@
 # Rex
 [![Build Status](https://travis-ci.org/kevinushey/rex.png?branch=master)](https://travis-ci.org/kevinushey/rex)
+[![Coverage Status](https://img.shields.io/coveralls/kevinushey/rex.svg)](https://coveralls.io/r/kevinushey/rex)
+
 ### Friendly Regular Expressions
 
 Regular expressions are very powerful feature, however they are often difficult

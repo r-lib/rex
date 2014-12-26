@@ -15,7 +15,7 @@ install:
 script: ./travis-tool.sh run_tests
 
 after_success:
-  - Rscript -e 'library(devtools);install();library(covr);coveralls(rex::reregister_functions(ns_env(".")))'
+  - Rscript -e 'library(devtools);install();library(covr);coveralls(".", rex::reregister_functions(ns_env(".")))'
 
 on_failure:
   - ./travis-tool.sh dump_logs

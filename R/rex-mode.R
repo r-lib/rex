@@ -20,7 +20,7 @@ rex_mode <- function() {
   else {
     message("Rex functions and shortcuts detached!")
     .rex$mode <- FALSE
-    detach(.rex$env)
+    detach(".rex$env")
   }
 
 }

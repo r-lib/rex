@@ -42,11 +42,6 @@ as.regex <- function(x, ...) UseMethod("as.regex")
 #' @describeIn as.regex Simply escape the Object.
 as.regex.default <- function(x, ...) escape(x)
 
-#' @describeIn regex concatenate regex
-c.regex <- function(...) {
-  p(escape_dots(...))
-}
-
 #' @export
 #' @describeIn regex Print regex object
 print.regex <- function(x, ...){

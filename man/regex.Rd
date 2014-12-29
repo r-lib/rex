@@ -2,14 +2,11 @@
 % Please edit documentation in R/rex.R
 \name{as.character.regex}
 \alias{as.character.regex}
-\alias{c.regex}
 \alias{print.regex}
 \alias{regex}
 \title{Regular Expression}
 \usage{
 \method{as.character}{regex}(x, ...)
-
-\method{c}{regex}(...)
 
 \method{print}{regex}(x, ...)
 
@@ -27,8 +24,6 @@ escaped.
 \section{Methods (by generic)}{
 \itemize{
 \item \code{as.character}: coerce regex object to a character
-
-\item \code{c}: concatenate regex
 
 \item \code{print}: Print regex object
 }}

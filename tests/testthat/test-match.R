@@ -172,3 +172,12 @@ test_that("s substitutes properly, with and without options", {
   expect_equal(re_substitutes(string, "i", "x", global = TRUE),
     c("thxs xs Text", "chr-12", "12343 66544456"))
 })
+
+context("match_args")
+test_that("match args stops if the arg does not match", {
+  expect_error(match_args("test", names(option_map)))
+
+  expect_equal(match_args("ungreedy", names(option_map)), "ungreedy")
+
+  expect_equal(match_args("ungre", names(option_map)), "ungreedy")
+})

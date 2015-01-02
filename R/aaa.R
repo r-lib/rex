@@ -17,18 +17,3 @@ register_object <- function(object) {
     .rex$env[[name]] <- object[[itr]]
   }
 }
-
-#' Re-register the rex functions
-#'
-#' Use if you need to re-define the functions after package load.
-#' @param env the environment to take the new definitions from.
-#' @export
-reregister_functions <- function(env) {
-  names <- ls(.rex$env)
-
-  for (name in names) {
-    if (is.function(env[[name]])) {
-      .rex$env[[name]] <- env[[name]]
-    }
-  }
-}

@@ -123,10 +123,10 @@ re_substitutes <- function(data, pattern, replacement, global = FALSE, options =
   }
 }
 
-add_options <-  function(pattern, options) {
+add_options <- function(pattern, options) {
   if (!is.null(options)) {
     options <- match_args(options, names(option_map))
-    pattern <- p("(?", p(option_map[options]), ")", pattern)
+    p("(?", p(option_map[options]), ")", pattern)
   }
   else {
     pattern
@@ -135,7 +135,7 @@ add_options <-  function(pattern, options) {
 
 match_args <- function(arg, choices) {
   matches <- pmatch(arg, choices)
-  if(any(is.na(matches))){
+  if (any(is.na(matches))) {
     stop(gettextf("'arg' should be one of %s", paste(dQuote(choices),
           collapse = ", ")), domain = NA)
   }

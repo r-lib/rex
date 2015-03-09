@@ -20,23 +20,8 @@ escape.character_class <- function(x) {
 #' @describeIn escape Objects are properly escaped for regular expressions.
 #' @export
 escape.character <- function(x) {
-  chars <-
-    c("*",
-      ".",
-      "?",
-      "^",
-      "+",
-      "$",
-      "|",
-      "(",
-      ")",
-      "[",
-      "]",
-      "{",
-      "}",
-      "\\"
-      )
-  regex(gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
+  chars <- c("*", ".", "?", "^", "+", "$", "|", "(", ")", "[", "]", "{", "}", "\\")
+  regex(sanitize(x, chars))
 }
 
 #' @describeIn escape default escape coerces to character and escapes.
@@ -71,8 +56,7 @@ character_class_escape.character_class <- character_class_escape.regex
 #' @describeIn character_class_escape objects properly escaped for character classes.
 #' @export
 character_class_escape.character <- function(x) {
-  chars <- c("-", "^", "[", "]", "\\")
-  regex(gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE))
+  regex(sanitize(x, c("-", "^", "[", "]", "\\")))
 }
 
 #' @describeIn character_class_escape call \code{character_class_escape} on all elements of the list.
@@ -89,4 +73,8 @@ character_class_escape.default <- function(x) {
 
 character_class_escape_dots <- function(...) {
   unlist(character_class_escape(eval(list(...))))
+}
+
+sanitize <- function(x, chars) {
+  gsub(paste0("([\\", paste0(collapse = "\\", chars), "])"), "\\\\\\1", x, perl = TRUE)
 }

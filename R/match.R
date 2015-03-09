@@ -112,15 +112,9 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, locations 
 #' re_substitutes(string, "i", "x", global = TRUE)
 #' @export
 re_substitutes <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
-
   pattern <- add_options(pattern, options)
-
-  if(global) {
-    gsub(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
-  }
-  else {
-    sub(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
-  }
+  method <- if (isTRUE(global)) { gsub } else { sub }
+  method(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
 }
 
 add_options <-  function(pattern, options) {

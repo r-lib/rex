@@ -159,6 +159,6 @@ auto_name <- function(names) {
   if (all(!missing)) {
     return(names)
   }
-  names[ names == "" ] <- seq_along(names)[ names == "" ]
+  names[missing] <- seq_along(names)[missing]
   names
 }

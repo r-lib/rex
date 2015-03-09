@@ -22,9 +22,7 @@ rex_ <- function(args, env = parent.frame()) {
 
   # this needs the as.list because eval only looks at the enclos if envir is
   # not an environment
-  output <- regex(p(escape(lazyeval::lazy_eval(args, as.list(.rex$env)))))
-
-  return(output)
+  regex(p(escape(lazyeval::lazy_eval(args, as.list(.rex$env)))))
 }
 
 #' @describeIn regex coerce regex object to a character

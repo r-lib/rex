@@ -22,6 +22,13 @@ NULL
 #' @title Lookarounds
 #' @family rex
 #' @seealso Perl 5 Documentation \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
+#' @examples
+#' stopifnot(grepl(rex("crab" %if_next_is% "apple"), "crabapple", perl = TRUE))
+#' stopifnot(grepl(rex("crab" %if_prev_is% "apple"), "applecrab", perl = TRUE))
+#' stopifnot(grepl(rex(range("a", "e") %if_next_isnt% range("f", "g")),
+#'   "ah", perl = TRUE))
+#' stopifnot(grepl(rex(range("a", "e") %if_next_is% range("f", "i")),
+#'   "ah", perl = TRUE))
 NULL
 
 #' @rdname lookarounds

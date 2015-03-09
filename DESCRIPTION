@@ -21,7 +21,8 @@ Suggests:
     dplyr,
     ggplot2,
     stringr,
-    rvest
+    rvest,
+    lintr
 VignetteBuilder: knitr
 Collate:
     'aaa.R'

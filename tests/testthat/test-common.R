@@ -200,7 +200,7 @@ test_that("URL Validation works", {
     "http:///a",
     "foo.com",
     "rdar://1234",
-    "h://test",
+    "h://test", # nolint
     "http:// shouldfail.com",
     ":// should fail",
     "http://foo.bar/foo(bar)baz quux",

@@ -5,3 +5,4 @@
 ^travis-tool\.sh$
 ^cran-comments\.md$
 ^.*\.gz$
+^\.lintr$

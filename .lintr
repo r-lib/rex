@@ -1,0 +1,2 @@
+linters: with_defaults(line_length_linter(120))
+exclusions: c("inst/doc/url_parsing.R", "inst/doc/log_parsing.R")

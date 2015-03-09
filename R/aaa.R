@@ -3,17 +3,11 @@
 .rex$mode <- FALSE
 
 register <- function(...) {
-  names <- gsub("`", "", as.character(eval(substitute(alist(...)))))
-  vals <- list(...)
+  names <- gsub("`", "", as.character(eval(substitute(alist(...)))), fixed = TRUE)
 
-  for(itr in seq_along(vals)) {
-    .rex$env[[names[itr]]] <- vals[[itr]]
-  }
+  list2env(structure(list(...), .Names = names), envir = .rex$env)
 }
 
 register_object <- function(object) {
-  for(itr in seq_along(object)) {
-    name <- names(object)[[itr]]
-    .rex$env[[name]] <- object[[itr]]
-  }
+  list2env(as.list(object), envir = .rex$env)
 }

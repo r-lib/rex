@@ -16,7 +16,7 @@
 #' @seealso \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
 #' discussion of the supported options
 #' @examples
-#' string = c("this is a", "test string")
+#' string <- c("this is a", "test string")
 #' re_matches(string, rex("test")) # FALSE FALSE
 #'
 #' # named capture
@@ -96,7 +96,7 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, locations 
   }
 }
 
-#' Substitution function
+#' Substitute regular expressions in a string with another string.
 #'
 #' @param data character vector to substitute
 #' @param pattern regular expression to match
@@ -107,26 +107,21 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, locations 
 #' @seealso \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
 #' discussion of the supported options
 #' @examples
-#' string = c("this is a Test", "string")
+#' string <- c("this is a Test", "string")
 #' re_substitutes(string, "test", "not a test", options = "insensitive")
 #' re_substitutes(string, "i", "x", global = TRUE)
+#' re_substitutes(string, "(test)", "not a \\1", options = "insensitive")
 #' @export
 re_substitutes <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
-
   pattern <- add_options(pattern, options)
-
-  if(global) {
-    gsub(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
-  }
-  else {
-    sub(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
-  }
+  method <- if (isTRUE(global)) gsub else sub
+  method(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
 }
 
-add_options <-  function(pattern, options) {
+add_options <- function(pattern, options) {
   if (!is.null(options)) {
     options <- match_args(options, names(option_map))
-    pattern <- p("(?", p(option_map[options]), ")", pattern)
+    p("(?", p(option_map[options]), ")", pattern)
   }
   else {
     pattern
@@ -135,7 +130,7 @@ add_options <-  function(pattern, options) {
 
 match_args <- function(arg, choices) {
   matches <- pmatch(arg, choices)
-  if(any(is.na(matches))){
+  if (any(is.na(matches))) {
     stop(gettextf("'arg' should be one of %s", paste(dQuote(choices),
           collapse = ", ")), domain = NA)
   }

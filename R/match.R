@@ -16,7 +16,7 @@
 #' @seealso \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
 #' discussion of the supported options
 #' @examples
-#' string = c("this is a", "test string")
+#' string <- c("this is a", "test string")
 #' re_matches(string, rex("test")) # FALSE FALSE
 #'
 #' # named capture

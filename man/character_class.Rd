@@ -30,7 +30,7 @@ except_some_of(..., type = c("greedy", "lazy", "possessive"))
 
 range(start, end)
 
-":"(x, y)
+":"(start, end)
 
 exclude_range(start, end)
 }

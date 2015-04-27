@@ -78,11 +78,11 @@ range <- function(start, end) {
 register(range)
 
 #' @describeIn character_class matches one of any of the characters in the range.
-`:` <- function(x, y) {
-  if (all(is.character(x), is.character(y))) {
-    range(x, y)
+`:` <- function(start, end) {
+  if (all(is.character(start), is.character(end))) {
+    range(start, end)
   } else {
-    .Primitive(":")(x, y)
+    .Primitive(":")(start, end)
   }
 }
 register(`:`)

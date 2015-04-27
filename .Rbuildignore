@@ -6,3 +6,4 @@
 ^cran-comments\.md$
 ^.*\.gz$
 ^\.lintr$
+^vignettes/stackoverflow\.md$

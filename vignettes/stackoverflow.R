@@ -6,12 +6,12 @@
 #' vignette: >
 #'   %\VignetteIndexEntry{Stackoverflow Usage Examples}
 #'   %\VignetteEngine{knitr::rmarkdown}
-#'   %\usepackage[utf8]{inputenc}
+#'   \usepackage[utf8]{inputenc}
 #' ---
 
 #+ cache=FALSE, include=FALSE
-opts_chunk$set(collapse = TRUE, comment = "#>")
-render_markdown(strict = TRUE)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::render_markdown(strict = TRUE)
 
 #' ### [http://stackoverflow.com/questions/27106552][]
 

@@ -1,13 +1,13 @@
 Package: rex
 Type: Package
 Title: Friendly Regular Expressions
-Version: 1.0.0.901
-Date: 2014-10-31
-Authors@R: as.person(c(
+Version: 1.0.0
+Date: 2015-4-27
+Authors@R: c(
     person("Kevin", "Ushey", email = "kevinushey@gmail.com", role = "aut"),
     person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut", "cre")),
     person("Robert", "Krzyzanowski", email = "rkrzyzanowski@gmail.com", role = "aut")
-    ))
+    )
 Maintainer: Jim Hester <james.f.hester@gmail.com>
 URL: https://github.com/kevinushey/rex
 BugReports: https://github.com/kevinushey/rex/issues
@@ -19,11 +19,13 @@ License: MIT + file LICENSE
 Suggests:
     testthat,
     knitr,
+    rmarkdown,
     dplyr,
     ggplot2,
+    lintr,
+    Hmisc,
     stringr,
-    rvest,
-    lintr
+    rvest
 VignetteBuilder: knitr
 Collate:
     'aaa.R'

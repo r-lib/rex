@@ -32,7 +32,7 @@
 #' # 1 test
 #' # 2 <NA>
 #' @export
-re_matches <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
+re_matches <- matches <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
 
   pattern <- add_options(pattern, options)
 
@@ -63,29 +63,32 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, locations 
 
     not_matched <- starts == -1L
 
-    if(!locations) {
-      strings <- substring(string, starts, ends)
+    strings <- substring(string, starts, ends)
 
-      strings[not_matched] <- NA_integer_
+    strings[not_matched] <- NA_character_
 
-      res <- matrix(ncol = ncol(starts), strings)
+    res <- matrix(ncol = ncol(starts), strings)
 
-      colnames(res) <- auto_name(attr(match, "capture.names"))
+    nms <- auto_name(attr(match, "capture.names"))
 
-      as.data.frame(res, stringsAsFactors = FALSE)
+    if (!locations) {
+      colnames(res) <- nms
+      return(as.data.frame(res, stringsAsFactors = FALSE, check.names = FALSE))
     }
-    else {
-      starts[not_matched] <- NA_integer_
 
-      ends[not_matched] <- NA_integer_
+    starts[not_matched] <- NA_integer_
 
-      nms <- auto_name(attr(match, "capture.names"))
+    ends[not_matched] <- NA_integer_
 
-      res <- data.frame(matrix(ncol = ncol(starts), starts), matrix(ncol = ncol(ends), ends))
+    indexes <- unlist(lapply(seq_len(ncol(res)), function(x) {
+        seq(x, b = ncol(res), length.out = 3)
+    }))
 
-      colnames(res) <- paste(sep=".", rep(nms, each = 2L), c("start", "end"))
-      res
-    }
+    full <- data.frame(res, starts, ends, stringsAsFactors = FALSE, check.names = FALSE)[, indexes, drop = FALSE]
+    full_names <- unlist(Map(function(name) c(name, paste(sep=".", name, c("start", "end"))), nms, USE.NAMES=F))
+    colnames(full) <- full_names
+
+    full
   }
 
   if(global %==% TRUE) {
@@ -112,7 +115,7 @@ re_matches <- function(data, pattern, global = FALSE, options = NULL, locations 
 #' re_substitutes(string, "i", "x", global = TRUE)
 #' re_substitutes(string, "(test)", "not a \\1", options = "insensitive")
 #' @export
-re_substitutes <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
+re_substitutes <- substitutes <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
   pattern <- add_options(pattern, options)
   method <- if (isTRUE(global)) gsub else sub
   method(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)

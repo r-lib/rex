@@ -50,19 +50,18 @@ Functions to restrict a regex to a specific number
 }}
 \seealso{
 Other rex: \code{\link{.}}, \code{\link{capture}},
-  \code{\link{capture_group}};
-  \code{\link{\%if_next_is\%}},
+  \code{\link{capture_group}}; \code{\link{:}},
+  \code{\link{any_of}}, \code{\link{character_class}},
+  \code{\link{except}}, \code{\link{except_any_of}},
+  \code{\link{except_some_of}},
+  \code{\link{exclude_range}}, \code{\link{none_of}},
+  \code{\link{one_of}}, \code{\link{range}},
+  \code{\link{some_of}}; \code{\link{\%if_next_is\%}},
   \code{\link{\%if_next_isnt\%}},
   \code{\link{\%if_prev_is\%}},
   \code{\link{\%if_prev_isnt\%}},
   \code{\link{lookarounds}}; \code{\link{\%or\%}},
-  \code{\link{or}}; \code{\link{any_of}},
-  \code{\link{character_class}}, \code{\link{except}},
-  \code{\link{except_any_of}},
-  \code{\link{except_some_of}},
-  \code{\link{exclude_range}}, \code{\link{none_of}},
-  \code{\link{one_of}}, \code{\link{range}},
-  \code{\link{some_of}}; \code{\link{group}};
+  \code{\link{or}}; \code{\link{group}};
   \code{\link{maybe}}, \code{\link{one_or_more}},
   \code{\link{wildcards}}, \code{\link{zero_or_more}},
   \code{\link{zero_or_one}}; \code{\link{not}};

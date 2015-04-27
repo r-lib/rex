@@ -77,6 +77,16 @@ range <- function(start, end) {
 }
 register(range)
 
+#' @describeIn character_class matches one of any of the characters in the range.
+`:` <- function(x, y) {
+  if (all(is.character(x), is.character(y))) {
+    range(x, y)
+  } else {
+    .Primitive(":")(x, y)
+  }
+}
+register(`:`)
+
 #' @describeIn character_class matches one of any of the characters except those in the range.
 exclude_range <- function(start, end) {
   character_class(p("^", character_class_escape(start), "-", character_class_escape(end)))

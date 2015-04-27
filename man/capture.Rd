@@ -47,18 +47,18 @@ re <- rex(
 \code{\link{group}} for grouping without capturing.  Perl 5 Capture
 Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
 
-Other rex: \code{\link{\%if_next_is\%}},
-  \code{\link{\%if_next_isnt\%}},
-  \code{\link{\%if_prev_is\%}},
-  \code{\link{\%if_prev_isnt\%}},
-  \code{\link{lookarounds}}; \code{\link{\%or\%}},
-  \code{\link{or}}; \code{\link{any_of}},
+Other rex: \code{\link{:}}, \code{\link{any_of}},
   \code{\link{character_class}}, \code{\link{except}},
   \code{\link{except_any_of}},
   \code{\link{except_some_of}},
   \code{\link{exclude_range}}, \code{\link{none_of}},
   \code{\link{one_of}}, \code{\link{range}},
-  \code{\link{some_of}}; \code{\link{at_least}},
+  \code{\link{some_of}}; \code{\link{\%if_next_is\%}},
+  \code{\link{\%if_next_isnt\%}},
+  \code{\link{\%if_prev_is\%}},
+  \code{\link{\%if_prev_isnt\%}},
+  \code{\link{lookarounds}}; \code{\link{\%or\%}},
+  \code{\link{or}}; \code{\link{at_least}},
   \code{\link{at_most}}, \code{\link{between}},
   \code{\link{counts}}, \code{\link{n}},
   \code{\link{n_times}}; \code{\link{group}};

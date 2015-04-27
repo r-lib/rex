@@ -65,12 +65,7 @@ kable(head(parsed, n = 10))
 ```
 
 We can also easily generate a histogram of the filetypes, or a plot of requests over time.
-```{r FALSE, fig.show="hold", warning = FALSE, message = FALSE}
-x_angle <- theme(axis.text.x = element_text(size = 7,
-      hjust = 0,
-      vjust = 1,
-      angle = 310))
-
-ggplot(na.omit(parsed)) + geom_histogram(aes(x=filetype)) + x_angle
+```{r FALSE, fig.show='hold', warning = FALSE, message = FALSE}
+ggplot(na.omit(parsed)) + geom_histogram(aes(x=filetype))
 ggplot(na.omit(parsed)) + geom_histogram(aes(x=time)) + ggtitle("Requests over time")
 ```

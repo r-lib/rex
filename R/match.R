@@ -32,7 +32,7 @@
 #' # 1 test
 #' # 2 <NA>
 #' @export
-re_matches <- matches <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
+re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
 
   pattern <- add_options(pattern, options)
 
@@ -115,7 +115,7 @@ re_matches <- matches <- function(data, pattern, global = FALSE, options = NULL,
 #' re_substitutes(string, "i", "x", global = TRUE)
 #' re_substitutes(string, "(test)", "not a \\1", options = "insensitive")
 #' @export
-re_substitutes <- substitutes <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
+re_substitutes <- substitutes <- s <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
   pattern <- add_options(pattern, options)
   method <- if (isTRUE(global)) gsub else sub
   method(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)

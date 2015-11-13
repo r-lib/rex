@@ -12,8 +12,6 @@ p <- function(...) {
 #' @usage lhs \%>\% rhs
 NULL
 
-register(`%>%`)
-
 `%==%` <- function(x, y) {
   identical(x, y)
 }

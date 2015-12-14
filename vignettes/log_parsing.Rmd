@@ -66,6 +66,6 @@ kable(head(parsed, n = 10))
 
 We can also easily generate a histogram of the filetypes, or a plot of requests over time.
 ```{r FALSE, fig.show='hold', warning = FALSE, message = FALSE}
-ggplot(na.omit(parsed)) + geom_histogram(aes(x=filetype))
+ggplot(na.omit(parsed)) + stat_count(aes(x=filetype))
 ggplot(na.omit(parsed)) + geom_histogram(aes(x=time)) + ggtitle("Requests over time")
 ```

@@ -4,7 +4,9 @@
 * win-builder (devel and release)
 
 ## R CMD check results
-There were no ERRORs, WARNINGs or NOTES from R CMD check
+There were no ERRORs, WARNINGs or NOTES from R CMD check. I have also fixed all
+WARNINGS and NOTEs seen on
+https://cran.rstudio.com/web/checks/check_results_rex.html
 
 ## Downstream dependencies
 

@@ -1,7 +1,15 @@
+shortcut <- function(...) {
+  data <- list(...)
+  if (length(data) == 1L) {
+    data <- data[[1L]]
+  }
+  structure(data, class = "shortcut")
+}
+
 #' Single shortcuts
 #'
 #' Each of these shortcuts has both a plural (-s) and inverse (non_) form.
-single_shortcuts <- list(
+single_shortcuts <- shortcut(
 
   ## Character class shortcuts
   alnum = character_class("[:alnum:]"),
@@ -25,7 +33,7 @@ single_shortcuts <- list(
   quote = character_class("'\"")
 )
 
-basic_shortcuts <- list(
+basic_shortcuts <- shortcut(
 
   dot = escape("."),
   any = any_char <- regex("."),
@@ -75,7 +83,7 @@ multiple <- function(x) {
 #' @export
 #' @family rex
 
-shortcuts <- c(
+shortcuts <- shortcut(c(
   basic_shortcuts,
   single_shortcuts,
   plural(single_shortcuts),
@@ -83,6 +91,13 @@ shortcuts <- c(
   inverse(single_shortcuts),
   plural(inverse(single_shortcuts)),
   multiple(inverse(single_shortcuts))
-)
+))
+
+default_data_format.shortcut <- function(x) {
+  build_rd <- get("build_rd", envir = asNamespace("roxygen2"))
+  rd <- get("rd", envir = asNamespace("roxygen2"))
+
+  build_rd(rd("\\preformatted{"), paste0(names(x), " - ", x, collapse = "\n"), rd("}"))
+}
 
 register_object(shortcuts)

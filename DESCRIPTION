@@ -24,7 +24,8 @@ Suggests:
     lintr,
     Hmisc,
     stringr,
-    rvest
+    rvest,
+    roxygen2
 VignetteBuilder: knitr
 Collate:
     'aaa.R'

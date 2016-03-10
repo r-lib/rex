@@ -1,6 +1,7 @@
 language: r
 warnings_are_errors: true
 env: _R_CHECK_CRAN_INCOMING_=FALSE
+sudo: false
 
 r_github_packages:
   - jimhester/covr

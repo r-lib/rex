@@ -7,3 +7,4 @@
 ^.*\.gz$
 ^\.lintr$
 ^vignettes/stackoverflow\.md$
+^revdep$

@@ -1,3 +1,22 @@
+## Rex Version 1.1.1 ##
+
+* Vignette tweak for ggplot2 2.0.0
+* Only print startup message some of the time.
+* Move register for magrittr pipe to `.onLoad()`
+
+## Rex Version 1.0.1 ##
+
+* Work around ggplot2 bug with windows fonts
+
+## Rex Version 1.0.0 ##
+
+* Include the capture results even if `locations = TRUE`
+* Add `:` operator for character ranges
+* Remove duplicate regex functino
+* Don't re-compute missing names
+* Reduce code duplication
+* Add examples for lookarounds
+
 ## Rex Version 0.2.0 ##
 
 ### Enhancements
@@ -16,13 +35,13 @@
 
 ### Bug fixes
 
-* backslases ("\\") are now properly escaped.
+* backslashes ("\\") are now properly escaped.
 
 ### Misc
 
 * Improve Rex mode documentation (#21 @Ironholds)
 * Improve Log parsing Vignette copy and Title (#18, #20 @Ironholds)
-* Add links to github and issues page in DESCRIPTION
+* Add links to GitHub and issues page in DESCRIPTION
 
 ## Rex Version 0.1.0 ##
 

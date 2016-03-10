@@ -8,7 +8,7 @@ There were no ERRORs, WARNINGs or NOTES from R CMD check
 
 ## Downstream dependencies
 
-* I ran R CMD check on all 4 downstream dependencies of memoise
+* I ran R CMD check on all 4 downstream dependencies of rex
   Summary at: https://github.com/kevinushey/rex/blob/master/revdep/summary.md
 
 * There were 0 ERRORs in downstream dependencies.

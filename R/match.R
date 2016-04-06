@@ -81,7 +81,7 @@ re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = 
     ends[not_matched] <- NA_integer_
 
     indexes <- unlist(lapply(seq_len(ncol(res)), function(x) {
-        seq(x, b = ncol(res), length.out = 3)
+        seq(x, by = ncol(res), length.out = 3)
     }))
 
     full <- data.frame(res, starts, ends, stringsAsFactors = FALSE, check.names = FALSE)[, indexes, drop = FALSE]

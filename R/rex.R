@@ -66,3 +66,8 @@ regex <- function(x, ...) structure(x, class = "regex")
 register_shortcuts <- function(pkg_name) {
   invisible(utils::globalVariables(ls(.rex$env), pkg_name))
 }
+
+#' @export
+c.regex <- function(..., recursive = FALSE) {
+  regex(c(unlist(lapply(list(...), unclass))))
+}

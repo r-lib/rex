@@ -10,4 +10,3 @@ rex_mode()
 While within rex mode, functions used within the \code{\link{rex}} function
 are attached, so one can get e.g. auto-completion within editors.
 }
-

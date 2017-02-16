@@ -23,4 +23,3 @@ Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
   \code{\link{not}}, \code{\link{shortcuts}},
   \code{\link{wildcards}}
 }
-

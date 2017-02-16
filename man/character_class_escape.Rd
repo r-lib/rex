@@ -2,11 +2,11 @@
 % Please edit documentation in R/escape.R
 \name{character_class_escape}
 \alias{character_class_escape}
-\alias{character_class_escape.character}
-\alias{character_class_escape.character_class}
-\alias{character_class_escape.default}
-\alias{character_class_escape.list}
 \alias{character_class_escape.regex}
+\alias{character_class_escape.character_class}
+\alias{character_class_escape.character}
+\alias{character_class_escape.list}
+\alias{character_class_escape.default}
 \title{Character class escapes}
 \usage{
 character_class_escape(x)

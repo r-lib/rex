@@ -14,4 +14,3 @@ If you are using rex in another package you need to call this function to
 register all of the rex shortcuts so that spurious NOTEs about global
 variables being generated during R CMD check.
 }
-

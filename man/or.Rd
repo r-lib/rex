@@ -30,4 +30,3 @@ Other rex: \code{\link{capture}},
   \code{\link{not}}, \code{\link{rex}},
   \code{\link{shortcuts}}, \code{\link{wildcards}}
 }
-

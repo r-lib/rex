@@ -4,24 +4,7 @@
 \name{single_shortcuts}
 \alias{single_shortcuts}
 \title{Single shortcuts}
-\format{\preformatted{alnum - [:alnum:]
-alpha - [:alpha:]
-letter - [:alpha:]
-blank - [:blank:]
-cntrl - [:cntrl:]
-digit - [:digit:]
-number - [:digit:]
-graph - [:graph:]
-lower - [:lower:]
-print - [:print:]
-punct - [:punct:]
-space - [:space:]
-upper - [:upper:]
-xdigit - [:xdigit:]
-newline - \\R
-single_quote - '
-double_quote - "
-quote - '"}}
+\format{An object of class \code{shortcut} of length 18.}
 \usage{
 single_shortcuts
 }
@@ -29,4 +12,3 @@ single_shortcuts
 Each of these shortcuts has both a plural (-s) and inverse (non_) form.
 }
 \keyword{datasets}
-

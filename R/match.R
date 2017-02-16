@@ -31,7 +31,7 @@
 #' #      1
 #' # 1 test
 #' # 2 <NA>
-#' @export
+#' @export re_matches matches m
 re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
   stopifnot(isTRUE(length(data) > 0))
 
@@ -115,7 +115,7 @@ re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = 
 #' re_substitutes(string, "test", "not a test", options = "insensitive")
 #' re_substitutes(string, "i", "x", global = TRUE)
 #' re_substitutes(string, "(test)", "not a \\1", options = "insensitive")
-#' @export
+#' @export re_substitutes substitutes s
 re_substitutes <- substitutes <- s <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
   pattern <- add_options(pattern, options)
   method <- if (isTRUE(global)) gsub else sub

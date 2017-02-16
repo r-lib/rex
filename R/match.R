@@ -33,6 +33,7 @@
 #' # 2 <NA>
 #' @export
 re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
+  stopifnot(isTRUE(length(data) > 0))
 
   pattern <- add_options(pattern, options)
 

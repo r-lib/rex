@@ -48,30 +48,23 @@ basic_shortcuts <- shortcut(
 )
 
 inverse <- function(x) {
-  x[] <- lapply(x, function(xx) {
-    val <- paste0("^", xx); class(val) <- class(xx)
-    val
-  })
-  names(x) <- paste0("non_", names(x))
-  x
+  modify_and_name(x, "^%s", "non_%s", escape = FALSE)
 }
 
 plural <- function(x) {
-  x[] <- lapply(x, function(xx) {
-    val <- paste0(escape(xx), "+"); class(val) <- "regex"
-    val
-  })
-  names(x) <- paste0(names(x), "s")
-  x
+  modify_and_name(x, "%s+", "%ss", "regex")
 }
 
 multiple <- function(x) {
-  x[] <- lapply(x, function(xx) {
-    val <- paste0(escape(xx), "*"); class(val) <- "regex"
-    val
-  })
-  names(x) <- paste0("any_", names(x), "s")
-  x
+  modify_and_name(x, "%s*", "any_%ss", "regex")
+}
+
+modify_and_name <- function(x, modifier, name_template, class = NULL, escape = TRUE) {
+  class_missing <- missing(class)
+  stats::setNames(lapply(x, function(xx) {
+    structure(sprintf(modifier, if (isTRUE(escape)) escape(xx) else xx),
+              class = if (class_missing) class(xx) else class)
+  }), sprintf(name_template, names(x)))
 }
 
 #' Shortcuts

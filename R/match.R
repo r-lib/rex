@@ -1,38 +1,5 @@
-#' Match function
-#'
-#' @param data character vector to match against
-#' @param pattern regular expression to use for matching
-#' @param global use global matching
-#' @param options regular expression options
-#' @param locations rather than returning the values of the matched (or
-#' captured) string, return a \code{data.frame} of the match locations in the
-#' string.
-#' @param ... options passed to regexpr or gregexpr
-#' @return if no captures, returns a logical vector the same length as the
-#' input character vector specifying if the relevant value matched or not.  If
-#' there are captures in the regular expression, returns a \code{data.frame} with a
-#' column for each capture group.  If \code{global} is \code{TRUE}, returns a
-#' list of \code{data.frame}s.
-#' @seealso \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
-#' discussion of the supported options
-#' @examples
-#' string <- c("this is a", "test string")
-#' re_matches(string, rex("test")) # FALSE FALSE
-#'
-#' # named capture
-#' re_matches(string, rex(capture(alphas, name = "first_word"), space,
-#'   capture(alphas, name = "second_word")))
-#' #   first_word second_word
-#' # 1       this          is
-#' # 2       test      string
-#'
-#' # capture returns NA when it fails to match
-#' re_matches(string, rex(capture("test")))
-#' #      1
-#' # 1 test
-#' # 2 <NA>
-#' @export re_matches matches m
-re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
+#' @rdname re_matches
+m <- function(data, pattern, global = FALSE, options = NULL, locations = FALSE, ...) {
   stopifnot(isTRUE(length(data) > 0))
 
   pattern <- add_options(pattern, options)
@@ -100,7 +67,61 @@ re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = 
   }
 }
 
+#' @rdname re_matches
+matches <- m
+
+
+#' Match function
+#' @name re_matches
+#'
+#' @param data character vector to match against
+#' @param pattern regular expression to use for matching
+#' @param global use global matching
+#' @param options regular expression options
+#' @param locations rather than returning the values of the matched (or
+#' captured) string, return a \code{data.frame} of the match locations in the
+#' string.
+#' @param ... options passed to regexpr or gregexpr
+#' @return if no captures, returns a logical vector the same length as the
+#' input character vector specifying if the relevant value matched or not.  If
+#' there are captures in the regular expression, returns a \code{data.frame} with a
+#' column for each capture group.  If \code{global} is \code{TRUE}, returns a
+#' list of \code{data.frame}s.
+#' @seealso \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
+#' discussion of the supported options
+#' @examples
+#' string <- c("this is a", "test string")
+#' re_matches(string, rex("test")) # FALSE FALSE
+#'
+#' # named capture
+#' re_matches(string, rex(capture(alphas, name = "first_word"), space,
+#'   capture(alphas, name = "second_word")))
+#' #   first_word second_word
+#' # 1       this          is
+#' # 2       test      string
+#'
+#' # capture returns NA when it fails to match
+#' re_matches(string, rex(capture("test")))
+#' #      1
+#' # 1 test
+#' # 2 <NA>
+#' @export re_matches matches m
+re_matches <- matches
+
+
+
+#' @rdname re_substitutes
+s <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
+  pattern <- add_options(pattern, options)
+  method <- if (isTRUE(global)) gsub else sub
+  method(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
+}
+
+#' @rdname re_substitutes
+substitutes <- s
+
 #' Substitute regular expressions in a string with another string.
+#' @name re_substitutes
 #'
 #' @param data character vector to substitute
 #' @param pattern regular expression to match
@@ -116,11 +137,7 @@ re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = 
 #' re_substitutes(string, "i", "x", global = TRUE)
 #' re_substitutes(string, "(test)", "not a \\1", options = "insensitive")
 #' @export re_substitutes substitutes s
-re_substitutes <- substitutes <- s <- function(data, pattern, replacement, global = FALSE, options = NULL, ...) {
-  pattern <- add_options(pattern, options)
-  method <- if (isTRUE(global)) gsub else sub
-  method(x = data, pattern = pattern, replacement = replacement, perl = TRUE, ...)
-}
+re_substitutes <- substitutes
 
 add_options <- function(pattern, options) {
   if (!is.null(options)) {

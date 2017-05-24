@@ -2,11 +2,11 @@
 % Please edit documentation in R/escape.R
 \name{escape}
 \alias{escape}
-\alias{escape.regex}
-\alias{escape.character_class}
 \alias{escape.character}
+\alias{escape.character_class}
 \alias{escape.default}
 \alias{escape.list}
+\alias{escape.regex}
 \title{Escape characters for a regex}
 \usage{
 escape(x)

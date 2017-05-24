@@ -33,3 +33,4 @@ re_substitutes(string, "(test)", "not a \\\\1", options = "insensitive")
 \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
 discussion of the supported options
 }
+

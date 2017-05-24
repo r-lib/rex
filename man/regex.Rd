@@ -27,7 +27,7 @@ escaped.
 
 \item \code{print}: Print regex object
 }}
-
 \seealso{
 \code{\link{as.regex}} to coerce to a regex object.
 }
+

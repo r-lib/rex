@@ -53,3 +53,4 @@ re_matches(string, rex(capture("test")))
 \code{\link{regexp}} Section "Perl-like Regular Expressions" for a
 discussion of the supported options
 }
+

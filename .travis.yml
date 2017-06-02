@@ -6,5 +6,8 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
 
+before_install:
+  Rscript -e 'update.packages(ask = FALSE)'
+
 after_success:
   - Rscript -e 'library(covr);coveralls()'

@@ -1,3 +1,5 @@
 .Rproj.user
 inst/doc
 .Rhistory
+# Session Data files
+.RData

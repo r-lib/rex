@@ -161,13 +161,6 @@ test_that("re_matches with global returns a list of data.frames", {
     )
 })
 
-test_that("re_matches errors on empty inputs (#50)", {
-  expect_error(re_matches(NULL, ".", global = FALSE))
-  expect_error(re_matches(NULL, ".", global = TRUE))
-  expect_error(re_matches(character(), ".", global = FALSE))
-  expect_error(re_matches(character(), ".", global = TRUE))
-})
-
 test_that("examples are correct", {
 string <- c("this is a", "test string")
 expect_equal(re_matches(string, rex(capture(alphas, name = "first_word"), space,

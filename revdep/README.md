@@ -1,55 +1,37 @@
-# Setup
+# Platform
 
-## Platform
+|field    |value                                       |
+|:--------|:-------------------------------------------|
+|version  |R version 3.4.1 Patched (2017-08-06 r73048) |
+|os       |macOS Sierra 10.12.6                        |
+|system   |x86_64, darwin15.6.0                        |
+|ui       |X11                                         |
+|language |(EN)                                        |
+|collate  |en_US.UTF-8                                 |
+|tz       |America/New_York                            |
+|date     |2017-10-17                                  |
 
-|setting  |value                        |
-|:--------|:----------------------------|
-|version  |R version 3.2.3 (2015-12-10) |
-|system   |x86_64, darwin15.2.0         |
-|ui       |unknown                      |
-|language |(EN)                         |
-|collate  |en_US.UTF-8                  |
-|tz       |America/New_York             |
-|date     |2016-03-10                   |
+# Dependencies
 
-## Packages
+|package |old   |new   |Δ  |
+|:-------|:-----|:-----|:--|
+|rex     |1.1.1 |1.1.1 |NA |
 
-|package |*  |version |date       |source                |
-|:-------|:--|:-------|:----------|:---------------------|
-|knitr   |   |1.12.3  |2016-01-22 |CRAN (R 3.2.3)        |
-|rex     |   |1.1.1   |2016-03-10 |local (jimhester/rex) |
+# Revdeps
 
-# Check results
-4 checked out of 0 dependencies 
+## Broken (0)
 
-## covr (1.2.0)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/jimhester/covr/issues
+|package |version |error |warning |note |
+|:-------|:-------|:-----|:-------|:----|
 
-0 errors | 0 warnings | 1 note 
+## All (6)
 
-```
-checking dependencies in R code ... NOTE
-There are ::: calls to the package's namespace in its code. A package
-  almost never needs to use ::: for its own objects:
-  ‘count’
-```
-
-## gramEvol (2.1-2)
-Maintainer: Farzad Noorian <farzad.noorian@gmail.com>  
-Bug reports: https://github.com/fnoorian/gramEvol/issues
-
-0 errors | 0 warnings | 0 notes
-
-## lintr (0.3.3)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/jimhester/lintr/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ore (1.3.0)
-Maintainer: Jon Clayden <code@clayden.org>  
-Bug reports: https://github.com/jonclayden/ore/issues
-
-0 errors | 0 warnings | 0 notes
+|package  |version |error |warning |note |
+|:--------|:-------|:-----|:-------|:----|
+|covr     |3.0.0   |1     |        |     |
+|dparser  |0.1.7   |      |        |     |
+|gramEvol |2.1-3   |      |        |     |
+|lintr    |1.0.1   |      |        |     |
+|ore      |1.6.0   |      |        |     |
+|RxODE    |0.6-1   |      |        |     |
 

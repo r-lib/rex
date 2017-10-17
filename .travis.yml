@@ -3,4 +3,4 @@ sudo: false
 cache: packages
 
 after_success:
-  - Rscript -e 'library(covr);coveralls()'
+  - Rscript -e 'library(covr);codecov()'

@@ -1,6 +1,6 @@
 # Rex
 [![Build Status](https://travis-ci.org/kevinushey/rex.png?branch=master)](https://travis-ci.org/kevinushey/rex)
-[![Coverage Status](https://img.shields.io/coveralls/kevinushey/rex.svg)](https://coveralls.io/r/kevinushey/rex)
+[![codecov.io](https://codecov.io/github/kevinushey/rex/coverage.svg?branch=master)](https://codecov.io/github/kevinushey/rex?branch=master)
 
 ### Friendly Regular Expressions
 

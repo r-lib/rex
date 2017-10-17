@@ -21,11 +21,11 @@ Suggests:
     rmarkdown,
     dplyr,
     ggplot2,
-    lintr,
     Hmisc,
     stringr,
     rvest,
-    roxygen2
+    roxygen2,
+    covr
 VignetteBuilder: knitr
 Collate:
     'aaa.R'

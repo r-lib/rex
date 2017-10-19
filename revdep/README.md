@@ -9,13 +9,13 @@
 |language |(EN)                                        |
 |collate  |en_US.UTF-8                                 |
 |tz       |America/New_York                            |
-|date     |2017-10-17                                  |
+|date     |2017-10-19                                  |
 
 # Dependencies
 
 |package |old   |new   |Δ  |
 |:-------|:-----|:-----|:--|
-|rex     |1.1.1 |1.1.1 |NA |
+|rex     |1.1.1 |1.1.2 |*  |
 
 # Revdeps
 

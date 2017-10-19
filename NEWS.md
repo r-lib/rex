@@ -1,3 +1,10 @@
+## Rex Version 1.1.2 ##
+
+* Updating tests to work with testthat version 1.0.2.9000.
+
+* Add `m`, `matches` and `s`, `substitutes` aliases for `re_matches` and
+  `re_substitutes`.
+
 ## Rex Version 1.1.1 ##
 
 * Vignette tweak for ggplot2 2.0.0

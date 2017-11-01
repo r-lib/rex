@@ -1,3 +1,5 @@
+## Rex Version 1.1.2.9000 ##
+
 ## Rex Version 1.1.2 ##
 
 * Updating tests to work with testthat version 1.0.2.9000.

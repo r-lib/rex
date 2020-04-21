@@ -23,7 +23,7 @@ Common server logs consist of space separated fields.
 
 The logs used in this vignette come from two months of all HTTP requests
 to the NASA Kennedy Space Center WWW server in Florida and are freely available
-for use. [3](http://ita.ee.lbl.gov/html/contrib/NASA-HTTP.html)
+for use. [3](https://web.archive.org/web/20181003084945/http://ita.ee.lbl.gov/html/contrib/NASA-HTTP.html)
 
 ```{r include = FALSE}
 library(rex)

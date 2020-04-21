@@ -48,8 +48,7 @@ expression, they are much more readable and maintainable.
 ## Installation
 
 ```r
-library(devtools)
-install_github("kevinushey/rex")
+install.packages("rex")
 ```
 
 ## Usage

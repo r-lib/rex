@@ -1,3 +1,5 @@
+# rex 1.2.0
+
 ## Rex Version 1.1.2.9000 ##
 
 * `%>%` is no longer imported and then re-exported from rex

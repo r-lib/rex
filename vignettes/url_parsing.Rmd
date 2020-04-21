@@ -25,6 +25,7 @@ The problem with this is that while you can copy it now, what happens later when
 However if you re-create the regex with `rex` it is much easier to understand and modify later if needed.
 ```{r url_parsing_url}
 library(rex)
+library(magrittr)
 
 valid_chars <- rex(except_some_of(".", "/", " ", "-"))
 

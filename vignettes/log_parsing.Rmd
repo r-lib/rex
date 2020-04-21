@@ -30,6 +30,7 @@ library(rex)
 library(dplyr)
 library(knitr)
 library(ggplot2)
+library(magrittr)
 ```
 
 ```{r show.warnings=FALSE}

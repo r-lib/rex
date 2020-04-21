@@ -118,6 +118,8 @@ context("URL Validation")
 test_that("URL Validation works", {
   valid_chars <- rex(except_some_of(".", "/", " ", "-"))
 
+  `%>%` <- magrittr::`%>%`
+
   re <- rex(
     start,
 

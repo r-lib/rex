@@ -1,4 +1,5 @@
 context("n_times")
+`%>%` <- magrittr::`%>%`
 test_that("description", {
   re1 <- rex("x" %>% n_times(2))
   re2 <- rex("x" %>% n(2))

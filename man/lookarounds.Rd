@@ -49,9 +49,15 @@ stopifnot(grepl(rex(range("a", "e") \%if_next_is\% range("f", "i")),
 \seealso{
 Perl 5 Documentation \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 
-Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{group}}, \code{\link{not}},
-  \code{\link{rex}}, \code{\link{shortcuts}},
-  \code{\link{wildcards}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{capture}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{shortcuts}},
+\code{\link{wildcards}}
 }
+\concept{rex}

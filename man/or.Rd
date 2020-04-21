@@ -20,13 +20,17 @@ functions.}
 \description{
 The special binary function \code{\%or\%} can be used to specify a set
 of optional matches.
-
-describeIn or regular function can also be used, useful for more than 2 arguments.
 }
 \seealso{
-Other rex: \code{\link{capture}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{group}}, \code{\link{lookarounds}},
-  \code{\link{not}}, \code{\link{rex}},
-  \code{\link{shortcuts}}, \code{\link{wildcards}}
+Other rex: 
+\code{\link{capture}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{shortcuts}},
+\code{\link{wildcards}}
 }
+\concept{rex}

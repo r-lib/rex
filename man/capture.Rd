@@ -48,9 +48,15 @@ re <- rex(
 \code{\link{group}} for grouping without capturing.  Perl 5 Capture
 Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
 
-Other rex: \code{\link{\%or\%}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{group}}, \code{\link{lookarounds}},
-  \code{\link{not}}, \code{\link{rex}},
-  \code{\link{shortcuts}}, \code{\link{wildcards}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{shortcuts}},
+\code{\link{wildcards}}
 }
+\concept{rex}

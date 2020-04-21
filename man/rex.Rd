@@ -17,9 +17,15 @@ functions.}
 Generate a regular expression.
 }
 \seealso{
-Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{group}}, \code{\link{lookarounds}},
-  \code{\link{not}}, \code{\link{shortcuts}},
-  \code{\link{wildcards}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{capture}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{shortcuts}},
+\code{\link{wildcards}}
 }
+\concept{rex}

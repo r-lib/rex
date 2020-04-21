@@ -19,9 +19,15 @@ together and do not reference or extract the grouped value later.
 \code{\link{capture}} for grouping with capturing.  Perl 5 Extended
 Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
 
-Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{lookarounds}}, \code{\link{not}},
-  \code{\link{rex}}, \code{\link{shortcuts}},
-  \code{\link{wildcards}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{capture}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{shortcuts}},
+\code{\link{wildcards}}
 }
+\concept{rex}

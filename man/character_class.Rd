@@ -30,7 +30,7 @@ except_some_of(..., type = c("greedy", "lazy", "possessive"))
 
 range(start, end)
 
-":"(start, end)
+`:`(start, end)
 
 exclude_range(start, end)
 }
@@ -99,9 +99,15 @@ re <- rex(character_class("abcd\\\\["))
 grepl(re, c("a", "d", "[", "]")) # TRUE TRUE TRUE FALSE
 }
 \seealso{
-Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
-  \code{\link{counts}}, \code{\link{group}},
-  \code{\link{lookarounds}}, \code{\link{not}},
-  \code{\link{rex}}, \code{\link{shortcuts}},
-  \code{\link{wildcards}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{capture}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{shortcuts}},
+\code{\link{wildcards}}
 }
+\concept{rex}

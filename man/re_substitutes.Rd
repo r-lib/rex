@@ -6,8 +6,7 @@
 \alias{s}
 \title{Substitute regular expressions in a string with another string.}
 \usage{
-re_substitutes(data, pattern, replacement, global = FALSE, options = NULL,
-  ...)
+re_substitutes(data, pattern, replacement, global = FALSE, options = NULL, ...)
 }
 \arguments{
 \item{data}{character vector to substitute}

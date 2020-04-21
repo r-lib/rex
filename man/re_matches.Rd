@@ -6,8 +6,14 @@
 \alias{m}
 \title{Match function}
 \usage{
-re_matches(data, pattern, global = FALSE, options = NULL,
-  locations = FALSE, ...)
+re_matches(
+  data,
+  pattern,
+  global = FALSE,
+  options = NULL,
+  locations = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{character vector to match against}

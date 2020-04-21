@@ -40,9 +40,15 @@ Wildcards
 }}
 
 \seealso{
-Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{group}}, \code{\link{lookarounds}},
-  \code{\link{not}}, \code{\link{rex}},
-  \code{\link{shortcuts}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{capture}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{shortcuts}}
 }
+\concept{rex}

@@ -4,7 +4,9 @@
 \name{shortcuts}
 \alias{shortcuts}
 \title{Shortcuts}
-\format{An object of class \code{shortcut} of length 116.}
+\format{
+An object of class \code{shortcut} of length 116.
+}
 \usage{
 shortcuts
 }
@@ -16,10 +18,16 @@ are substituted inside \code{rex} calls.
 \code{names(shortcuts)} will give you the full list of available shortcuts.
 }
 \seealso{
-Other rex: \code{\link{\%or\%}}, \code{\link{capture}},
-  \code{\link{character_class}}, \code{\link{counts}},
-  \code{\link{group}}, \code{\link{lookarounds}},
-  \code{\link{not}}, \code{\link{rex}},
-  \code{\link{wildcards}}
+Other rex: 
+\code{\link{\%or\%}()},
+\code{\link{capture}()},
+\code{\link{character_class}()},
+\code{\link{counts}},
+\code{\link{group}()},
+\code{\link{lookarounds}},
+\code{\link{not}()},
+\code{\link{rex}()},
+\code{\link{wildcards}}
 }
+\concept{rex}
 \keyword{datasets}

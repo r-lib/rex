@@ -4,7 +4,9 @@
 \name{single_shortcuts}
 \alias{single_shortcuts}
 \title{Single shortcuts}
-\format{An object of class \code{shortcut} of length 18.}
+\format{
+An object of class \code{shortcut} of length 18.
+}
 \usage{
 single_shortcuts
 }

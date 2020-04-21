@@ -7,3 +7,4 @@
 ^\.lintr$
 ^vignettes/stackoverflow\.md$
 ^revdep$
+^CRAN-RELEASE$

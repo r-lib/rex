@@ -42,7 +42,7 @@ r <- rex(
 )
 ```
 
-While these expressions are a big longer than their corresponding regular
+While these expressions are a bit longer than their corresponding regular
 expression, they are much more readable and maintainable.
 
 ## Installation

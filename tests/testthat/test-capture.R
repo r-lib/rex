@@ -63,3 +63,43 @@ test_that("examples work", {
   expect_true(grepl(re, "orange=orange", perl=TRUE))
   expect_false(grepl(re, "apple=orange", perl=TRUE))
 })
+
+test_that("naming via argument name works", {
+  re <- rex(
+    capture(fruit = or("apple", "orange")),
+    "=",
+    capture_group("fruit")
+    )
+  expect_true(grepl("<fruit>", re))
+
+  expect_true(grepl(re, "apple=apple", perl=TRUE))
+  expect_true(grepl(re, "orange=orange", perl=TRUE))
+  expect_false(grepl(re, "apple=orange", perl=TRUE))
+})
+
+test_that("naming via argument name works with multiple arguments", {
+  re1 <- rex(
+    capture(greeting = "hello", " ", "world", "!"),
+    anything,
+    capture_group("greeting")
+  )
+  ## Name can be given on any argument in ..., and multiple times as
+  ## long as they're all the same.
+  re2 <- rex(
+    capture("hello", greeting = " ", greeting = "world", "!"),
+    anything,
+    capture_group("greeting")
+  )
+  expect_error(
+    re3 <- rex(
+      capture(greeting = "hello", " ", greet = "world", "!"),
+      anything,
+      capture_group("greeting")
+    )
+  )
+
+  expect_true(grepl("<greeting>", re1))
+  expect_true(grepl("<greeting>", re2))
+  expect_true(grepl(re1, "hello world! Again: hello world!", perl=TRUE))
+  expect_true(grepl(re2, "hello world! Again: hello world!", perl=TRUE))
+})

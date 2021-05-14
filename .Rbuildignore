@@ -8,3 +8,4 @@
 ^vignettes/stackoverflow\.md$
 ^revdep$
 ^CRAN-RELEASE$
+^\.github$

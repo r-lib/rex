@@ -39,7 +39,7 @@ NULL
 #' )
 capture <- . <- function(..., name = NULL) {
   if (is.null(name)) {
-    dots_names <- names(list(...))
+    dots_names <- names(substitute(list(...))[-1])
     if (!is.null(dots_names)) {
       dots_names <- unique(dots_names[!is.na(dots_names) & dots_names != ""])
       if (length(dots_names) == 1) {

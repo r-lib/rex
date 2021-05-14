@@ -34,8 +34,10 @@ test_that("creates a bounded repetition", {
 context("at_most")
 test_that("creates a repetition of n times at most", {
   re <- rex(start, "x" %>% at_most(3), end)
-  expect_equal(re, regex("^(?:x){,3}$"))
+  expect_equal(re, regex("^(?:x){0,3}$"))
 
   expect_true(grepl(re, "xxx"))
   expect_false(grepl(re, "xxxxx"))
+  expect_true(grepl(re, "xxx", perl = TRUE))
+  expect_false(grepl(re, "xxxxx", perl = TRUE))
 })

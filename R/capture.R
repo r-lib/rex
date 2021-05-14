@@ -38,6 +38,17 @@ NULL
 #'   capture_group("fruit")
 #' )
 capture <- . <- function(..., name = NULL) {
+  if (is.null(name)) {
+    dots_names <- names(list(...))
+    if (!is.null(dots_names)) {
+      dots_names <- unique(dots_names[!is.na(dots_names) & dots_names != ""])
+      if (length(dots_names) == 1) {
+        name  <- dots_names
+      } else if (length(dots_names) > 1) {
+        stop("Multiple named arguments in capture group")
+      }
+    }
+  }
   if(!is.null(name)) {
     name <- paste0("?<", name, ">")
   }

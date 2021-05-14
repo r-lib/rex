@@ -35,6 +35,6 @@ register(at_least)
 
 #' @describeIn counts \code{x} must occur at most \code{n} times.
 at_most <- function(x, n, type = c("greedy", "lazy", "possessive")) {
-  add_type(between(x, "", n), type)
+  add_type(between(x, 0, n), type)
 }
 register(at_most)

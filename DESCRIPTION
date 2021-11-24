@@ -3,11 +3,10 @@ Type: Package
 Title: Friendly Regular Expressions
 Version: 1.2.0
 Authors@R: c(
-    person("Kevin", "Ushey", email = "kevinushey@gmail.com", role = "aut"),
-    person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut", "cre")),
+    person("Kevin", "Ushey", email = "kevinushey@gmail.com", role = c("aut", "cre")),
+    person("Jim", "Hester", email = "james.f.hester@gmail.com", role = "aut"),
     person("Robert", "Krzyzanowski", email = "rkrzyzanowski@gmail.com", role = "aut")
     )
-Maintainer: Jim Hester <james.f.hester@gmail.com>
 URL: https://github.com/kevinushey/rex
 BugReports: https://github.com/kevinushey/rex/issues
 Description: A friendly interface for the construction of regular expressions.

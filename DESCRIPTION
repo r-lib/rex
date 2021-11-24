@@ -1,31 +1,35 @@
-Package: rex
 Type: Package
+Package: rex
 Title: Friendly Regular Expressions
 Version: 1.2.0
 Authors@R: c(
-    person("Kevin", "Ushey", email = "kevinushey@gmail.com", role = c("aut", "cre")),
-    person("Jim", "Hester", email = "james.f.hester@gmail.com", role = "aut"),
-    person("Robert", "Krzyzanowski", email = "rkrzyzanowski@gmail.com", role = "aut")
-    )
+    person("Kevin", "Ushey", , "kevinushey@gmail.com", role = c("aut", "cre")),
+    person("Jim", "Hester", , "james.f.hester@gmail.com", role = "aut"),
+    person("Robert", "Krzyzanowski", , "rkrzyzanowski@gmail.com", role = "aut")
+  )
+Description: A friendly interface for the construction of regular
+    expressions.
+License: MIT + file LICENSE
 URL: https://github.com/kevinushey/rex
 BugReports: https://github.com/kevinushey/rex/issues
-Description: A friendly interface for the construction of regular expressions.
 Imports:
     lazyeval
-License: MIT + file LICENSE
 Suggests:
-    testthat,
-    knitr,
-    rmarkdown,
+    covr,
     dplyr,
     ggplot2,
-    magrittr,
     Hmisc,
-    stringr,
-    rvest,
+    knitr,
+    magrittr,
+    rmarkdown,
     roxygen2,
-    covr
-VignetteBuilder: knitr
+    rvest,
+    stringr,
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+RoxygenNote: 7.1.2
 Collate:
     'aaa.R'
     'utils.R'
@@ -41,4 +45,3 @@ Collate:
     'shortcuts.R'
     'wildcards.R'
     'zzz.R'
-RoxygenNote: 7.1.0

@@ -16,7 +16,7 @@ NULL
 #' @family rex
 #' @aliases .
 #' @seealso \code{\link{group}} for grouping without capturing.  Perl 5 Capture
-#' Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
+#' Groups \url{https://perldoc.perl.org/perlre#Capture-groups}
 #' @examples
 #'
 #' # Match paired quotation marks
@@ -58,7 +58,7 @@ register(capture_group)
 #' together and do not reference or extract the grouped value later.
 #' @inheritParams capture
 #' @seealso \code{\link{capture}} for grouping with capturing.  Perl 5 Extended
-#' Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
+#' Patterns \url{https://perldoc.perl.org/perlre#Extended-Patterns}
 #' @family rex
 group <- function(...) {
   p( "(?:", p(escape_dots(...)), ")" )

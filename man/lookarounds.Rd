@@ -47,7 +47,7 @@ stopifnot(grepl(rex(range("a", "e") \%if_next_is\% range("f", "i")),
   "ah", perl = TRUE))
 }
 \seealso{
-Perl 5 Documentation \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
+Perl 5 Documentation \url{https://perldoc.perl.org/perlre#Extended-Patterns}
 
 Other rex: 
 \code{\link{\%or\%}()},

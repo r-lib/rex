@@ -10,7 +10,7 @@ vignette: >
 ---
 
 Parsing server log files is a common task in server administration.
-[1](http://link.springer.com/article/10.1007/BF03325089),[2](http://stackoverflow.com/search?q=%22Apache+log%22)
+[1](https://link.springer.com/article/10.1007/BF03325089),[2](https://stackoverflow.com/search?q=%22Apache+log%22)
 Historically R would not be well suited to this and it would be better
 performed using a scripting language such as perl. Rex, however, makes this
 easy to do and allows you to perform both the data cleaning and analysis in R!

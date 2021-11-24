@@ -46,7 +46,7 @@ re <- rex(
 }
 \seealso{
 \code{\link{group}} for grouping without capturing.  Perl 5 Capture
-Groups \url{http://perldoc.perl.org/perlre.html#Capture-groups}
+Groups \url{https://perldoc.perl.org/perlre#Capture-groups}
 
 Other rex: 
 \code{\link{\%or\%}()},

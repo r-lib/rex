@@ -21,7 +21,7 @@ NULL
 #' @name lookarounds
 #' @title Lookarounds
 #' @family rex
-#' @seealso Perl 5 Documentation \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
+#' @seealso Perl 5 Documentation \url{https://perldoc.perl.org/perlre#Extended-Patterns}
 #' @examples
 #' stopifnot(grepl(rex("crab" %if_next_is% "apple"), "crabapple", perl = TRUE))
 #' stopifnot(grepl(rex("crab" %if_prev_is% "apple"), "applecrab", perl = TRUE))

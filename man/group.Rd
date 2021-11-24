@@ -17,7 +17,7 @@ together and do not reference or extract the grouped value later.
 }
 \seealso{
 \code{\link{capture}} for grouping with capturing.  Perl 5 Extended
-Patterns \url{http://perldoc.perl.org/perlre.html#Extended-Patterns}
+Patterns \url{https://perldoc.perl.org/perlre#Extended-Patterns}
 
 Other rex: 
 \code{\link{\%or\%}()},

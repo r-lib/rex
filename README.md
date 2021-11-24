@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![codecov.io](https://codecov.io/github/kevinushey/rex/coverage.svg?branch=master)](https://codecov.io/github/kevinushey/rex?branch=master)
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 <!-- badges: end -->
 
 ### Friendly Regular Expressions
@@ -78,5 +78,5 @@ shortcuts as valid variables fixing the NOTEs.
   partially inspired `rex`.
 - [PCRE](http://www.pcre.org/) - Perl Compatible Regular Expressions, the
   engine that `rex` regular expressions use.
-- [Perl 5 Regular Expressions](http://perldoc.perl.org/perlre.html) - Perl
+- [Perl 5 Regular Expressions](https://perldoc.perl.org/perlre) - Perl
   regular expression documentation, which are nearly 100% compatible with PCRE.

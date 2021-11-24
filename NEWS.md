@@ -1,6 +1,8 @@
-# rex 1.2.0
+## Rex Version 1.2.1 ##
 
-## Rex Version 1.1.2.9000 ##
+* Kevin Ushey is now the maintainer
+
+## Rex Version 1.2.0 ##
 
 * `%>%` is no longer imported and then re-exported from rex
 

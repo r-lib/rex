@@ -1,7 +1,7 @@
 Type: Package
 Package: rex
 Title: Friendly Regular Expressions
-Version: 1.2.1
+Version: 1.2.1.9000
 Authors@R: c(
     person("Kevin", "Ushey", , "kevinushey@gmail.com", role = c("aut", "cre")),
     person("Jim", "Hester", , "james.f.hester@gmail.com", role = "aut"),

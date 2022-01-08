@@ -1,8 +1,9 @@
 # Rex
 
 <!-- badges: start -->
-[![codecov.io](https://codecov.io/github/kevinushey/rex/coverage.svg?branch=master)](https://codecov.io/github/kevinushey/rex?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/kevinushey/rex/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kevinushey/rex?branch=master)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![R-CMD-check](https://github.com/kevinushey/rex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kevinushey/rex/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ### Friendly Regular Expressions

@@ -8,9 +8,7 @@ reference:
   - rex
   - capture
   - character_class
-  - character_class_escape
   - n_times
-  - escape
   - group
   - "`%if_next_is%`"
   - not
@@ -26,6 +24,8 @@ reference:
   contents:
   - as.regex
   - as.character.regex
+  - character_class_escape
+  - escape
   - shortcuts
   - single_shortcuts
   - register_shortcuts

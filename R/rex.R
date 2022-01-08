@@ -17,6 +17,8 @@ rex <- function(..., env = parent.frame()) {
 
 #' @export
 rex_ <- function(args, env = parent.frame()) {
+  args <- Filter(function(x) !identical(x, quote(expr = )), args)
+
   eval_env <- list2env(as.list(.rex$env), parent = env)
   evaled <- lapply(args, eval, envir = eval_env)
 

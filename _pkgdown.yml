@@ -1,0 +1,33 @@
+url: https://kevinushey.github.io/rex
+template:
+  bootstrap: 5
+
+reference:
+- title: Create a regular expression
+  contents:
+  - rex
+  - capture
+  - character_class
+  - n_times
+  - group
+  - "`%if_next_is%`"
+  - not
+  - or
+  - zero_or_more
+
+- title: String manipulation
+  contents:
+  - re_matches
+  - re_substitutes
+
+- title: For developers
+  contents:
+  - as.regex
+  - as.character.regex
+  - character_class_escape
+  - escape
+  - shortcuts
+  - single_shortcuts
+  - register_shortcuts
+  - rex_mode
+

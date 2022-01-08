@@ -12,8 +12,6 @@ Description: A friendly interface for the construction of regular
 License: MIT + file LICENSE
 URL: https://github.com/kevinushey/rex
 BugReports: https://github.com/kevinushey/rex/issues
-Imports:
-    lazyeval
 Suggests:
     covr,
     dplyr,

@@ -11,18 +11,16 @@ NULL
 #' @param env environment to evaluate the rex expression in.
 #' @aliases rex_
 rex <- function(..., env = parent.frame()) {
-  args <- lazyeval::lazy_dots(...)
-  rex_(args, env)
+  args <- as.list(substitute(list(...))[-1])
+  rex_(args, env = env)
 }
 
 #' @export
 rex_ <- function(args, env = parent.frame()) {
+  eval_env <- list2env(as.list(.rex$env), parent = env)
+  evaled <- lapply(args, eval, envir = eval_env)
 
-  args <- lazyeval::as.lazy_dots(args, env)
-
-  # this needs the as.list because eval only looks at the enclos if envir is
-  # not an environment
-  regex(p(escape(lazyeval::lazy_eval(args, as.list(.rex$env)))))
+  p(escape(evaled))
 }
 
 #' @describeIn regex coerce regex object to a character

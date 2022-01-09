@@ -4,7 +4,7 @@ pkgdown_sha: e25bd0bb6a604ecc60d704c7154f291afbf0dd7b
 articles:
   log_parsing: log_parsing.html
   url_parsing: url_parsing.html
-last_built: 2022-01-08T21:26Z
+last_built: 2022-01-09T17:50Z
 urls:
   reference: https://kevinushey.github.io/rex/reference
   article: https://kevinushey.github.io/rex/articles

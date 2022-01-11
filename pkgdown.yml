@@ -1,10 +1,10 @@
 pandoc: 2.14.2
 pkgdown: 2.0.1.9000
-pkgdown_sha: e25bd0bb6a604ecc60d704c7154f291afbf0dd7b
+pkgdown_sha: 3fdbaf3f40ee7c092e22aa75aeea8261107ba001
 articles:
   log_parsing: log_parsing.html
   url_parsing: url_parsing.html
-last_built: 2022-01-09T17:50Z
+last_built: 2022-01-11T17:47Z
 urls:
   reference: https://kevinushey.github.io/rex/reference
   article: https://kevinushey.github.io/rex/articles

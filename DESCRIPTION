@@ -10,8 +10,8 @@ Authors@R: c(
 Description: A friendly interface for the construction of regular
     expressions.
 License: MIT + file LICENSE
-URL: https://github.com/kevinushey/rex
-BugReports: https://github.com/kevinushey/rex/issues
+URL: https://rex.r-lib.org, https://github.com/r-lib/rex
+BugReports: https://github.com/r-lib/rex/issues
 Suggests:
     covr,
     dplyr,
@@ -43,4 +43,4 @@ Collate:
     'shortcuts.R'
     'wildcards.R'
     'zzz.R'
-Config/Needs/website: r-lib/pkgdown
+Config/Needs/website: r-lib/pkgdown, tidyverse/tidytemplate

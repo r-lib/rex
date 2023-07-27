@@ -86,7 +86,7 @@ re_matches <- matches <- m <- function(data, pattern, global = FALSE, options = 
     }))
 
     full <- data.frame(res, starts, ends, stringsAsFactors = FALSE, check.names = FALSE)[, indexes, drop = FALSE]
-    full_names <- unlist(Map(function(name) c(name, paste(sep=".", name, c("start", "end"))), nms, USE.NAMES=F))
+    full_names <- unlist(Map(function(name) c(name, paste(sep=".", name, c("start", "end"))), nms, USE.NAMES = FALSE))
     colnames(full) <- full_names
 
     full

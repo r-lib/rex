@@ -1,10 +1,10 @@
-pandoc: 2.14.2
-pkgdown: 2.0.1.9000
-pkgdown_sha: 3fdbaf3f40ee7c092e22aa75aeea8261107ba001
+pandoc: 2.19.2
+pkgdown: 2.0.7.9000
+pkgdown_sha: c9206802f2888992de92aa41f517ba7812f05331
 articles:
   log_parsing: log_parsing.html
   url_parsing: url_parsing.html
-last_built: 2022-01-11T17:54Z
+last_built: 2023-07-27T18:54Z
 urls:
   reference: https://rex.r-lib.org/reference
   article: https://rex.r-lib.org/articles

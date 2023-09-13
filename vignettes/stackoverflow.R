@@ -39,7 +39,7 @@ groups
 #' fewer members will have their members recycled rather than `NA`, so instead
 #' explicitly fill with `NA`.
 
-largest_group <- max(sapply(groups, length))
+largest_group <- max(lengths(groups))
 largest_group
 
 groups <- lapply(groups, function(group) {
@@ -90,7 +90,7 @@ matches
 #' ### [http://stackoverflow.com/questions/22976472][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
-txt <- as.character("this is just a test! i'm not sure if this is O.K. or if it will work? who knows. regex is sorta new to me..  There are certain cases that I may not figure out??  sad!  ^_^")
+txt <- "this is just a test! i'm not sure if this is O.K. or if it will work? who knows. regex is sorta new to me..  There are certain cases that I may not figure out??  sad!  ^_^"
 
 re <- rex(
   capture(name = "first_letter", alnum),
@@ -161,14 +161,14 @@ re_matches(x$address, re)
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
 library(rex)
-x <- c(
+x <-
 "https://support.google.com/blogger/topic/12457
 https://support.google.com/blogger/topic/12457.
 https://support.google.com/blogger/topic/12457] 
 <<https://support.google.com/blogger/topic/12457>>
 https://support.google.com/blogger/topic/12457,
 https://support.google.com/blogger/topic/12457),
-xxxxxxhttps://support.google.com/blogger/topic/12457),hhhththta")
+xxxxxxhttps://support.google.com/blogger/topic/12457),hhhththta"
 
 re <- rex(
   capture(name = "url",
@@ -180,7 +180,7 @@ re_matches(x, re, global = TRUE)[[1]]
 
 #' ### [http://stackoverflow.com/questions/27219421][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
-tmp <- c("Little Street","A323", "Essex Road (A43)", "M43","Orange street","M4","B2045","New Street")
+tmp <- c("Little Street","A323", "Essex Road (A43)", "M43", "Orange street", "M4", "B2045", "New Street")
 
 library(rex)
 classify_road <- function(x) {
@@ -215,7 +215,7 @@ regexpr(re, x, perl = TRUE)
 #' ### [http://stackoverflow.com/questions/23447261][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
-x = structure(list(text = structure(c(4L, 6L, 1L, 2L, 5L, 3L), .Label =     c("ãããæããããéãããæãããInappropriate announce:-(",
+x <- structure(list(text = structure(c(4L, 6L, 1L, 2L, 5L, 3L), .Label =     c("ãããæããããéãããæãããInappropriate announce:-(",
 "@AirAsia your direct debit (Maybank) payment gateways is not working. Is it something     you are working to fix?",
 "@AirAsia Apart from the slight delay and shortage of food on our way back from Phuket, both flights were very smooth. Kudos :)",
 "RT @AirAsia: ØØÙØÙÙÙÙ ÙØØØ ØØØÙ ÙØØØØÙ ØØØØÙÙÙí í Now you can enjoy a #great :D breakfast onboard with our new breakfast meals! :D",
@@ -234,7 +234,7 @@ re_matches(x$text,
       or(emots)
     )
   ),
-  global = T)
+  global = TRUE)
 
 #' ### [http://stackoverflow.com/questions/27234040][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
@@ -297,7 +297,7 @@ substring(x, locs$start - 6, locs$end + 6)
 
 #' ### [http://stackoverflow.com/questions/15954171][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
-x <- c("System configuration: lcpu=96 mem=196608MB ent=16.00")
+x <- "System configuration: lcpu=96 mem=196608MB ent=16.00"
 
 library(rex)
 val <- as.numeric(
@@ -336,7 +336,7 @@ re_matches(x,
 
 #' ### [http://stackoverflow.com/questions/27238323][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
-string = c("ABC3JFD456", "ARST4DS324")
+string <- c("ABC3JFD456", "ARST4DS324")
 
 re_matches(string,
   rex(
@@ -375,7 +375,7 @@ minimal <- html("<!doctype html><title>blah</title> <p>&nbsp;foo")
 
 bodytext <- minimal %>%
   html_node("body") %>%
-  html_text
+  html_text()
 
 re_substitutes(bodytext, rex(spaces), "", global = TRUE)
 
@@ -466,7 +466,7 @@ re_matches(x, re)
 #' ### <http://stackoverflow.com/questions/27422350/extract-character-preceding-first-dot-in-a-string>
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
-my.data <- read.table(text = '
+my.data <- read.table(text = "
      my.string  state
      .........    A
      1........    B
@@ -475,12 +475,12 @@ my.data <- read.table(text = '
      1111113..    E
      111111111    F
      111111111    G
-', header = TRUE, stringsAsFactors = FALSE)
+", header = TRUE, stringsAsFactors = FALSE)
 
 library(rex)
 
 re_matches(my.data$my.string,
-  rex(capture(except(".")), "."))$'1'
+  rex(capture(except(".")), "."))$"1"
 
 #' ### <http://stackoverflow.com/questions/27410736>
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
@@ -488,7 +488,7 @@ string <- "Shakira - Wolf - 02.Hips don't lie.mp3"
 
 library(rex)
 re_matches(string,
-  rex(capture(zero_or_more(any, type='lazy')), spaces, "-"))$'1'
+  rex(capture(zero_or_more(any, type="lazy")), spaces, "-"))$"1"
 
 #' ### <http://stackoverflow.com/questions/27400286/>
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.

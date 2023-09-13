@@ -4,7 +4,7 @@ pkgdown_sha: c9206802f2888992de92aa41f517ba7812f05331
 articles:
   log_parsing: log_parsing.html
   url_parsing: url_parsing.html
-last_built: 2023-07-27T18:54Z
+last_built: 2023-09-13T20:36Z
 urls:
   reference: https://rex.r-lib.org/reference
   article: https://rex.r-lib.org/articles

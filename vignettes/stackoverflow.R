@@ -215,15 +215,15 @@ regexpr(re, x, perl = TRUE)
 #' ### [http://stackoverflow.com/questions/23447261][]
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
-x = structure(list(text = structure(c(4L, 6L, 1L, 2L, 5L, 3L), .Label =     c("ãããæããããéãããæãããInappropriate announce:-(", 
-"@AirAsia your direct debit (Maybank) payment gateways is not working. Is it something     you are working to fix?", 
-"@AirAsia Apart from the slight delay and shortage of food on our way back from Phuket, both flights were very smooth. Kudos :)", 
-"RT @AirAsia: ØØÙØÙÙÙÙ ÙØØØ ØØØÙ ÙØØØØÙ ØØØØÙÙÙí í Now you can enjoy a #great :D breakfast onboard with our new breakfast meals! :D", 
-"xdek ke flight @AirAsia Malaysia to LA... hahah..:p bagi la promo murah2 sikit, kompom aku beli...", 
+x = structure(list(text = structure(c(4L, 6L, 1L, 2L, 5L, 3L), .Label =     c("ãããæããããéãããæãããInappropriate announce:-(",
+"@AirAsia your direct debit (Maybank) payment gateways is not working. Is it something     you are working to fix?",
+"@AirAsia Apart from the slight delay and shortage of food on our way back from Phuket, both flights were very smooth. Kudos :)",
+"RT @AirAsia: ØØÙØÙÙÙÙ ÙØØØ ØØØÙ ÙØØØØÙ ØØØØÙÙÙí í Now you can enjoy a #great :D breakfast onboard with our new breakfast meals! :D",
+"xdek ke flight @AirAsia Malaysia to LA... hahah..:p bagi la promo murah2 sikit, kompom aku beli...",
 "You know there is a problem when customer service asks you to wait for 103 minutes and your no is 42 in the queue. X-("
-), class = "factor"), created = structure(c(5L, 4L, 4L, 3L, 2L, 
-1L), .Label = c("1/2/2014 16:14", "1/2/2014 17:00", "3/2/2014 0:54", 
-"3/2/2014 0:58", "3/2/2014 1:28"), class = "factor")), .Names = c("text", 
+), class = "factor"), created = structure(c(5L, 4L, 4L, 3L, 2L,
+1L), .Label = c("1/2/2014 16:14", "1/2/2014 17:00", "3/2/2014 0:54",
+"3/2/2014 0:58", "3/2/2014 1:28"), class = "factor")), .Names = c("text",
 "created"), class = "data.frame", row.names = c(NA, -6L))
 
 emots <- as.character(outer(c(":", ";", ":-", ";-"), c(")", "(", "]", "[", "D", "o", "O", "P", "p"), paste0))
@@ -493,7 +493,7 @@ re_matches(string,
 #' ### <http://stackoverflow.com/questions/27400286/>
 #' Using [rex](http://cran.r-project.org/web/packages/rex/index.html) may make this type of task a little simpler.
 
-string <- "I t is tim e to g o" 
+string <- "I t is tim e to g o"
 library(rex)
 re_substitutes(string, rex(
     space %if_next_is%

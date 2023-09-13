@@ -135,9 +135,8 @@ add_options <- function(pattern, options) {
 
 match_args <- function(arg, choices) {
   matches <- pmatch(arg, choices)
-  if (any(is.na(matches))) {
-    stop(gettextf("'arg' should be one of %s", paste(dQuote(choices),
-          collapse = ", ")), domain = NA)
+  if (anyNA(matches)) {
+    stop(gettextf("'arg' should be one of %s", toString(dQuote(choices))), domain = NA)
   }
   choices[matches]
 }
@@ -156,7 +155,7 @@ no_capture <- function(match) {
 
 auto_name <- function(names) {
   missing <- names == ""
-  if (all(!missing)) {
+  if (!any(missing)) {
     return(names)
   }
   names[missing] <- seq_along(names)[missing]

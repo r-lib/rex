@@ -1,5 +1,5 @@
 p <- function(...) {
-  regex(paste(sep = "", collapse = "", ...))
+  regex(paste0(collapse = "", ...))
 }
 
 `%==%` <- function(x, y) {

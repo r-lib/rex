@@ -1,5 +1,7 @@
 ## Rex (development version)
 
+* Rex no longer changes the state of the random number generator when attached.
+
 ## Rex Version 1.2.1 ##
 
 * Kevin Ushey is now the maintainer

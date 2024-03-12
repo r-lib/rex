@@ -44,3 +44,5 @@ Collate:
     'wildcards.R'
     'zzz.R'
 Config/Needs/website: r-lib/pkgdown, tidyverse/tidytemplate
+Imports: 
+    withr
